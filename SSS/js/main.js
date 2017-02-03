@@ -30,7 +30,7 @@ window.onload = function() {
 		crshr.x = game.input.mousePointer.x;
 		crshr.y = game.input.mousePointer.y
 		if(game.input.activePointer.leftButton.isDown && crashr.animations.isFinished()){
-			crshr.animations.play('fire', 60, false);
+			crshr.animations.play('fire', 30, false);
 		}
     }
 };
