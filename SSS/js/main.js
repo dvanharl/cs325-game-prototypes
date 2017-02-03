@@ -21,22 +21,15 @@ window.onload = function() {
 		game.load.image('cursor','assets/Cursor.png');
     }
     
-    var bouncy;
     var crshr;
 	
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
 		crshr = game.add.sprite(game.world.centerX, game.world.centerY, 'cursor');
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         crshr.anchor.setTo( 0.5, 0.5 );
-		bouncy.anchor.setTo(0.5,0.5);
         
-        // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        bouncy.body.collideWorldBounds = true;
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
@@ -53,6 +46,5 @@ window.onload = function() {
         // new trajectory.
 		crshr.x = game.input.mousePointer.x;
 		crshr.y = game.input.mousePointer.y
-        bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
     }
 };
