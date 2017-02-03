@@ -21,7 +21,7 @@ window.onload = function() {
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something amazing2.", style );
+        var text = game.add.text( game.world.centerX, 15, "Build something amazing3.", style );
         text.anchor.setTo( 0.5, 0.0 );
     }
 	
@@ -30,7 +30,7 @@ window.onload = function() {
 		crshr.x = game.input.mousePointer.x;
 		crshr.y = game.input.mousePointer.y
 		if(game.input.activePointer.leftButton.isDown && crashr.animations.isFinished()){
-			crshr.animations.play('fire', 30, false);
+			//crshr.animations.play('fire', 30, false);
 		}
     }
 };
