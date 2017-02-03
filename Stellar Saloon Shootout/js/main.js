@@ -18,18 +18,18 @@ window.onload = function() {
     function preload() {
         // Load an image and call it 'logo'.
         game.load.image( 'logo', 'assets/phaser.png' );
-		game.load.image('cursor','assets/Cursor.png');
+		//game.load.image('cursor','assets/Cursor.png');
     }
     
     var bouncy;
     
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
-		cursor = game.add.sprite(game.input.mousePointer.x,game.input.mousePointer.y, 'cursor');
+		//cursor = game.add.sprite(game.input.mousePointer.x,game.input.mousePointer.y, 'cursor');
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
-        bouncy.anchor.setTo( 0.5, 0.5 );
+        //cursor.anchor.setTo( 0.5, 0.5 );
         
         // Turn on the arcade physics engine for this sprite.
         game.physics.enable( bouncy, Phaser.Physics.ARCADE );
@@ -49,8 +49,8 @@ window.onload = function() {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-		cursor.x = game.input.mousePointer.x;
-		cursor.y = game.input.mousePointer.y
+		//cursor.x = game.input.mousePointer.x;
+		//cursor.y = game.input.mousePointer.y
         bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
     }
 };
