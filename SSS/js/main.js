@@ -9,7 +9,7 @@ window.onload = function() {
     }
     
 	var crshr;
-	var canFire;
+	var canFire = true;
 	
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
@@ -18,7 +18,6 @@ window.onload = function() {
         // so it will be truly centered.
         crshr.anchor.setTo( 0.5, 0.5 );
         crshr.animations.add('fire');
-		canFire = true;
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
