@@ -5,7 +5,7 @@ window.onload = function() {
     
     function preload() {
         // Load an image and call it 'logo'.
-		game.load.image('cursor','assets/Fire.png', 25, 25);
+		game.load.image('cursor','assets/Fire.png', 25, 25, 8);
     }
     
     var crshr;
@@ -30,7 +30,7 @@ window.onload = function() {
 		crshr.x = game.input.mousePointer.x;
 		crshr.y = game.input.mousePointer.y
 		if(game.input.activePointer.leftButton.isDown){
-			crshr.animations.play('fire'),30,false
+			crshr.animations.play('fire', 30, false);
 		}
     }
 };
