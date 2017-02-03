@@ -5,7 +5,7 @@ window.onload = function() {
     
     function preload() {
         // Load an image and call it 'logo'.
-		game.load.spritesheet('cursor','assets/Fire.png', 25, 25, 8);
+		game.load.spritesheet('cursor','assets/Fire.png', 25, 25, 9);
     }
     
 	var crshr;
