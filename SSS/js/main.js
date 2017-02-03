@@ -16,7 +16,7 @@ window.onload = function() {
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         crshr.anchor.setTo( 0.5, 0.5 );
-        
+        var fire = crshr.animations.add('fire');
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
@@ -30,7 +30,7 @@ window.onload = function() {
 		crshr.x = game.input.mousePointer.x;
 		crshr.y = game.input.mousePointer.y
 		if(game.input.activePointer.leftButton.isDown){
-			crshr.animations.play('cursor'),30,false
+			crshr.animations.play('fire'),30,false
 		}
     }
 };
