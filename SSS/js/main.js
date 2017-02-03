@@ -36,5 +36,6 @@ window.onload = function() {
 		}
 		if(game.input.mousePointer.isUp){
 			canFire = true;
+		}
     }
 };
