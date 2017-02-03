@@ -30,7 +30,7 @@ window.onload = function() {
 		//Maintain cursor position on mouse
 		crshr.x = game.input.mousePointer.x;
 		crshr.y = game.input.mousePointer.y
-		if(game.input.activePointer.leftButton.isDown && ! fired){
+		if(game.input.activePointer.leftButton.isDown && canFire){
 			crshr.animations.play('fire', 60, false);
 			canFire = true;
 		}
