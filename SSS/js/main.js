@@ -9,6 +9,7 @@ window.onload = function() {
     }
     
 	var crshr;
+	var canFire = true;
 	
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
@@ -29,8 +30,11 @@ window.onload = function() {
 		//Maintain cursor position on mouse
 		crshr.x = game.input.mousePointer.x;
 		crshr.y = game.input.mousePointer.y
-		if(game.input.activePointer.leftButton.isDown && crashr.animations.isFinished()){
-			//crshr.animations.play('fire', 30, false);
+		if(game.input.mousePointer.isDown && crashr.animations.isFinished() && canFire){
+			canFire = false;
+			crshr.animations.play('fire', 30, false);
 		}
+		if(game.input.mousePointer.isUp){
+			canFire = true;
     }
 };
