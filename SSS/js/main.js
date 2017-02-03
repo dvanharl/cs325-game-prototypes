@@ -8,11 +8,10 @@ window.onload = function() {
 		game.load.spritesheet('cursor','assets/Fire.png', 25, 25, 8);
     }
     
-    var crshr;
 	
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
-		crshr = game.add.sprite(game.world.centerX, game.world.centerY, 'cursor');
+		var crshr = game.add.sprite(game.world.centerX, game.world.centerY, 'cursor');
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         crshr.anchor.setTo( 0.5, 0.5 );
