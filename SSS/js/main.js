@@ -29,10 +29,8 @@ window.onload = function() {
 		//Maintain cursor position on mouse
 		crshr.x = game.input.mousePointer.x;
 		crshr.y = game.input.mousePointer.y
-		game.input.onDown.add(fire,this);
+		if(game.input.activePointer.leftButton.isDown){
+			crshr.animations.play('cursor'),30,false
+		}
     }
-	
-	function fire(){
-		crshr.animations.play('cursor'),30,false;
-	}
 };
