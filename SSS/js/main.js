@@ -33,7 +33,7 @@ window.onload = function() {
 		//If mouse is clicked, play cursor animation to display firing
 		if(game.input.mousePointer.isDown/* && !crashr.animations('fire').isPlaying()*/ && canFire){
 			canFire = false;
-			crshr.animations.play('fire', 30, false);
+			crshr.animations.play('fire', 60, false);
 		}
 		if(game.input.mousePointer.isUp){
 			canFire = true;
