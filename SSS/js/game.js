@@ -1,6 +1,6 @@
-var Game = function(game){}
+var game = function(game){}
 
-Game.prototype = {
+game.prototype = {
 	create: function(){
 		crshr = game.add.sprite(400, 300, 'cursor');
         // Anchor the sprite at its center, as opposed to its top-left corner.

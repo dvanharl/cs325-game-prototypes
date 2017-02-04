@@ -1,4 +1,4 @@
-var GameOver = function(game){}
+var gameOver = function(game){}
 
 gameOver.prototype = {
 	init: function(score){},
