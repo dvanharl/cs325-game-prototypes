@@ -43,7 +43,7 @@ BasicGame.Game.prototype = {
         this.crshr.anchor.setTo( 0.5, 0.5 );
         this.crshr.animations.add('fire');
 		
-		this.time.events.add(Phaser.Timer.MINUTE*1, quitGame, this);
+		this.game.time.events.add(Phaser.Timer.MINUTE*1, quitGame, this);
     },
 
     update: function () {
