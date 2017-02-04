@@ -65,8 +65,8 @@ BasicGame.Game.prototype = {
 
     update: function () {
 		//Maintain cursor position on mouse
-		this.crshr.x = game.input.mousePointer.x;
-		this.crshr.y = game.input.mousePointer.y
+		this.crshr.x = this.game.input.mousePointer.x;
+		this.crshr.y = this.game.input.mousePointer.y
 		//If mouse is clicked, play cursor animation to display firing
 		if(this.game.input.mousePointer.isDown && this.canFire){
 			this.canFire = false;
