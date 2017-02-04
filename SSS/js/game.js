@@ -1,6 +1,6 @@
 var game = function(game){
 	score = 0;
-}
+};
 
 game.prototype = {
 	create: function(){
@@ -31,3 +31,4 @@ game.prototype = {
 		this.game.state.start("gameOver",true,false,score);
 		
 	}
+};

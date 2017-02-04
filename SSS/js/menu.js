@@ -1,4 +1,4 @@
-var menu = function(game){}
+var menu = function(game){};
 
 menu.prototype = {
 	create: function(){
@@ -9,4 +9,4 @@ menu.prototype = {
 	playgame: function(){
 		this.game.state.start("game");
 	}
-}
+};
