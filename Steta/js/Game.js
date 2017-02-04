@@ -32,10 +32,9 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
 
     create: function () {
-		 // Create a sprite at the center of the screen using the 'logo' image.
+		 // Create cursor sprite
 		this.crshr = this.game.add.sprite(400, 300, 'cursor');
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
+        // Anchor cursor to centor
         this.crshr.anchor.setTo( 0.5, 0.5 );
         //this.crshr.animations.add('fire');
 
@@ -66,7 +65,7 @@ BasicGame.Game.prototype = {
     update: function () {
 		//Maintain cursor position on mouse
 		this.crshr.x = this.game.input.mousePointer.x;
-		this.crshr.y = this.game.input.mousePointer.y
+		this.crshr.y = this.game.input.mousePointer.y;
 		/*//If mouse is clicked, play cursor animation to display firing
 		if(this.game.input.mousePointer.isDown && this.canFire){
 			this.canFire = false;
