@@ -6,6 +6,6 @@ menu.prototype{
 		play.anchor.setTo(0.5,0.5);
 	},
 	playgame: function(){
-		this.game.state.start("Main");
+		this.game.state.start("Game");
 	}
 }

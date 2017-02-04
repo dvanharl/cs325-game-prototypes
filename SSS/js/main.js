@@ -4,14 +4,19 @@ window.onload = function() {
     var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
-        // Load an image and call it 'logo'.
+        // Load Cursor SpriteSheet
 		game.load.spritesheet('cursor','assets/Fire.png', 25, 25, 9);
     }
     
 	var crshr;
+	var health;
+	var cometHP;
+	var damage;
 	var canFire = true;
+	var timer, timeOver;
 	
     function create() {
+		
         // Create a sprite at the center of the screen using the 'logo' image.
 		crshr = game.add.sprite(400, 300, 'cursor');
         // Anchor the sprite at its center, as opposed to its top-left corner.
@@ -24,6 +29,11 @@ window.onload = function() {
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
         var text = game.add.text( game.world.centerX, 15, "Build something amazing5.", style );
         text.anchor.setTo( 0.5, 0.0 );
+		
+		//Create timer
+		timer = game.time.create();
+		timeOver = timer.add(Phaser.Timer.MINUTE*2,this.endTimer, this);
+		timer.start();
     }
 	
     function update() {
@@ -34,9 +44,10 @@ window.onload = function() {
 		if(game.input.mousePointer.isDown/* && !crashr.animations('fire').isPlaying()*/ && canFire){
 			canFire = false;
 			crshr.animations.play('fire', 60, false);
-		}
-		if(game.input.mousePointer.isUp){
+		}else if(game.input.mousePointer.isUp){
 			canFire = true;
 		}
+		
+		if(
     }
 };
