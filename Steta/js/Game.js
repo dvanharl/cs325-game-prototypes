@@ -37,7 +37,7 @@ BasicGame.Game.prototype = {
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         this.crshr.anchor.setTo( 0.5, 0.5 );
-        this.crshr.animations.add('fire');
+        //this.crshr.animations.add('fire');
 
         /*//  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
@@ -64,7 +64,7 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
-		//Maintain cursor position on mouse
+		/*//Maintain cursor position on mouse
 		this.crshr.x = this.game.input.mousePointer.x;
 		this.crshr.y = this.game.input.mousePointer.y
 		//If mouse is clicked, play cursor animation to display firing
@@ -73,7 +73,7 @@ BasicGame.Game.prototype = {
 			this.crshr.animations.play('fire', 60, false);
 		}else if(this.game.input.mousePointer.isUp){
 			this.canFire = true;
-		}
+		}*/
         
     },
 
