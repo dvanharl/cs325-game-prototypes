@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Brokeback Meteor</title>
+		<title>Uuuuugh</title>
 		<script src="js/phaser.min.js"></script>
 		<script src="js/boot.js"></script>
 		<script src="js/preload.js"></script>
@@ -12,12 +12,12 @@
 		<script>
 				(function() {
 					var game = new Phaser.Game(800, 600, Phaser.AUTO, "game",null,false,false,null);
-					game.state.add("Boot",boot);
-					game.state.add("Preload",preload);
-					game.state.add("Menu",menu);
-					game.state.add("Game",game);
-					game.state.add("GameOver",gameOver);
-					game.state.start("Boot");
+					game.state.add("boot",boot);
+					game.state.add("preload",preload);
+					game.state.add("menu",menu);
+					game.state.add("game",game);
+					game.state.add("gameOver",gameOver);
+					game.state.start("menu");
 				})();    
 			</script>
 		
