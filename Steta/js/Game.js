@@ -43,9 +43,6 @@ BasicGame.Game.prototype = {
         this.crshr.anchor.setTo( 0.5, 0.5 );
         this.crshr.animations.add('fire');
 		
-		timer = this.time.create(false);
-		//timer.loop(Phaser.Timer.SECOND * 30, quitGame, this);
-		timer.start();
     },
 
     update: function () {
@@ -60,10 +57,6 @@ BasicGame.Game.prototype = {
 			this.canFire = true;
 		}
     },
-	
-	render: function () {
-		this.game.debug.text("Distance to impact: " + timer.duration.toFixed(0) + "km", 32, 32);
-	},
 		
     quitGame: function (pointer) {
 
