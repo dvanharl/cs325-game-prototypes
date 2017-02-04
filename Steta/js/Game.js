@@ -36,7 +36,7 @@ BasicGame.Game.prototype = {
 		this.crshr = this.game.add.sprite(400, 300, 'cursor');
         // Anchor cursor to centor
         this.crshr.anchor.setTo( 0.5, 0.5 );
-        //this.crshr.animations.add('fire');
+        this.crshr.animations.add('fire');
 
         /*//  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
@@ -64,8 +64,8 @@ BasicGame.Game.prototype = {
 
     update: function () {
 		//Maintain cursor position on mouse
-		this.crshr.x = this.input.mousePointer.x;
-		this.crshr.y = this.input.mousePointer.y;
+		//crshr.x = this.input.mousePointer.x;
+		//crshr.y = this.input.mousePointer.y;
 		/*//If mouse is clicked, play cursor animation to display firing
 		if(this.game.input.mousePointer.isDown && this.canFire){
 			this.canFire = false;
