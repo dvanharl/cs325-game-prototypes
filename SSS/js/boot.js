@@ -1,1 +1,8 @@
-var boot = function(game){}
+var boot = function(game){};
+
+boot.prototype = {
+	preload: function(){},
+	create: function(){
+		this.game.state.start("Preload");
+	}
+}
