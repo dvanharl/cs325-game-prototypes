@@ -59,7 +59,7 @@ BasicGame.Game.prototype = {
 		}else if(this.input.mousePointer.isUp){
 			this.canFire = true;
 		}
-        if(timer.duration.toFixed(0) == 1){
+        if(timer.duration.toFixed(0) == 34){
 			quitGame();
 		}
     },
