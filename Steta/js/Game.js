@@ -47,10 +47,10 @@ BasicGame.Game.prototype = {
 		this.crshr.x = this.input.mousePointer.x;
 		this.crshr.y = this.input.mousePointer.y;
 		//If mouse is clicked, play cursor animation to display firing
-		if(this.game.input.mousePointer.isDown && this.canFire){
+		if(this.input.mousePointer.isDown && this.canFire){
 			this.canFire = false;
 			this.crshr.animations.play('fire', 60, false);
-		}else if(this.game.input.mousePointer.isUp){
+		}else if(this.input.mousePointer.isUp){
 			this.canFire = true;
 		}
         
