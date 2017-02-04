@@ -45,7 +45,7 @@ BasicGame.Game.prototype = {
 		
 		timer = this.time.create();
 		timeOver = timer.add(Phaser.Timer.MINUTE*1,this.endTimer, this);
-		timer.start();
+		timeOver.start();
     },
 
     update: function () {
@@ -59,8 +59,8 @@ BasicGame.Game.prototype = {
 		}else if(this.input.mousePointer.isUp){
 			this.canFire = true;
 		}
-        if(timer.duration.toFixed(0) < 100){
-			this.timer.destroy();
+        if(timeOver.duration.toFixed(0) < 100){
+			this.timeOver.destroy();
 			quitGame();
 		}
     },
