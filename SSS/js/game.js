@@ -1,4 +1,6 @@
-var game = function(game){}
+var game = function(game){
+	score = 0;
+}
 
 game.prototype = {
 	create: function(){
@@ -25,6 +27,6 @@ game.prototype = {
 		}
 	},
 	gameOver: function(){
-		this.game.state.start("GameOver");
+		this.game.state.start("GameOver",true,false,score);
 		
 	}
