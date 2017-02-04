@@ -14,7 +14,7 @@ boot.prototype = {
 
 var boot = {
 	preload: function(){
-		this.game.load.image("backgroudn","assets/background.jpg");
+		this.game.load.image("background","assets/background.jpg");
 	},
 	create: function(){
 		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
