@@ -43,7 +43,11 @@ BasicGame.Game.prototype = {
         this.crshr.anchor.setTo( 0.5, 0.5 );
         this.crshr.animations.add('fire');
 		
-		this.game.time.events.add(Phaser.Timer.MINUTE*1, quitGame, this);
+		/*timer = this.time.create(false);
+		timeOver = timer.add(Phaser.Timer.MINUTE*2,this.endTimer, this);
+		timer.start();*/
+		
+		this.time.events.add(Phaser.Timer.SECOND * 120, quitGame, this);
     },
 
     update: function () {
@@ -61,7 +65,7 @@ BasicGame.Game.prototype = {
     },
 	
 	render: function () {
-		this.game.debug.text('Distance to impact: ' + this.time.events.duration + 'km', 32, 32);
+		this.game.debug.text('Distance to impact: ' + timer.duration.toFixed(0) + 'km', 32, 32);
 	},
 		
     quitGame: function (pointer) {
