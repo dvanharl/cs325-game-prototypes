@@ -7,6 +7,10 @@ game.prototype = {
         // so it will be truly centered.
         crshr.anchor.setTo( 0.5, 0.5 );
         crshr.animations.add('fire');
+		
+		var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+        var text = game.add.text( game.world.centerX, 15, "Build something amazing5.", style );
+        text.anchor.setTo( 0.5, 0.0 );
 	},
 	update: function(){
 		//Maintain cursor position on mouse
