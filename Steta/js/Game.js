@@ -78,5 +78,6 @@ BasicGame.Game.prototype = {
     },
 	
 	kill: function(){
+	}
 		
 };
