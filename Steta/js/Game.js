@@ -65,7 +65,7 @@ BasicGame.Game.prototype = {
     },
 	
 	render: function () {
-		this.game.debug.text('Distance to impact: ' + timer.duration.toFixed(0) + 'km', 32, 32);
+		this.game.debug.text('Distance to impact: ' + /*timer.duration.toFixed(0)*/game.time.events.duration + 'km', 32, 32);
 	},
 		
     quitGame: function (pointer) {
