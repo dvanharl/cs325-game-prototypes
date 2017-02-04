@@ -25,13 +25,21 @@ BasicGame.Game = function (game) {
     
     // Create your own variables.
     this.bouncy = null;
+	this.crshr = null;
+	this.canFire = true;
 };
 
 BasicGame.Game.prototype = {
 
     create: function () {
+		 // Create a sprite at the center of the screen using the 'logo' image.
+		this.crshr = this.game.add.sprite(400, 300, 'cursor');
+        // Anchor the sprite at its center, as opposed to its top-left corner.
+        // so it will be truly centered.
+        this.crshr.anchor.setTo( 0.5, 0.5 );
+        this.crshr.animations.add('fire');
 
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        /*//  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
         // Create a sprite at the center of the screen using the 'logo' image.
         this.bouncy = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'logo' );
@@ -52,19 +60,21 @@ BasicGame.Game.prototype = {
         
         // When you click on the sprite, you go back to the MainMenu.
         this.bouncy.inputEnabled = true;
-        this.bouncy.events.onInputDown.add( function() { this.state.start('MainMenu'); }, this );
+        this.bouncy.events.onInputDown.add( function() { this.state.start('MainMenu'); }, this );*/
     },
 
     update: function () {
-
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+		//Maintain cursor position on mouse
+		this.crshr.x = game.input.mousePointer.x;
+		this.crshr.y = game.input.mousePointer.y
+		//If mouse is clicked, play cursor animation to display firing
+		if(this.game.input.mousePointer.isDown/* && !crashr.animations('fire').isPlaying()*/ && this.canFire){
+			this.canFire = false;
+			this.crshr.animations.play('fire', 60, false);
+		}else if(this.game.input.mousePointer.isUp){
+			this.canFire = true;
+		}
         
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
     },
 
     quitGame: function (pointer) {
