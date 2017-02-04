@@ -8,6 +8,6 @@ preload.prototype = {
 		this.game.load.spritesheet('cursor','assets/Fire.png', 25, 25, 9);
 	},
 	create:function(){
-		this.game.state.start("Menu");
+		this.game.state.start("menu");
 	}
 }

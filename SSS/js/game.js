@@ -22,11 +22,12 @@ game.prototype = {
 		if(game.input.mousePointer.isDown/* && !crashr.animations('fire').isPlaying()*/ && canFire){
 			canFire = false;
 			crshr.animations.play('fire', 60, false);
+			this.game.gameOver();
 		}else if(game.input.mousePointer.isUp){
 			canFire = true;
 		}
 	},
 	gameOver: function(){
-		this.game.state.start("GameOver",true,false,score);
+		this.game.state.start("gameOver",true,false,score);
 		
 	}
