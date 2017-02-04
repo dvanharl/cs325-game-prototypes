@@ -44,7 +44,7 @@ BasicGame.Game.prototype = {
         this.crshr.animations.add('fire');
 		
 		timer = this.time.create();
-		timeOver = timer.add(Phaser.Timer.MINUTE*2,this.endTimer, this);
+		timeOver = timer.add(Phaser.Timer.MINUTE*1,this.endTimer, this);
 		timer.start();
     },
 
@@ -55,11 +55,12 @@ BasicGame.Game.prototype = {
 		//If mouse is clicked, play cursor animation to display firing
 		if(this.input.mousePointer.isDown && this.canFire){
 			this.canFire = false;
-			this.crshr.animations.play('fire', 60, false);
+			this.crshr.animations.play('fire', 90, false);
 		}else if(this.input.mousePointer.isUp){
 			this.canFire = true;
 		}
-        if(timer.duration.toFixed(0) == 34){
+        if(timer.duration.toFixed(0) == 100){
+			this.timer.destroy();
 			quitGame();
 		}
     },
