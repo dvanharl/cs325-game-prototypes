@@ -37,7 +37,7 @@ BasicGame.Game.prototype = {
 		this.background = this.game.add.sprite(0,0,'preloaderBackground');
 		this.crshr = this.game.add.sprite(400, 300, 'cursor');
         // Anchor cursor to centor
-        this.crshr.anchor.setTo( 0.5, 0.5 );
+        //this.crshr.anchor.setTo( 0.5, 0.5 );
         //this.crshr.animations.add('fire');
 
         /*//  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
