@@ -44,7 +44,7 @@ BasicGame.Game.prototype = {
         this.crshr.animations.add('fire');
 		
 		timer = this.time.create();
-		timeOver = timer.add(Phaser.Timer.MINUTE*1,this.endTimer, this);
+		timer.loop(Phaser.Timer.SECOND * 30, quitGame, this);
 		timeOver.start();
     },
 
@@ -58,10 +58,6 @@ BasicGame.Game.prototype = {
 			this.crshr.animations.play('fire', 90, false);
 		}else if(this.input.mousePointer.isUp){
 			this.canFire = true;
-		}
-        if(timeOver.duration.toFixed(0) < 100){
-			this.timeOver.destroy();
-			quitGame();
 		}
     },
 	
