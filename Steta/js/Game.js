@@ -43,11 +43,9 @@ BasicGame.Game.prototype = {
         this.crshr.anchor.setTo( 0.5, 0.5 );
         this.crshr.animations.add('fire');
 		
-		/*timer = this.time.create(false);
+		timer = this.time.create();
 		timeOver = timer.add(Phaser.Timer.MINUTE*2,this.endTimer, this);
-		timer.start();*/
-		
-		this.time.events.add(Phaser.Timer.SECOND * 120, quitGame, this);
+		timer.start();
     },
 
     update: function () {
@@ -65,7 +63,7 @@ BasicGame.Game.prototype = {
     },
 	
 	render: function () {
-		this.game.debug.text('Distance to impact: ' + /*timer.duration.toFixed(0)*/game.time.events.duration + 'km', 32, 32);
+		this.game.debug.text("Distance to impact: " + timer.duration.toFixed(0) + "km", 32, 32);
 	},
 		
     quitGame: function (pointer) {
@@ -75,7 +73,8 @@ BasicGame.Game.prototype = {
 
         //  Then let's go back to the main menu.
         this.state.start('MainMenu');
-
-    }
-
+    },
+	
+	kill: function(){
+		
 };
