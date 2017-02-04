@@ -29,6 +29,7 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
 		//	+ lots of other required assets here
         this.load.image( 'logo', 'assets/phaser.png' );
+		this.load.spritesheet('cursor','assets/Fire.png',25, 25, 9);
 	},
 
 	create: function () {
