@@ -28,6 +28,7 @@ BasicGame.Game = function (game) {
 	this.crshr = null;
 	this.canFire = true;
 	this.background = null;
+	this.score = 0;
 };
 
 BasicGame.Game.prototype = {
@@ -45,13 +46,13 @@ BasicGame.Game.prototype = {
 		//Maintain cursor position on mouse
 		this.crshr.x = this.input.mousePointer.x;
 		this.crshr.y = this.input.mousePointer.y;
-		/*//If mouse is clicked, play cursor animation to display firing
+		//If mouse is clicked, play cursor animation to display firing
 		if(this.game.input.mousePointer.isDown && this.canFire){
 			this.canFire = false;
 			this.crshr.animations.play('fire', 60, false);
 		}else if(this.game.input.mousePointer.isUp){
 			this.canFire = true;
-		}*/
+		}
         
     },
 
