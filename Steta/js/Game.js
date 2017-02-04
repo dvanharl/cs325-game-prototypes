@@ -45,7 +45,7 @@ BasicGame.Game.prototype = {
 		
 		timer = this.time.create();
 		timer.loop(Phaser.Timer.SECOND * 30, quitGame, this);
-		timeOver.start();
+		timer.start();
     },
 
     update: function () {
@@ -62,7 +62,7 @@ BasicGame.Game.prototype = {
     },
 	
 	render: function () {
-		this.game.debug.text("Distance to impact: " + timeOver.duration.toFixed(0) + "km", 32, 32);
+		this.game.debug.text("Distance to impact: " + timer.duration.toFixed(0) + "km", 32, 32);
 	},
 		
     quitGame: function (pointer) {
