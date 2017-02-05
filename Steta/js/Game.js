@@ -37,7 +37,7 @@ BasicGame.Game.prototype = {
 
     create: function () {
 		 // Create cursor sprite
-		this.background = this.game.add.sprite(0,0,'titlePage');
+		this.background = this.game.add.sprite(0,0,'map');
 		this.crshr = this.game.add.sprite(400, 300, 'cursor');
         // Anchor cursor to centor
         this.crshr.anchor.setTo( 0.5, 0.5 );
