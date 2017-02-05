@@ -40,7 +40,7 @@ BasicGame.Game.prototype = {
 
     create: function () {
 		//Audio
-		this.add.audio('shootSound');
+		this.shootSount = this.add.audio('shootSound');
 		
 		//Background
 		this.background = this.add.sprite(0,0,'map');
@@ -67,7 +67,7 @@ BasicGame.Game.prototype = {
 		this.crshr.y = this.input.mousePointer.y;
 		//If mouse is clicked, play cursor animation to display firing
 		if(this.input.mousePointer.isDown && this.canFire){
-			//this.shootSound.play();
+			this.shootSound.play();
 			//this.damage();
 			this.canFire = false;
 			this.crshr.animations.play('fire', 90, false);
@@ -92,6 +92,7 @@ BasicGame.Game.prototype = {
 	
 	meteorHit: function(){
 		this.meteorHealth = this.meteorHealth - 1;
+		this.score = this.score + 500
 		if(this.meteorHealth == 0){
 			this.meteorHealth = 350;
 			this.health = 3;
@@ -108,6 +109,7 @@ BasicGame.Game.prototype = {
 		if(this.health == 0){
 			this.meteorHealth = 350;
 			this.health = 3;
+			this.score = score + 10000;
 			this.state.start('GameOver');
 		}
 		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
