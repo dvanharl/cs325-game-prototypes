@@ -91,10 +91,10 @@ BasicGame.Game.prototype = {
     },
 	
 	meteorHit: function(){
-		this.meteorHealth = this.meteorHealth - 1;
+		this.meteorHP = this.meteorHP - 1;
 		this.score = this.score + 500
-		if(this.meteorHealth == 0){
-			this.meteorHealth = 350;
+		if(this.meteorHP == 0){
+			this.meteorHP = 350;
 			this.health = 3;
 		}
 	},
@@ -109,7 +109,6 @@ BasicGame.Game.prototype = {
 		if(this.health == 0){
 			this.meteorHP = 350;
 			this.health = 3;
-			this.score = score + 10000;
 			this.state.start('GameOver');
 		}
 		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
