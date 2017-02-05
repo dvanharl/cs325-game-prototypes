@@ -107,7 +107,7 @@ BasicGame.Game.prototype = {
 		this.hurt.alpha = 0.7;
 		this.health = this.health - 1;
 		if(this.health == 0){
-			this.meteorHealth = 350;
+			this.meteorHP = 350;
 			this.health = 3;
 			this.score = score + 10000;
 			this.state.start('GameOver');
