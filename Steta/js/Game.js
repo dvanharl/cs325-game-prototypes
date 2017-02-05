@@ -66,7 +66,7 @@ BasicGame.Game.prototype = {
 		this.crshr.y = this.input.mousePointer.y;
 		//If mouse is clicked, play cursor animation to display firing
 		if(this.input.mousePointer.isDown && this.canFire){
-			this.shootSound.play();
+			//this.shootSound.play();
 			this.damage();
 			this.canFire = false;
 			this.crshr.animations.play('fire', 90, false);
@@ -109,6 +109,6 @@ BasicGame.Game.prototype = {
 			this.health = 3;
 			this.state.start('GameOver');
 		}
-		this.add.tween(this.hurt).to({alpha:0}, 700, Phaser.Easing.Linear.None, true, 0,0,false);
+		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 	}
 };
