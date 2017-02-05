@@ -58,7 +58,7 @@ BasicGame.Game.prototype = {
         this.crshr.animations.add('fire');
 		
 		//Create Timer
-		this.timer = this.time.events.add(Phaser.Timer.SECOND * 10, gameOver, this);
+		//this.timer = this.time.events.add(Phaser.Timer.SECOND * 10, gameOver, this);
 		
     },
 
@@ -80,7 +80,7 @@ BasicGame.Game.prototype = {
 	render: function(){
 		this.game.debug.text("Health: " + this.health, 32, 32);
 		this.game.debug.text("Score: " + this.score, 32, 64);
-		this.game.debug.text("Time: " + this.timer.duration,32,0);
+		//this.game.debug.text("Time: " + this.timer.duration,32,0);
 	},
 	
 	meteorHit: function(){
