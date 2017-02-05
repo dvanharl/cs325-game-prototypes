@@ -31,7 +31,8 @@ BasicGame.Preloader.prototype = {
         this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.spritesheet('cursor','assets/Fire.png',25, 25, 9);
 		this.load.image('map','assets/gamemap.png');
-		this.load.image('gameOver','assets/gameover.jpg');
+		this.load.image('gameOver','assets/gameover.png');
+		this.load.image('whiteScreen','assets/whitescreen.png');
 	},
 
 	create: function () {
