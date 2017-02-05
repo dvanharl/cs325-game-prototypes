@@ -40,7 +40,7 @@ BasicGame.Game.prototype = {
 
     create: function () {
 		//Audio
-		this.shootSount = this.add.audio('shootSound');
+		this.shootSound = this.add.audio('shootSound');
 		
 		//Background
 		this.background = this.add.sprite(0,0,'map');
