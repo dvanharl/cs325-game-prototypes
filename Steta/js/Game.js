@@ -28,7 +28,6 @@ BasicGame.Game = function (game) {
 	this.canFire = true;
 	this.background = null;
 	this.timer = null;
-	this.timeOver = null;
 	this.score = 0;
 	this.health = 3;
 	this.meteorHP = 350;
@@ -53,11 +52,13 @@ BasicGame.Game.prototype = {
 		//White Fading Background
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 400, Phaser.Easing.Linear.None, true, 0,0,false);
-		this.whiteScreen.destroy();
 		
         // Anchor cursor to centor
         this.crshr.anchor.setTo( 0.5, 0.5 );
         this.crshr.animations.add('fire');
+		
+		//Create Timer
+		this.timer = this.time.events.add(Phaser.Timer.SECOND * 10, gameOver, this);
 		
     },
 
@@ -79,26 +80,16 @@ BasicGame.Game.prototype = {
 	render: function(){
 		this.game.debug.text("Health: " + this.health, 32, 32);
 		this.game.debug.text("Score: " + this.score, 32, 64);
+		this.game.debug.text("Time: " + this.timer.duration,32,0);
 	},
-		
-    quitGame: function (pointer) {
-
-        //  Here you should destroy anything you no longer need.
-        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
-        //  Then let's go back to the main menu.
-        this.state.start('MainMenu');
-    },
 	
 	meteorHit: function(){
 		this.meteorHP = this.meteorHP - 1;
 		this.score = this.score + 500
 		if(this.meteorHP == 0){
-			this.meteorHP = 350;
-			this.health = 3;
+			this.gameOver();
 		}
 	},
-		
 	
 	enemyKill: function() {
 	},
@@ -107,10 +98,14 @@ BasicGame.Game.prototype = {
 		this.hurt.alpha = 0.7;
 		this.health = this.health - 1;
 		if(this.health == 0){
-			this.meteorHP = 350;
-			this.health = 3;
-			this.state.start('GameOver');
+			this.gameOver();
 		}
 		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+	},
+	
+	gameOver: function() {
+		this.meteorHP = 350;
+		this.health = 3;
+		this.state.start('GameOver');
 	}
 };
