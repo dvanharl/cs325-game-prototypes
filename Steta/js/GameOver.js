@@ -6,6 +6,7 @@ BasicGame.GameOver = function (game) {
 	this.score = null;
 	this.gameOverBack = null;
 	this.whiteScreen = null;
+	this.didI = false;
 };
 
 BasicGame.GameOver.prototype = {
