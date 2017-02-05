@@ -40,7 +40,8 @@ BasicGame.Game = function (game) {
 	this.health = 3;
 	this.meteorHP = 100;
 	
-	this.shootSound = null;
+	this.shootSound = null
+	this.win = false;
 };
 
 BasicGame.Game.prototype = {
@@ -102,6 +103,7 @@ BasicGame.Game.prototype = {
 		this.meteorHP = this.meteorHP - 1;
 		this.score = this.score + 500;
 		if(this.meteorHP == 0){
+			this.win = true;
 			this.gameOver();
 		}
 	},
@@ -113,6 +115,7 @@ BasicGame.Game.prototype = {
 		this.hurt.alpha = 0.7;
 		this.health = this.health - 1;
 		if(this.health == 0){
+			this.win = false;
 			this.gameOver();
 		}
 		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
@@ -121,6 +124,6 @@ BasicGame.Game.prototype = {
 	gameOver: function() {
 		this.meteorHP = 350;
 		this.health = 3;
-		this.state.start('GameOver');
+		this.state.start('GameOver',true,false,this.score,this.win;);
 	}
 };
