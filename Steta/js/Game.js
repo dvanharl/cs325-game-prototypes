@@ -66,6 +66,7 @@ BasicGame.Game.prototype = {
 		
 		//Create Timer
 		this.timer = this.time.events.add(5000, this.gameOver, this);
+		this.timer.start();
 		
     },
 
