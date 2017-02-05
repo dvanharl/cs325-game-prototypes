@@ -94,7 +94,7 @@ BasicGame.Game.prototype = {
 		this.meteorHP = this.meteorHP - 1;
 		this.score = this.score + 500;
 		if(this.meteorHP == 0){
-			//this.gameOver();
+			this.gameOver();
 		}
 	},
 	
@@ -105,7 +105,7 @@ BasicGame.Game.prototype = {
 		this.hurt.alpha = 0.7;
 		this.health = this.health - 1;
 		if(this.health == 0){
-			this.gameOver();
+			//this.gameOver();
 		}
 		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 	},
