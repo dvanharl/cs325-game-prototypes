@@ -24,16 +24,21 @@ BasicGame.Game = function (game) {
     //  But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
     
     // Create your own variables.
-	this.crshr = null;
-	this.canFire = true;
 	this.background = null;
+	this.whiteScreen = null;
+	this.hurt = null;
+	
+	this.crshr = null;
+	
+	this.canFire = true;
+	
 	this.timer = null;
+	
 	this.score = 0;
 	this.health = 3;
 	this.meteorHP = 350;
-	this.whiteScreen = null;
+	
 	this.shootSound = null;
-	this.hurt = null;
 };
 
 BasicGame.Game.prototype = {
@@ -44,19 +49,20 @@ BasicGame.Game.prototype = {
 		
 		//Background
 		this.background = this.add.sprite(0,0,'map');
-		this.hurt = this.add.sprite(0,0,'hurt');
 		
+		this.hurt = this.add.sprite(0,0,'hurt');
 		this.hurt.alpha = 0;
-		// Create cursor sprite
+		
+		// Create cursor sprite, anchor to center position, then add animation
 		this.crshr = this.add.sprite(400, 300, 'cursor');
+        this.crshr.anchor.setTo( 0.5, 0.5 );
+        this.crshr.animations.add('fire');
 		
 		//White Fading Background
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 400, Phaser.Easing.Linear.None, true, 0,0,false);
 		
-        // Anchor cursor to centor
-        this.crshr.anchor.setTo( 0.5, 0.5 );
-        this.crshr.animations.add('fire');
+        
 		
 		//Create Timer
 		//this.timer = this.time.events.add(Phaser.Timer.SECOND * 10, gameOver, this);
@@ -86,9 +92,9 @@ BasicGame.Game.prototype = {
 	
 	meteorHit: function(){
 		this.meteorHP = this.meteorHP - 1;
-		this.score = this.score + 500
+		this.score = this.score + 500;
 		if(this.meteorHP == 0){
-			this.gameOver();
+			//this.gameOver();
 		}
 	},
 	
