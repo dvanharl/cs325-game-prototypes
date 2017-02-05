@@ -52,7 +52,7 @@ BasicGame.Game.prototype = {
 		this.crshr.y = this.input.mousePointer.y;
 		//If mouse is clicked, play cursor animation to display firing
 		if(this.input.mousePointer.isDown && this.canFire){
-			damage();
+			this.damage();
 			this.canFire = false;
 			this.crshr.animations.play('fire', 90, false);
 		}else if(this.input.mousePointer.isUp){
@@ -75,7 +75,7 @@ BasicGame.Game.prototype = {
 	damage: function() {
 		this.health = this.health - 1;
 		if(this.health == 0){
-			this.state.start('MainMenu')
+			//this.state.start('MainMenu')
 		}
 	}
 };
