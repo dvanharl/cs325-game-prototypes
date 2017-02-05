@@ -124,7 +124,7 @@ BasicGame.Game.prototype = {
 	gameOver: function() {
 		this.meteorHP = 350;
 		this.health = 3;
-		//this.state.start('GameOver',true,false,this.score,this.win;);
-		this.state.start('GameOver');
+		this.state.start('GameOver',true,false,this.score,this.win;);
+		//this.state.start('GameOver');
 	}
 };
