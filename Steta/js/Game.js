@@ -33,6 +33,7 @@ BasicGame.Game = function (game) {
 	this.meteorHP = 350;
 	this.whiteScreen = null;
 	this.shootSound = null;
+	this.hurt = null;
 };
 
 BasicGame.Game.prototype = {
