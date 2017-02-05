@@ -65,7 +65,7 @@ BasicGame.Game.prototype = {
         
 		
 		//Create Timer
-		//this.timer = this.time.events.add(Phaser.Timer.SECOND * 10, gameOver, this);
+		this.timer = this.time.events.add(Phaser.Timer.SECOND * 10, gameOver, this);
 		
     },
 
@@ -105,7 +105,7 @@ BasicGame.Game.prototype = {
 		this.hurt.alpha = 0.7;
 		this.health = this.health - 1;
 		if(this.health == 0){
-			//this.gameOver();
+			this.gameOver();
 		}
 		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 	},
