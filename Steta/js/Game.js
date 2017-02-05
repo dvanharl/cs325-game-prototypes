@@ -31,6 +31,7 @@ BasicGame.Game = function (game) {
 	this.timer = null;
 	this.timeOver = null;
 	this.score = 0;
+	this.health = 3;
 };
 
 BasicGame.Game.prototype = {
@@ -51,6 +52,7 @@ BasicGame.Game.prototype = {
 		this.crshr.y = this.input.mousePointer.y;
 		//If mouse is clicked, play cursor animation to display firing
 		if(this.input.mousePointer.isDown && this.canFire){
+			damage();
 			this.canFire = false;
 			this.crshr.animations.play('fire', 90, false);
 		}else if(this.input.mousePointer.isUp){
@@ -67,7 +69,13 @@ BasicGame.Game.prototype = {
         this.state.start('MainMenu');
     },
 	
-	kill: function() {
-	}
+	enemyKill: function() {
+	},
 		
+	damage: function() {
+		health -= 1;
+		if(health == 0){
+			this.state.start('MainMenu')
+		}
+	}
 };
