@@ -39,6 +39,8 @@ BasicGame.Game.prototype = {
     create: function () {
 		// Create cursor sprite
 		this.background = this.game.add.sprite(0,0,'map');
+		this.hurt = this.game.add.sprite(0,0,'hurt');
+		this.hurt.alpha = 0;
 		this.crshr = this.game.add.sprite(400, 300, 'cursor');
         // Anchor cursor to centor
         this.crshr.anchor.setTo( 0.5, 0.5 );
@@ -87,11 +89,13 @@ BasicGame.Game.prototype = {
 	},
 		
 	damage: function() {
+		this.hurt.alpha = 0.7;
 		this.health = this.health - 1;
 		if(this.health == 0){
 			this.meteorHealth = 350;
 			this.health = 3;
 			this.state.start('GameOver');
 		}
+		this.add.tween(this.hurt).to({alpha:0}, 700, Phaser.Easing.Linear.None, true, 0,0,false);
 	}
 };
