@@ -37,10 +37,7 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
 
     create: function () {
-		//Reset variables
-		this.health = 3;
-		
-		 // Create cursor sprite
+		// Create cursor sprite
 		this.background = this.game.add.sprite(0,0,'map');
 		this.crshr = this.game.add.sprite(400, 300, 'cursor');
         // Anchor cursor to centor
@@ -82,6 +79,7 @@ BasicGame.Game.prototype = {
 	damage: function() {
 		this.health = this.health - 1;
 		if(this.health == 0){
+			this.health = 3;
 			this.state.start('MainMenu');
 		}
 	}
