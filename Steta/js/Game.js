@@ -75,7 +75,7 @@ BasicGame.Game.prototype = {
 	damage: function() {
 		this.health = this.health - 1;
 		if(this.health == 0){
-			//this.state.start('MainMenu')
+			this.state.start('MainMenu')
 		}
 	}
 };
