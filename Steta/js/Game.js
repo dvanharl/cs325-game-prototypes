@@ -84,7 +84,6 @@ BasicGame.Game.prototype = {
 		//If mouse is clicked, play cursor animation to display firing
 		if(this.input.mousePointer.isDown && this.canFire){
 			this.shootSound.play();
-			this.damage();
 			this.canFire = false;
 			this.crshr.animations.play('fire', 90, false);
 		}else if(this.input.mousePointer.isUp){
@@ -94,8 +93,9 @@ BasicGame.Game.prototype = {
 	
 	render: function(){
 		this.game.debug.text("Health: " + this.health, 32, 32);
-		this.game.debug.text("Score: " + this.score, 32, 64);
-		this.game.debug.text("Time Remaining: " + this.time.events.duration,32,96);
+		this.game.debug.text("Score: " + this.score, 32, 48);
+		this.game.debug.text("Time Remaining: " + this.time.events.duration,32,80);
+		this.game.debug.text("Meteor HP: " + this.meteorHP,32,96);
 	},
 	
 	meteorHit: function(){
