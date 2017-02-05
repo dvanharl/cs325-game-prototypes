@@ -65,7 +65,7 @@ BasicGame.Game.prototype = {
         
 		
 		//Create Timer
-		this.timer = this.time.events.add(Phaser.Timer.SECOND * 10, gameOver, this);
+		this.timer = this.time.events.add(20000, this.gameOver, this);
 		
     },
 
