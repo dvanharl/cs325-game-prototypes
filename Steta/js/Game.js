@@ -24,7 +24,6 @@ BasicGame.Game = function (game) {
     //  But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
     
     // Create your own variables.
-    this.bouncy = null;
 	this.crshr = null;
 	this.canFire = true;
 	this.background = null;
@@ -32,6 +31,7 @@ BasicGame.Game = function (game) {
 	this.timeOver = null;
 	this.score = 0;
 	this.health = 3;
+	this.meteorHP = 350;
 };
 
 BasicGame.Game.prototype = {
@@ -62,6 +62,7 @@ BasicGame.Game.prototype = {
 	
 	render: function(){
 		this.game.debug.text("Health: " + this.health, 32, 32);
+		this.game.debug.text("Score: " + this.score, 32, 64);
 	},
 		
     quitGame: function (pointer) {
@@ -73,12 +74,22 @@ BasicGame.Game.prototype = {
         this.state.start('MainMenu');
     },
 	
+	meteorHit: function(){
+		this.meteorHealth = this.meteorHealth - 1;
+		if(this.meteorHealth == 0){
+			this.meteorHealth = 350;
+			this.health = 3;
+		}
+	},
+		
+	
 	enemyKill: function() {
 	},
 		
 	damage: function() {
 		this.health = this.health - 1;
 		if(this.health == 0){
+			this.meteorHealth = 350;
 			this.health = 3;
 			this.state.start('GameOver');
 		}
