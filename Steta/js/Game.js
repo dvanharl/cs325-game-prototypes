@@ -59,6 +59,10 @@ BasicGame.Game.prototype = {
 			this.canFire = true;
 		}
     },
+	
+	render: function(){
+		this.game.debug.text("Health: " + this.health, 32, 32);
+	},
 		
     quitGame: function (pointer) {
 
