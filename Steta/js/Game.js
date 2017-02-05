@@ -32,16 +32,28 @@ BasicGame.Game = function (game) {
 	this.score = 0;
 	this.health = 3;
 	this.meteorHP = 350;
+	this.whiteScreen = null;
+	this.shootSound = null;
 };
 
 BasicGame.Game.prototype = {
 
     create: function () {
-		// Create cursor sprite
-		this.background = this.game.add.sprite(0,0,'map');
-		this.hurt = this.game.add.sprite(0,0,'hurt');
+		//Audio
+		this.add.audio('shootSound');
+		
+		//Background
+		this.background = this.add.sprite(0,0,'map');
+		this.hurt = this.add.sprite(0,0,'hurt');
+		
 		this.hurt.alpha = 0;
-		this.crshr = this.game.add.sprite(400, 300, 'cursor');
+		// Create cursor sprite
+		this.crshr = this.add.sprite(400, 300, 'cursor');
+		
+		//White Fading Background
+		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
+		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 0,0,false);
+		
         // Anchor cursor to centor
         this.crshr.anchor.setTo( 0.5, 0.5 );
         this.crshr.animations.add('fire');
@@ -54,6 +66,7 @@ BasicGame.Game.prototype = {
 		this.crshr.y = this.input.mousePointer.y;
 		//If mouse is clicked, play cursor animation to display firing
 		if(this.input.mousePointer.isDown && this.canFire){
+			this.shootSound.play();
 			this.damage();
 			this.canFire = false;
 			this.crshr.animations.play('fire', 90, false);

@@ -34,6 +34,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('gameOver','assets/gameover.png');
 		this.load.image('whiteScreen','assets/whitescreen.png');
 		this.load.image('hurt','assets/hurt.png');
+		this.load.image('shootSound','assets/shoot.mp3');
 	},
 
 	create: function () {
