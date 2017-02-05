@@ -87,7 +87,7 @@ BasicGame.Game.prototype = {
 	render: function(){
 		this.game.debug.text("Health: " + this.health, 32, 32);
 		this.game.debug.text("Score: " + this.score, 32, 64);
-		this.game.debug.text("Time: " + this.time.events.duration,32,96);
+		this.game.debug.text("Time Remaining: " + this.time.events.duration,32,96);
 	},
 	
 	meteorHit: function(){
