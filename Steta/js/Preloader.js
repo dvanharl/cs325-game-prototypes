@@ -28,8 +28,9 @@ BasicGame.Preloader.prototype = {
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
 		//	+ lots of other required assets here
-        this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.spritesheet('cursor','assets/Fire.png',25, 25, 9);
+		this.load.image('meteor','assets/ast.jpg');
+		
 		this.load.image('map','assets/gamemap.png');
 		this.load.image('gameOver','assets/gameover.png');
 		this.load.image('whiteScreen','assets/whitescreen.png');

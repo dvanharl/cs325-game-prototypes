@@ -29,6 +29,8 @@ BasicGame.Game = function (game) {
 	this.hurt = null;
 	
 	this.crshr = null;
+	this.meteor = null;
+	this.enemy = null;
 	
 	this.canFire = true;
 	
@@ -36,7 +38,7 @@ BasicGame.Game = function (game) {
 	
 	this.score = 0;
 	this.health = 3;
-	this.meteorHP = 350;
+	this.meteorHP = 100;
 	
 	this.shootSound = null;
 };
@@ -53,6 +55,12 @@ BasicGame.Game.prototype = {
 		this.hurt = this.add.sprite(0,0,'hurt');
 		this.hurt.alpha = 0;
 		
+		//Add Meteor
+		this.meteor = this.add.sprite(400,100,'meteor');
+		this.meteor.anchor.setTo(0.5,0.5);
+		this.meteor.inputEnabled = true;
+		this.meteor.events.onInputDown.add(this.meteorHit,this);
+		
 		// Create cursor sprite, anchor to center position, then add animation
 		this.crshr = this.add.sprite(400, 300, 'cursor');
         this.crshr.anchor.setTo( 0.5, 0.5 );
@@ -65,7 +73,7 @@ BasicGame.Game.prototype = {
         
 		
 		//Create Timer
-		this.timer = this.time.events.add(Phaser.Timer.SECOND * 5, this.gameOver, this);
+		this.timer = this.time.events.add(Phaser.Timer.SECOND * 30, this.gameOver, this);
 		
     },
 
