@@ -53,6 +53,7 @@ BasicGame.Game.prototype = {
 		//White Fading Background
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 400, Phaser.Easing.Linear.None, true, 0,0,false);
+		this.whiteScreen.destroy();
 		
         // Anchor cursor to centor
         this.crshr.anchor.setTo( 0.5, 0.5 );
