@@ -10,7 +10,7 @@ BasicGame.GameOver = function (game) {
 BasicGame.GameOver.prototype = {
 	
 	create: function() {
-		this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
+		this.retryButton = this.add.button( 303, 300, 'playButton', this.retryGame, this, 'over', 'out', 'down');
 	},
 	
 	update: function() {
