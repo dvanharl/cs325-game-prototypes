@@ -39,15 +39,18 @@ BasicGame.Game = function (game) {
 	this.score = 0;
 	this.lastScore = 0;
 	this.health = 3;
-	this.meteorHP = 10;
+	this.meteorHP = 100;
 	
 	this.shootSound = null
 	this.won = false;
+	
+	this.music = null;
 };
 
 BasicGame.Game.prototype = {
     create: function () {
 		//Audio
+		this.music = this.add.audio('game');
 		this.shootSound = this.add.audio('shootSound');
 		
 		//Background
@@ -74,7 +77,7 @@ BasicGame.Game.prototype = {
         
 		
 		//Create Timer
-		this.timer = this.time.events.add(Phaser.Timer.SECOND * 30, this.lose, this);
+		this.timer = this.time.events.add(Phaser.Timer.SECOND * 60, this.lose, this);
 		
     },
 
@@ -130,10 +133,11 @@ BasicGame.Game.prototype = {
 	},
 		
 	gameOver: function() {
-		this.meteorHP = 10;
+		this.meteorHP = 100;
 		this.health = 3;
 		this.lastScore = this.score;
 		this.score = 0;
+		this.music.stop();
 		this.state.start('GameOver',true,false,this.lastScore,this.won);
 	}
 };
