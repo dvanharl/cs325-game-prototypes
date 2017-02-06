@@ -37,6 +37,7 @@ BasicGame.Game = function (game) {
 	this.timer = null;
 	
 	this.score = 0;
+	this.lastScore = 0;
 	this.health = 3;
 	this.meteorHP = 100;
 	
@@ -46,6 +47,11 @@ BasicGame.Game = function (game) {
 
 BasicGame.Game.prototype = {
 
+	init: function() {
+		this.score = 0;
+		this.win = false;
+	},
+	
     create: function () {
 		//Audio
 		this.shootSound = this.add.audio('shootSound');
@@ -74,7 +80,7 @@ BasicGame.Game.prototype = {
         
 		
 		//Create Timer
-		this.timer = this.time.events.add(Phaser.Timer.SECOND * 30, this.gameOver, this);
+		this.timer = this.time.events.add(Phaser.Timer.SECOND * 30, this.lose, this);
 		
     },
 
@@ -103,8 +109,7 @@ BasicGame.Game.prototype = {
 		this.meteorHP = this.meteorHP - 1;
 		this.score = this.score + 500;
 		if(this.meteorHP == 0){
-			this.win = true;
-			this.gameOver();
+			this.win();
 		}
 	},
 	
@@ -115,16 +120,26 @@ BasicGame.Game.prototype = {
 		this.hurt.alpha = 0.7;
 		this.health = this.health - 1;
 		if(this.health == 0){
-			this.win = false;
-			this.gameOver();
+			this.lose();
 		}
 		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 	},
 	
+	win: function(){
+		this.win = true;
+		this.gameOver();
+	}
+	
+	lose: function(){
+		this.win = false;
+		this.gameOver();
+	},
+		
 	gameOver: function() {
-		this.meteorHP = 350;
+		this.meteorHP = 50;
 		this.health = 3;
-		this.state.start('GameOver',true,false,this.score,this.win);
-		//this.state.start('GameOver');
+		this.lastScore = this.score;
+		this.score = 0;
+		this.state.start('GameOver',true,false,this.lastScore,this.win);
 	}
 };

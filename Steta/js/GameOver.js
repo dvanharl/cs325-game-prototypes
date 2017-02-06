@@ -18,8 +18,10 @@ BasicGame.GameOver.prototype = {
 	
 	create: function() {
 		if (this.didI){
+			//Game Over - Win Screen
 			this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
 		}else{
+			//Game Over - Lose Screen
 			this.gameOverBack = this.game.add.sprite(0,0,'gameOver');
 			this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
 		}
