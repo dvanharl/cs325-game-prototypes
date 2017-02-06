@@ -128,7 +128,7 @@ BasicGame.Game.prototype = {
 	win: function(){
 		this.win = true;
 		this.gameOver();
-	}
+	},
 	
 	lose: function(){
 		this.win = false;
