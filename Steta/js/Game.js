@@ -39,7 +39,7 @@ BasicGame.Game = function (game) {
 	this.score = 0;
 	this.lastScore = 0;
 	this.health = 3;
-	this.meteorHP = 100;
+	this.meteorHP = 50;
 	
 	this.shootSound = null
 	this.win = false;
