@@ -42,16 +42,10 @@ BasicGame.Game = function (game) {
 	this.meteorHP = 50;
 	
 	this.shootSound = null
-	this.win = false;
+	this.won = false;
 };
 
 BasicGame.Game.prototype = {
-
-	init: function() {
-		this.score = 0;
-		this.win = false;
-	},
-	
     create: function () {
 		//Audio
 		this.shootSound = this.add.audio('shootSound');
@@ -126,12 +120,12 @@ BasicGame.Game.prototype = {
 	},
 	
 	win: function(){
-		this.win = true;
+		this.won = true;
 		this.gameOver();
 	},
 	
 	lose: function(){
-		this.win = false;
+		this.won = false;
 		this.gameOver();
 	},
 		
@@ -140,6 +134,6 @@ BasicGame.Game.prototype = {
 		this.health = 3;
 		this.lastScore = this.score;
 		this.score = 0;
-		this.state.start('GameOver',true,false,this.lastScore,this.win);
+		this.state.start('GameOver',true,false,this.lastScore,this.won);
 	}
 };
