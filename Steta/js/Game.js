@@ -134,7 +134,7 @@ BasicGame.Game.prototype = {
 	},
 		
 	gameOver: function() {
-		this.meteorHP = 100;
+		this.meteorHP = 200;
 		this.health = 3;
 		this.lastScore = this.score;
 		this.score = 0;
