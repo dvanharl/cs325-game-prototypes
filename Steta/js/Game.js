@@ -44,14 +44,14 @@ BasicGame.Game = function (game) {
 	this.shootSound = null
 	this.won = false;
 	
-	this.music = null;
+	this.gameMusic = null;
 };
 
 BasicGame.Game.prototype = {
     create: function () {
 		//Audio
-		this.music = this.add.audio('yes');
-		this.music.play();
+		this.gameMusic = this.add.audio('yes');
+		this.gameMusic.play();
 		this.shootSound = this.add.audio('shootSound');
 		
 		//Background
@@ -138,7 +138,7 @@ BasicGame.Game.prototype = {
 		this.health = 3;
 		this.lastScore = this.score;
 		this.score = 0;
-		this.music.stop();
+		this.gameMusic.stop();
 		this.state.start('GameOver',true,false,this.lastScore,this.won);
 	}
 };
