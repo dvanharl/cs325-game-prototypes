@@ -39,7 +39,7 @@ BasicGame.Game = function (game) {
 	this.score = 0;
 	this.lastScore = 0;
 	this.health = 3;
-	this.meteorHP = 50;
+	this.meteorHP = 10;
 	
 	this.shootSound = null
 	this.won = false;
@@ -119,7 +119,7 @@ BasicGame.Game.prototype = {
 		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 	},
 	
-	win: function(){
+	win: function() {
 		this.won = true;
 		this.gameOver();
 	},
@@ -130,7 +130,7 @@ BasicGame.Game.prototype = {
 	},
 		
 	gameOver: function() {
-		this.meteorHP = 50;
+		this.meteorHP = 10;
 		this.health = 3;
 		this.lastScore = this.score;
 		this.score = 0;
