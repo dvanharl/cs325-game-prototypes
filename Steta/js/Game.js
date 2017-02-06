@@ -51,6 +51,7 @@ BasicGame.Game.prototype = {
     create: function () {
 		//Audio
 		this.music = this.add.audio('game');
+		this.music.play();
 		this.shootSound = this.add.audio('shootSound');
 		
 		//Background
