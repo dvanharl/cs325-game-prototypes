@@ -50,7 +50,7 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
     create: function () {
 		//Audio
-		this.music = this.add.audio('game');
+		this.music = this.add.audio('yes');
 		this.music.play();
 		this.shootSound = this.add.audio('shootSound');
 		
