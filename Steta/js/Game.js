@@ -53,6 +53,7 @@ BasicGame.Game.prototype = {
 		this.gameMusic = this.add.audio('yes');
 		this.gameMusic.play();
 		this.shootSound = this.add.audio('shootSound');
+		this.shootSound.volume = 0.65;
 		
 		//Background
 		this.background = this.add.sprite(0,0,'map');
