@@ -37,6 +37,7 @@ BasicGame.GameOver.prototype = {
 	},
 	
 	retryGame: function() {
+		this.music.stop();
 		this.state.start('MainMenu');
 	}
 };
