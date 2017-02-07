@@ -37,7 +37,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('hurt','assets/Hurt.png');
 		this.load.audio('shootSound','assets/shoot.mp3');
 		this.load.audio('menu','assets/menu.mp3');
-		this.load.audio('yes','assets/game.mp3');
+		this.load.audio('yes','assets/game2.mp3');
 		this.load.audio('gameover','assets/gameover.mp3');
 		this.load.audio('win','assets/win.mp3');
 	},
