@@ -96,7 +96,7 @@ BasicGame.Game.prototype = {
 			this.canFire = true;
 		}
 		if(this.time.events.duration == 10000){
-			this.add.tween(this.background).to({tint:#E93931},500, Phaser.Easing.Linear.None, true, 0, 0, false);
+			this.add.tween(this.background).to({tint:#E93931},5000, Phaser.Easing.Linear.None, true, 0, 0, false);
 		}
     },
 	
