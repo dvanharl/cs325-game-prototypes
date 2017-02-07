@@ -9,6 +9,8 @@ BasicGame.GameOver = function (game) {
 	this.didI = false;
 	this.music = null;
 	this.style = null;
+	this.words = null;
+	this.message = null;
 };
 
 BasicGame.GameOver.prototype = {
@@ -23,6 +25,7 @@ BasicGame.GameOver.prototype = {
 			//Game Over - Win Screen
 			this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
 			this.music = this.add.audio('win');
+			this.message = this.add.text(this.world.centerX,100, "CONGRATULATIONS", this.titleStyle);
 		}else{
 			//Game Over - Lose Screen
 			this.gameOverBack = this.game.add.sprite(0,0,'gameOver');
@@ -31,7 +34,8 @@ BasicGame.GameOver.prototype = {
 		}
 		this.music.play();
 		this.style = { font: "25px Fantasy", fill: "#ffffff", align: "center" };
-		this.add.text (this.world.centerX, 300, "Final score: " + this.endScore, this.style);
+		this.words = this.add.text (this.world.centerX, 300, "Final score: " + this.endScore, this.style);
+		this.words.anchor.setTo(0.5,0.5);
 		this.whiteScreen = this.game.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 1500,0,false);
 	},
