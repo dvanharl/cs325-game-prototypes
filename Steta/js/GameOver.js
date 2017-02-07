@@ -7,6 +7,7 @@ BasicGame.GameOver = function (game) {
 	this.gameOverBack = null;
 	this.whiteScreen = null;
 	this.didI = false;
+	this.music = null;
 };
 
 BasicGame.GameOver.prototype = {
@@ -20,11 +21,14 @@ BasicGame.GameOver.prototype = {
 		if (this.didI){
 			//Game Over - Win Screen
 			this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
+			this.music = this.add.audio('win');
 		}else{
 			//Game Over - Lose Screen
 			this.gameOverBack = this.game.add.sprite(0,0,'gameOver');
 			this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
+			this.music = this.add.audio('gameover');
 		}
+		this.music.play();
 		this.whiteScreen = this.game.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 1500,0,false);
 	},

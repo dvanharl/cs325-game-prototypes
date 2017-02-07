@@ -38,6 +38,8 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('shootSound','assets/shoot.mp3');
 		this.load.audio('menu','assets/menu.mp3');
 		this.load.audio('yes','assets/game.mp3');
+		this.load.audio('gameover','assets/gameover.mp3');
+		this.load.audio('win','assets/win.mp3');
 	},
 
 	create: function () {
