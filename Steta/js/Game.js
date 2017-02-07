@@ -95,7 +95,7 @@ BasicGame.Game.prototype = {
 		}else if(this.input.mousePointer.isUp){
 			this.canFire = true;
 		}
-		if(this.time.events.duration == 10000){
+		if(this.time.events.duration == Phaser.Timer.SECOND * 10){
 			this.add.tween(this.background).to({tint:0xe93931},5000, Phaser.Easing.Linear.None, true, 0, 0, false);
 		}
     },
