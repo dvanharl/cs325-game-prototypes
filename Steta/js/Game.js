@@ -95,6 +95,9 @@ BasicGame.Game.prototype = {
 		}else if(this.input.mousePointer.isUp){
 			this.canFire = true;
 		}
+		if(this.time.events.duration == 10000){
+			this.add.tween(this.background).to({tint:#E93931},500, Phaser.Easing.Linear.None, true, 0, 0, false);
+		}
     },
 	
 	render: function(){
@@ -125,6 +128,7 @@ BasicGame.Game.prototype = {
 	},
 	
 	win: function() {
+		this.score = this.score + 10000;
 		this.won = true;
 		this.gameOver();
 	},

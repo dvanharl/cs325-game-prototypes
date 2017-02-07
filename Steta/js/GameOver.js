@@ -29,6 +29,7 @@ BasicGame.GameOver.prototype = {
 			this.music = this.add.audio('gameover');
 		}
 		this.music.play();
+		this.add.text (100,300, "Final score: " + this.endScore,)
 		this.whiteScreen = this.game.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 1500,0,false);
 	},
