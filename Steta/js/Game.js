@@ -80,6 +80,7 @@ BasicGame.Game.prototype = {
 		
 		//Create Timer
 		this.timer = this.time.events.add(Phaser.Timer.SECOND * 60, this.lose, this);
+		this.time.events.add(Phaser.Timer.SECOND * 50, this.backTint, this);
 		
     },
 
@@ -95,16 +96,17 @@ BasicGame.Game.prototype = {
 		}else if(this.input.mousePointer.isUp){
 			this.canFire = true;
 		}
-		if(this.time.events.duration == Phaser.Timer.SECOND * 10){
-			this.add.tween(this.background).to({tint:0xe93931},5000, Phaser.Easing.Linear.None, true, 0, 0, false);
-		}
     },
 	
 	render: function(){
 		this.game.debug.text("Health: " + this.health, 32, 32);
 		this.game.debug.text("Score: " + this.score, 32, 48);
-		this.game.debug.text("Time Remaining: " + this.time.events.duration,32,80);
+		this.game.debug.text("Time Remaining: " + this.timer.duration,32,80);
 		this.game.debug.text("Meteor HP: " + this.meteorHP,32,96);
+	},
+	
+	backTint: function(){
+		this.add.tween(this.background).to({tint:0xe93931},5000, Phaser.Easing.Linear.None, true, 0, 0, false);
 	},
 	
 	meteorHit: function(){
