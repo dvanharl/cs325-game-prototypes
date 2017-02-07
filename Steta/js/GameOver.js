@@ -8,6 +8,7 @@ BasicGame.GameOver = function (game) {
 	this.whiteScreen = null;
 	this.didI = false;
 	this.music = null;
+	this.style = null;
 };
 
 BasicGame.GameOver.prototype = {
@@ -29,7 +30,8 @@ BasicGame.GameOver.prototype = {
 			this.music = this.add.audio('gameover');
 		}
 		this.music.play();
-		this.add.text (this.world.centerX, 300, "Final score: " + this.endScore, { font: "25px Fantasy", fill: "#ffffff", align: "center" });
+		this.style = { font: "25px Fantasy", fill: "#ffffff", align: "center" };
+		this.add.text (this.world.centerX, 300, "Final score: " + this.endScore, this.style);
 		this.whiteScreen = this.game.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 1500,0,false);
 	},
