@@ -84,9 +84,9 @@ BasicGame.Game.prototype = {
 		this.enemies = this.add.group();
 		for(var i=0;i<10;i++){
 			this.enemies.add(this.add.sprite(0,0,'cult'));
-			this.enemies[i].inputEnabled = true;
-			this.enemies[i].events.onInputDown.add(enemyKill,this);
-			this.enemies[i].kill();
+			this.enemies.getAt(i).inputEnabled = true;
+			this.enemies.getAt(i).events.onInputDown.add(enemyKill,this);
+			this.enemies.getAt(i).kill();
 		}
 		
 		//White Fading Background
@@ -137,12 +137,12 @@ BasicGame.Game.prototype = {
 		if(this.numEnemy < this.maxEnemy){
 			this.maxEnemy = this.maxEnemy + 1;
 			for(i=0;i<10;i++){
-				if(!this.enemies[i].alive){
+				if(!this.enemies.getAt(i).alive){
 					this.temp = i;
-					this.enemies[i].revive();
-					this.enemies[i].x = this.rnd.integerInRange(25,775);
-					this.enemies[i].y = this.rnd.integerInRange(245,525);
-					this.enemies[i].scale.setTo(250/this.enemies[i].y)
+					this.enemies.getAt(i).revive();
+					this.enemies.getAt(i).x = this.rnd.integerInRange(25,775);
+					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
+					this.enemies.getAt(i).scale.setTo(250/this.enemies[i].y)
 				}
 			this.time.events.add(Phaser.Timer.Second * 0.5, fire, this);
 			break;
