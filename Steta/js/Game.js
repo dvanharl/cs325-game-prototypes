@@ -81,9 +81,10 @@ BasicGame.Game.prototype = {
 		//Enemy
 		this.numEnemy = 0;
 		this.maxEnemy = 3;
-		//this.enemies = this.add.group();
+		this.enemies = this.add.group();
 		for(i=0;i<10;i++){
 			this.enemies.add(this.add.sprite(0,0,'cult'));
+			this.enemies[i].inputEnabled = true;
 			this.enemies[i].events.onInputDown.add(enemyKill,this);
 			this.enemies[i].kill();
 		}
