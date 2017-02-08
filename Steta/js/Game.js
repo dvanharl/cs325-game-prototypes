@@ -51,6 +51,7 @@ BasicGame.Game = function (game) {
 	
 	this.x = null;
 	this.y = null;
+
 };
 
 BasicGame.Game.prototype = {
@@ -85,7 +86,7 @@ BasicGame.Game.prototype = {
 		for(var i=0;i<10;i++){
 			this.enemies.add(this.add.sprite(0,0,'cult'));
 			this.enemies.getAt(i).inputEnabled = true;
-			this.enemies.getAt(i).events.onInputDown.add(this.enemyKill,this, i);
+			this.enemies.getAt(i).events.onInputDown.add(this.enemyKill,this, this.enemies.getAt(i));
 			this.enemies.getAt(i).kill();
 		}
 		
@@ -128,10 +129,9 @@ BasicGame.Game.prototype = {
 		}
 	},
 	
-	enemyKill: function(temp) {
-		this.enemies.getAt(temp);
+	enemyKill: function(baddie) {
 		this.numEnemy = this.numEnemy - 1;
-		this.enemies.getAt(temp).kill();
+		baddie.kill();
 		this.score = this.score + 200;
 	},
 	
