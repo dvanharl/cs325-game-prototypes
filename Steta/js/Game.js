@@ -95,7 +95,7 @@ BasicGame.Game.prototype = {
 		
 		//Create Timers
 		this.timer = this.time.events.add(Phaser.Timer.SECOND * 60, this.lose, this);
-		this.time.events.loop(Phaser.Timer.Second * this.rnd.integerInRange(1,5), this.spawnEnemy,this);
+		this.time.events.loop(Phaser.Timer.SECOND * this.rnd.integerInRange(1,5), this.spawnEnemy,this);
 		
     },
 
