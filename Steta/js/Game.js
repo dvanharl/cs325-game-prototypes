@@ -122,7 +122,7 @@ BasicGame.Game.prototype = {
 	
 	meteorHit: function(){
 		this.meteorHP = this.meteorHP - 1;
-		this.score = this.score + 500;
+		this.score = this.score + 100;
 		if(this.meteorHP == 0){
 			this.win();
 		}
@@ -142,7 +142,7 @@ BasicGame.Game.prototype = {
 					this.enemies.getAt(i).revive();
 					this.enemies.getAt(i).x = this.rnd.integerInRange(25,775);
 					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
-					this.enemies.getAt(i).scale.setTo(250/this.enemies[i].y);
+					this.enemies.getAt(i).scale.setTo(250/this.enemies.getAt(i).y);
 				}
 				this.time.events.add(Phaser.Timer.Second * 0.5, this.fire, this);
 				break;
