@@ -144,6 +144,8 @@ BasicGame.Game.prototype = {
 					this.enemies[i].scale.setTo(250/this.enemies[i].y)
 				}
 			this.time.events.add(Phaser.Timer.Second * 0.5, fire, this);
+			break;
+			}
 		}
 	},
 		
