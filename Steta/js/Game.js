@@ -45,6 +45,12 @@ BasicGame.Game = function (game) {
 	this.won = false;
 	
 	this.gameMusic = null;
+	
+	this.enemy = null;
+	this.enemies = null;
+	
+	this.x = null;
+	this.y = null;
 };
 
 BasicGame.Game.prototype = {
@@ -72,14 +78,23 @@ BasicGame.Game.prototype = {
         this.crshr.anchor.setTo( 0.5, 0.5 );
         this.crshr.animations.add('fire');
 		
+		//Enemy
+		this.numEnemy = 0;
+		this.maxEnemy = 3;
+		//this.enemies = this.add.group();
+		for(i=0;i<10;i++){
+			this.enemies.add(this.add.sprite(0,0,'cult'));
+			this.enemies[i].events.onInputDown.add(enemyKill,this);
+			this.enemies[i].kill();
+		}
+		
 		//White Fading Background
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 400, Phaser.Easing.Linear.None, true, 0,0,false);
 		
-        
-		
-		//Create Timer
+		//Create Timers
 		this.timer = this.time.events.add(Phaser.Timer.SECOND * 60, this.lose, this);
+		this.time.events.loop(Phser.Timer.Second * this.rnd.integerInRange(1,5), spawnEnemy,this);
 		
     },
 
@@ -100,7 +115,7 @@ BasicGame.Game.prototype = {
 	render: function(){
 		this.game.debug.text("Health: " + this.health, 32, 32);
 		this.game.debug.text("Score: " + this.score, 32, 48);
-		this.game.debug.text("Time Remaining: " + this.time.events.duration,32,80);
+		this.game.debug.text("Time Remaining: " + this.timer.tick - this.timer._now,32,80);
 		this.game.debug.text("Meteor HP: " + this.meteorHP,32,96);
 	},
 	
@@ -113,8 +128,29 @@ BasicGame.Game.prototype = {
 	},
 	
 	enemyKill: function() {
+		this.kill();
+		this.score = this.score + 100;
+	},
+	
+	spawnEnemy: function() {
+		if(this.numEnemy < this.maxEnemy){
+			this.maxEnemy = this.maxEnemy + 1;
+			for(i=0;i<10;i++){
+				if(!this.enemies[i].alive){
+					this.temp = i;
+					this.enemies[i].revive();
+					this.enemies[i].x = this.rnd.integerInRange(25,775);
+					this.enemies[i].y = this.rnd.integerInRange(245,525);
+					this.enemies[i].scale.setTo(250/this.enemies[i].y)
+				}
+			this.time.events.add(Phaser.Timer.Second * 0.5, fire, this);
+		}
 	},
 		
+	fire: function() {
+		this.time.events.add(Phaser.Timer.Second * 0.5, damage, this);
+	},
+	
 	damage: function() {
 		this.hurt.alpha = 0.7;
 		this.health = this.health - 1;
