@@ -95,7 +95,7 @@ BasicGame.Game.prototype = {
 		
 		//Create Timers
 		this.timer = this.time.events.add(Phaser.Timer.SECOND * 60, this.lose, this);
-		this.time.events.loop(Phser.Timer.Second * this.rnd.integerInRange(1,5), spawnEnemy,this);
+		this.time.events.loop(Phser.Timer.Second * this.rnd.integerInRange(1,5), this.spawnEnemy,this);
 		
     },
 
@@ -142,16 +142,16 @@ BasicGame.Game.prototype = {
 					this.enemies.getAt(i).revive();
 					this.enemies.getAt(i).x = this.rnd.integerInRange(25,775);
 					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
-					this.enemies.getAt(i).scale.setTo(250/this.enemies[i].y)
+					this.enemies.getAt(i).scale.setTo(250/this.enemies[i].y);
 				}
-			this.time.events.add(Phaser.Timer.Second * 0.5, fire, this);
-			break;
+				this.time.events.add(Phaser.Timer.Second * 0.5, this.fire, this);
+				break;
 			}
 		}
 	},
 		
 	fire: function() {
-		this.time.events.add(Phaser.Timer.Second * 0.5, damage, this);
+		this.time.events.add(Phaser.Timer.Second * 0.5, this.damage, this);
 	},
 	
 	damage: function() {
