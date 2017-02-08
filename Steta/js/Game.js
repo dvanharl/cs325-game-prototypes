@@ -130,7 +130,7 @@ BasicGame.Game.prototype = {
 	
 	enemyKill: function(temp) {
 		this.enemies.getAt(temp);
-		this.numEnemy = numEnemy - 1;
+		this.numEnemy = this.numEnemy - 1;
 		this.enemies.getAt(temp).kill();
 		this.score = this.score + 100;
 	},
