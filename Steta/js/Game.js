@@ -76,7 +76,7 @@ BasicGame.Game.prototype = {
 		
 		//Enemy
 		this.numEnemy = 0;
-		this.maxEnemy = 1;
+		this.maxEnemy = 2;
 		this.enemies = this.add.group();
 		for(var i=0;i<10;i++){
 			this.enemies.add(this.add.sprite(0,0,'cult'));
