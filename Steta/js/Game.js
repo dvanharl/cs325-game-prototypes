@@ -98,7 +98,7 @@ BasicGame.Game.prototype = {
 		
 		//Create Timers
 		this.timer = this.time.events.add(Phaser.Timer.SECOND * 60, this.lose, this);
-		this.time.events.loop(Phaser.Timer.SECOND * this.rnd.integerInRange(1,5), this.spawnEnemy,this);
+		this.time.events.loop(Phaser.Timer.SECOND * 2/*this.rnd.integerInRange(1,5)*/, this.spawnEnemy,this);
 		
     },
 
@@ -144,6 +144,7 @@ BasicGame.Game.prototype = {
 				if(!this.enemies.getAt(i).alive){
 					this.temp = i;
 					this.enemies.getAt(i).revive();
+					this.enemies.getAt(i).frame = 0;
 					this.enemies.getAt(i).x = this.rnd.integerInRange(25,775);
 					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
 					this.enemies.getAt(i).scale.setTo(this.enemies.getAt(i).y/250);
