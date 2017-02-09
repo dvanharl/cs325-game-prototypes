@@ -134,7 +134,6 @@ BasicGame.Game.prototype = {
 		this.score = this.score + 200;
 		this.numEnemy = this.numEnemy - 1;
 		baddie.kill();
-		
 	},
 	
 	spawnEnemy: function() {
@@ -147,6 +146,8 @@ BasicGame.Game.prototype = {
 					this.enemies.getAt(i).x = this.rnd.integerInRange(25,775);
 					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
 					this.enemies.getAt(i).scale.setTo(this.enemies.getAt(i).y/250);
+				}else{
+					continue;
 				}
 				this.time.events.add(Phaser.Timer.SECOND * 0.5, this.fire, this);
 				break;
