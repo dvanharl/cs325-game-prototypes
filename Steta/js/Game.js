@@ -140,7 +140,7 @@ BasicGame.Game.prototype = {
 	spawnEnemy: function() {
 		if(this.numEnemy < this.maxEnemy){
 			this.numEnemy = this.numEnemy + 1;
-			for(i=0;i<maxEnemy;i++){
+			for(i=0;i<this.maxEnemy;i++){
 				if(!this.enemies.getAt(i).alive){
 					this.enemies.getAt(i).revive();
 					this.enemies.getAt(i).frame = 0;
