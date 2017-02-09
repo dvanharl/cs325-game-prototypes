@@ -158,7 +158,7 @@ BasicGame.Game.prototype = {
 	},
 	
 	fire: function(temp) {
-		this.temp.animations.play('enemyfire',13,false);
+		temp.animations.play('enemyfire',13,false);
 		this.time.events.add(Phaser.Timer.SECOND * 2.0, this.damage, this, temp);
 	},
 	
