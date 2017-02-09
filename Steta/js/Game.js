@@ -86,6 +86,7 @@ BasicGame.Game.prototype = {
 		for(var i=0;i<10;i++){
 			this.enemies.add(this.add.sprite(0,0,'cult'));
 			this.enemies.getAt(i).inputEnabled = true;
+			this.enemies.getAt(i).anchor.setTo(0.5,0.5);
 			this.enemies.getAt(i).events.onInputDown.add(this.enemyKill,this, this.enemies.getAt(i));
 			this.enemies.getAt(i).kill();
 		}
@@ -117,7 +118,7 @@ BasicGame.Game.prototype = {
 	render: function(){
 		this.game.debug.text("Health: " + this.health, 32, 32);
 		this.game.debug.text("Score: " + this.score, 32, 48);
-		this.game.debug.text("Time Remaining: " + this.timer.tick - this.timer._now,32,80);
+		this.game.debug.text("Time Remaining: " + this.timer.tick - this.timer.now,32,80);
 		this.game.debug.text("Meteor HP: " + this.meteorHP,32,96);
 	},
 	
@@ -138,7 +139,7 @@ BasicGame.Game.prototype = {
 	
 	spawnEnemy: function() {
 		if(this.numEnemy < this.maxEnemy){
-			this.maxEnemy = this.maxEnemy + 1;
+			this.numEnemy = this.numEnemy + 1;
 			for(i=0;i<10;i++){
 				if(!this.enemies.getAt(i).alive){
 					this.temp = i;
@@ -147,15 +148,15 @@ BasicGame.Game.prototype = {
 					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
 					this.enemies.getAt(i).scale.setTo(this.enemies.getAt(i).y/250);
 				}
-				this.time.events.add(Phaser.Timer.Second * 0.5, this.fire, this);
+				this.time.events.add(Phaser.Timer.Second * 0.5, this.damage, this);
 				break;
 			}
 		}
 	},
 		
-	fire: function() {
-		this.time.events.add(Phaser.Timer.Second * 0.5, this.damage, this);
-	},
+	//fire: function() {
+		//this.time.events.add(Phaser.Timer.Second * 0.5, this.damage, this);
+	//},
 	
 	damage: function() {
 		this.hurt.alpha = 0.7;
