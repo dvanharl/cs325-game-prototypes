@@ -76,7 +76,7 @@ BasicGame.Game.prototype = {
 		
 		//Enemy
 		this.numEnemy = 0;
-		this.maxEnemy = 3;
+		this.maxEnemy = 1;
 		this.enemies = this.add.group();
 		for(var i=0;i<10;i++){
 			this.enemies.add(this.add.sprite(0,0,'cult'));
@@ -100,7 +100,7 @@ BasicGame.Game.prototype = {
 		
 		//Create Timers
 		this.timer = this.time.events.add(Phaser.Timer.SECOND * 60, this.lose, this);
-		this.time.events.loop(Phaser.Timer.SECOND * 2/*this.rnd.integerInRange(1,5)*/, this.spawnEnemy,this);
+		//this.time.events.loop(Phaser.Timer.SECOND * 2/*this.rnd.integerInRange(1,5)*/, this.spawnEnemy,this);
 		
     },
 
