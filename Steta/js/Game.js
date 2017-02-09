@@ -76,7 +76,7 @@ BasicGame.Game.prototype = {
 		
 		//Enemy
 		this.numEnemy = 0;
-		this.maxEnemy = 2;
+		this.maxEnemy = 1;
 		this.enemies = this.add.group();
 		for(var i=0;i<10;i++){
 			this.enemies.add(this.add.sprite(0,0,'cult'));
@@ -101,6 +101,8 @@ BasicGame.Game.prototype = {
 		//Create Timers
 		this.timer = this.time.events.add(Phaser.Timer.SECOND * 60, this.lose, this);
 		//this.time.events.loop(Phaser.Timer.SECOND * 2/*this.rnd.integerInRange(1,5)*/, this.spawnEnemy,this);
+		this.timer = this.time.events.add(Phaser.Timer.SECOND * 50, function() {this.background.tint = 0xff0000}, this);
+		this.timer = this.time.events.add(Phaser.Timer.SECOND * 40, function() {this.background.tint = 0xff833c}, this);
 		
     },
 
@@ -121,7 +123,6 @@ BasicGame.Game.prototype = {
 	render: function(){
 		this.game.debug.text("Health: " + this.health, 32, 32);
 		this.game.debug.text("Score: " + this.score, 32, 48);
-		this.game.debug.text("Time Remaining: " + this.timer.tick - this.timer.now,32,80);
 		this.game.debug.text("Meteor HP: " + this.meteorHP,32,96);
 	},
 	
