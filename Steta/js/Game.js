@@ -74,11 +74,6 @@ BasicGame.Game.prototype = {
 		this.meteor.inputEnabled = true;
 		this.meteor.events.onInputDown.add(this.meteorHit,this);
 		
-		// Create cursor sprite, anchor to center position, then add animation
-		this.crshr = this.add.sprite(400, 300, 'cursor');
-        this.crshr.anchor.setTo( 0.5, 0.5 );
-        this.crshr.animations.add('fire');
-		
 		//Enemy
 		this.numEnemy = 0;
 		this.maxEnemy = 3;
@@ -90,6 +85,11 @@ BasicGame.Game.prototype = {
 			this.enemies.getAt(i).events.onInputDown.add(this.enemyKill,this, this.enemies.getAt(i));
 			this.enemies.getAt(i).kill();
 		}
+		
+		// Create cursor sprite, anchor to center position, then add animation
+		this.crshr = this.add.sprite(400, 300, 'cursor');
+        this.crshr.anchor.setTo( 0.5, 0.5 );
+        this.crshr.animations.add('fire');
 		
 		//White Fading Background
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
@@ -148,15 +148,15 @@ BasicGame.Game.prototype = {
 					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
 					this.enemies.getAt(i).scale.setTo(this.enemies.getAt(i).y/250);
 				}
-				this.time.events.add(Phaser.Timer.Second * 0.5, this.damage, this);
+				this.time.events.add(Phaser.Timer.SECOND * 0.5, this.fire, this);
 				break;
 			}
 		}
 	},
 		
-	//fire: function() {
-		//this.time.events.add(Phaser.Timer.Second * 0.5, this.damage, this);
-	//},
+	fire: function() {
+		this.time.events.add(Phaser.Timer.SECOND * 0.5, this.damage, this);
+	},
 	
 	damage: function() {
 		this.hurt.alpha = 0.7;
