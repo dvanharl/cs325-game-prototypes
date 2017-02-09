@@ -84,7 +84,7 @@ BasicGame.Game.prototype = {
 			this.enemies.getAt(i).inputEnabled = true;
 			this.enemies.getAt(i).anchor.setTo(0.5,0.5);
 			this.enemies.getAt(i).events.onInputDown.add(this.enemyKill,this, this.enemies.getAt(i));
-			this.enemies.getAt(i).events.onKilled.add(function() {this.time.events.add(Phaser.Timer.SECOND * this.rnd.integerInRange(2,4),this.spawnEnemy,this)},this);
+			this.enemies.getAt(i).events.onKilled.add(function() {this.time.events.add(Phaser.Timer.SECOND * this.rnd.realInRange(2,4),this.spawnEnemy,this)},this);
 			this.enemies.getAt(i).events.onRevived.add(this.fire,this,this.enemies.getAt(i));
 			this.enemies.getAt(i).kill();
 		}
@@ -145,7 +145,7 @@ BasicGame.Game.prototype = {
 			for(i=0;i<this.maxEnemy;i++){
 				if(!this.enemies.getAt(i).alive){
 					this.enemies.getAt(i).revive();
-					this.enemies.getAt(i).frame = 0;
+					this.enemies.getAt(i).animations.frame = 0;
 					this.enemies.getAt(i).x = this.rnd.integerInRange(25,775);
 					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
 					this.enemies.getAt(i).scale.setTo(this.enemies.getAt(i).y/250);
