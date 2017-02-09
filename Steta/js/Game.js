@@ -146,26 +146,29 @@ BasicGame.Game.prototype = {
 					this.enemies.getAt(i).x = this.rnd.integerInRange(25,775);
 					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
 					this.enemies.getAt(i).scale.setTo(this.enemies.getAt(i).y/250);
+					this.time.events.add(Phaser.Timer.SECOND * 0.5, this.fire, this, this.enemies.getAt(i));
+					break;
 				}else{
 					continue;
 				}
-				this.time.events.add(Phaser.Timer.SECOND * 0.5, this.fire, this);
-				break;
+				
 			}
 		}
 	},
 		
-	fire: function() {
-		this.time.events.add(Phaser.Timer.SECOND * 0.5, this.damage, this);
+	fire: function(b) {
+		this.time.events.add(Phaser.Timer.SECOND * 0.5, this.damage, this,b);
 	},
 	
-	damage: function() {
-		this.hurt.alpha = 0.7;
-		this.health = this.health - 1;
-		if(this.health == 0){
-			this.lose();
+	damage: function(bad) {
+		if(bad.alive){
+			this.hurt.alpha = 0.7;
+			this.health = this.health - 1;
+			if(this.health == 0){
+				this.lose();
+			}
+			this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 		}
-		this.add.tween(this.hurt).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 	},
 	
 	win: function() {
