@@ -84,6 +84,8 @@ BasicGame.Game.prototype = {
 			this.enemies.getAt(i).inputEnabled = true;
 			this.enemies.getAt(i).anchor.setTo(0.5,0.5);
 			this.enemies.getAt(i).events.onInputDown.add(this.enemyKill,this, this.enemies.getAt(i));
+			this.enemies.getAt(i).events.onKilled.add(function() {this.time.events.add(Phaser.Timer.SECOND * this.rnd.integerInRange(2,4),this.spawnEnemy,this)},this);
+			this.enemies.getAt(i).events.onRevived.add(this.fire,this,this.enemies.getAt(i));
 			this.enemies.getAt(i).kill();
 		}
 		
@@ -147,14 +149,17 @@ BasicGame.Game.prototype = {
 					this.enemies.getAt(i).x = this.rnd.integerInRange(25,775);
 					this.enemies.getAt(i).y = this.rnd.integerInRange(245,525);
 					this.enemies.getAt(i).scale.setTo(this.enemies.getAt(i).y/250);
-					this.enemies.getAt(i).animations.play('enemyfire',13,false);
-					this.time.events.add(Phaser.Timer.SECOND * 2.0, this.damage, this, this.enemies.getAt(i));
 					break;
 				}else{
 					continue;
 				}
 			}
 		}
+	},
+	
+	fire: function(temp) {
+		this.temp.animations.play('enemyfire',13,false);
+		this.time.events.add(Phaser.Timer.SECOND * 2.0, this.damage, this, temp);
 	},
 	
 	damage: function(bad) {
