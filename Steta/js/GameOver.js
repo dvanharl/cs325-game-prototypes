@@ -9,6 +9,7 @@ BasicGame.GameOver = function (game) {
 	this.didI = false;
 	this.music = null;
 	this.style = null;
+	this.titleStyle = null;
 	this.words = null;
 	this.message = null;
 };
@@ -21,8 +22,10 @@ BasicGame.GameOver.prototype = {
 	},
 	
 	create: function() {
+		this.titleStyle =  { font: "50px Helvetica", fill: "#ffffff", align: "center" };
 		if (this.didI){
 			//Game Over - Win Screen
+			this.gameOverBack = this.game.add.sprite(0,0,'win');
 			this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
 			this.music = this.add.audio('win');
 			this.message = this.add.text(this.world.centerX,100, "CONGRATULATIONS", this.titleStyle);
@@ -31,7 +34,9 @@ BasicGame.GameOver.prototype = {
 			this.gameOverBack = this.game.add.sprite(0,0,'gameOver');
 			this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
 			this.music = this.add.audio('gameover');
+			this.message = this.add.text(this.world.centerX,100, "GAME OVER", this.titleStyle);
 		}
+		this.message.anchor.setTo(0.5,0.5);
 		this.music.play();
 		this.style = { font: "25px Fantasy", fill: "#ffffff", align: "center" };
 		this.words = this.add.text (this.world.centerX, 300, "Final score: " + this.endScore, this.style);
