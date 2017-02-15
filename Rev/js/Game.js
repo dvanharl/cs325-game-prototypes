@@ -77,14 +77,14 @@ BasicGame.Game.prototype = {
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){//Jumping
-			this.yspeed = +10;
+			this.yspeed -= 10;
 		}
 		
-		if(this.player.y > 450){//Falling
+		if(this.player.y < 450){//Falling
 			this.yspeed -= .5;
 		}else{
-			this.yspeed = 0;
-			this.player.y = 450;
+			//this.yspeed = 0;
+			//this.player.y = 450;
 		}
 		
 		//Update Position
