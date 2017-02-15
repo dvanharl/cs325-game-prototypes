@@ -94,6 +94,7 @@ BasicGame.Game.prototype = {
 		if(this.bullet.alive){
 			this.bullet.animations.play();
 			this.bullet.x += (24 * this.bullSpeed);
+			this.bullet.scale.x = this.bullSpeed;
 			if(this.bullet.x < 0 || this.bullet.x > 2560){
 				this.bullet.kill();
 				this.canShoot = true;
