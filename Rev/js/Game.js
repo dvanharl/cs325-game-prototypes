@@ -52,7 +52,7 @@ BasicGame.Game.prototype = {
 		this.player.animations.add('shoot',[13,14,15,16,17],30,false,true);
 		
 		this.bullet = this.add.sprite(this.player.x, this.player.y,'bullet');
-		this.bullet.animations.add('go',22,true,true);
+		this.bullet.animations.add('go');
 		this.bullet.anchor.setTo(.5,.5);
 		this.bullet.kill();
     },
@@ -92,7 +92,7 @@ BasicGame.Game.prototype = {
 			this.bullet.revive();
 		}
 		if(this.bullet.alive){
-			this.bullet.animations.play();
+			this.bullet.animations.play('go',22,true);
 			this.bullet.x += (24 * this.bullSpeed);
 			this.bullet.scale.x = this.bullSpeed;
 			if(this.bullet.x < 0 || this.bullet.x > 2560){
