@@ -32,7 +32,7 @@ BasicGame.Game.prototype = {
 		this.worldMap = this.add.sprite(0,0,"worldMap");
 		this.world.setBounds(0,0,2560,600);
 		
-		this.player = this.add.sprite(1000,450, "player");
+		this.player = this.add.sprite(1000,420, "player");
 		this.player.anchor.setTo(.5,.5);
 		this.player.scale.setTo(2);
 		this.camera.follow(this.player);
@@ -77,15 +77,14 @@ BasicGame.Game.prototype = {
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){//Jumping
-			this.yspeed = 10;
+			this.yspeed = -10;
 		}
 		
-		if(this.player.y < 450){//Falling
-			this.yspeed -= .5;
-		}else{
-			//this.yspeed = 0;
-			//this.player.y = 450;
+		if(this.player.y < 420){//Falling
+			this.yspeed += .5;
 		}
+		if(this.player.y >420)
+			this.player.y = 420
 		
 		//Update Position
 		this.player.x += this.xspeed;
