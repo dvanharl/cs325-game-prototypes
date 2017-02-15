@@ -84,7 +84,9 @@ BasicGame.Game.prototype = {
 				this.xspeed = 8;
 			}
 		}else{ //Idle
-			this.player.animations.play('idle');
+			if(this.player.animations('shoot').isFinished){
+				this.player.animations.play('idle');
+			}
 			this.xspeed = this.xspeed/1.5;
 		}
 		
