@@ -32,7 +32,7 @@ BasicGame.Game.prototype = {
 		this.worldMap = this.add.sprite(0,0,"worldMap");
 		this.world.setBounds(0,0,2000,600);
 		
-		this.player = this.add.sprite(1000,220, "player");
+		this.player = this.add.sprite(1000,450, "player");
 		this.player.anchor.setTo(.5,.5);
 		this.camera.follow(this.player);
 		
