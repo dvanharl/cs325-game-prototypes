@@ -62,7 +62,6 @@ BasicGame.Game.prototype = {
 			if(this.player.scale.x > 0){
 				this.player.scale.x *= -1;
 			}
-			this.player.scale.x.setTo(-2);
 			if(this.xspeed < 8){
 				this.xspeed += .8;
 			}else{
