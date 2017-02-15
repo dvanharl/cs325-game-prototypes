@@ -77,8 +77,8 @@ BasicGame.Game.prototype = {
 			this.player.animations.play('shoot');
 		}
 		
-		if(this.input.keyboard.isDown(Phaser.Keyboard.X)){//Jumping
-			this.yspeed = -30;
+		if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){//Jumping
+			this.yspeed = -10;
 		}
 		
 		if(this.player.y < 450){//Falling
