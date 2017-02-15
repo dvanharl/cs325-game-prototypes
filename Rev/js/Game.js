@@ -36,30 +36,39 @@ BasicGame.Game.prototype = {
 		this.player.anchor.setTo(.5,.5);
 		this.camera.follow(this.player);
 		
+		//Player Animation Manager
+		this.player.animation.add('idle',[0,1,2,3,4,5], 18, true, true);
+		this.player.animation.add('walk',[5,6,7,8,9,10,11,12],18,true, true);
+		this.player.animation.add('shoot',[13,14,15,16,17,18],30,false,true);
+		
 		
     },
 
     update: function () {
 		//Movement
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
-			this.player.scale.setTo(-1);
+			this.player.animation.play('walk');
+			this.player.scale.setTo(1);
 			if(this.xspeed > -8){
 				this.xspeed -= .8;
 			}else{
 				this.xspeed = -8;
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
-			this.player.scale.setTo(1);
+			this.player.animation.play('walk');
+			this.player.scale.setTo(-1);
 			if(this.xspeed < 8){
 				this.xspeed += .8;
 			}else{
 				this.xspeed = 8;
 			}
 		}else{ //Idle
+			this.player.animation.play('idle');
 			this.xspeed = this.xspeed/1.5;
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){//Shooting
+			this.player.animation.play('shoot');
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.X)){//Jumping
