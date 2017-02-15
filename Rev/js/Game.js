@@ -79,7 +79,7 @@ BasicGame.Game.prototype = {
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && canJump){//Jumping
 			this.yspeed = -10;
-			canJump = false;
+			this.canJump = false;
 		}
 		
 		if(this.player.y < 420){//Falling
