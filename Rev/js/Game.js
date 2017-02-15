@@ -27,12 +27,10 @@ BasicGame.Game = function (game) {
 };
 
 BasicGame.Game.prototype = {
-	
-	preload: function() {
-		this.world.setBounds(0,0,2000 600);
-	},
 
     create: function () {
+		this.world.setBounds(0,0,2000,600);
+		
 		this.worldMap = this.add.sprite(0,0,"background");
 		
 		this.player = this.add.sprite(1000,220, "player");
