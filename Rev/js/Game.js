@@ -51,6 +51,7 @@ BasicGame.Game.prototype = {
 		this.player.animations.add('shoot',[13,14,15,16,17],30,false,true);
 		
 		this.bullet = this.add.sprite(this.player.x, this.player.y,'bullet');
+		this.bullet.anchor.setTo(.5,.5);
 		this.bullet.kill();
     },
 
@@ -81,13 +82,16 @@ BasicGame.Game.prototype = {
 			this.xspeed = this.xspeed/1.5;
 		}
 		
-		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){//Shooting
+		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){//Shooting
 			this.player.animations.play('shoot');
 			this.bullet.x = this.player.x;
 			this.bullet.revive();
 		}
-		if(this.bullet != null){
-			this.bullet.x += (16 * (this.player.scale.x/2));
+		if(this.bullet.alive){
+			this.bullet.x += (24 * (this.player.scale.x/-2));
+			if(bullet.x < 0 || bullet.x > 2560){
+				this.bullet.kill();
+			}
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && this.canJump){//Jumping
