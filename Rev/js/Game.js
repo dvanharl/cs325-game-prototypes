@@ -56,11 +56,11 @@ BasicGame.Game.prototype = {
 				this.xspeed = 8;
 			}
 		}else{
-			this.xspeed = xspeed/1.5;
+			this.xspeed = this.xspeed/1.5;
 		}
 		
 		//Shooting
-		if(this.input.keyboard.isDown(Phaser.Keyboard.C)){
+		if(this.input.keyboard.isDown(Phaser.Keyboard.X)){
 			this.yspeed = -30;
 		}
 		if(this.player.y < 450){
