@@ -24,6 +24,7 @@ BasicGame.Game = function (game) {
 	this.score = null;
 	this.xspeed = 0;
 	this.yspeed = 0;
+	this.canJump = false;
 };
 
 BasicGame.Game.prototype = {
@@ -76,15 +77,18 @@ BasicGame.Game.prototype = {
 			this.player.animations.play('shoot');
 		}
 		
-		if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){//Jumping
+		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && canJump){//Jumping
 			this.yspeed = -10;
+			canJump = false;
 		}
 		
 		if(this.player.y < 420){//Falling
 			this.yspeed += .5;
 		}
-		if(this.player.y >420)
-			this.player.y = 420
+		if(this.player.y >=420){
+			this.player.y = 420;
+			this.canJump = true;
+		}
 		
 		//Update Position
 		this.player.x += this.xspeed;
