@@ -35,7 +35,7 @@ BasicGame.Game.prototype = {
 		
 		this.player = this.add.sprite(1000,220, "player");
 		this.player.anchor.setTo(.5,.5);
-		this.camera.follow(player);
+		this.camera.follow(this.player);
 		
 		
     },
