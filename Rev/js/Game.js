@@ -34,6 +34,7 @@ BasicGame.Game.prototype = {
 		
 		this.player = this.add.sprite(1000,450, "player");
 		this.player.anchor.setTo(.5,.5);
+		this.player.scale.setTo(2);
 		this.camera.follow(this.player);
 		
 		//Player Animation Manager
@@ -48,7 +49,9 @@ BasicGame.Game.prototype = {
 		//Movement
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
 			this.player.animations.play('walk');
-			this.player.scale.x.setTo(2);
+			if(player.scale.x < 0){
+				this.player.scale.x *= -1;
+			}
 			if(this.xspeed > -8){
 				this.xspeed -= .8;
 			}else{
@@ -56,6 +59,9 @@ BasicGame.Game.prototype = {
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
 			this.player.animations.play('walk');
+			if(player.scale.x > 0){
+				this.player.scale.x *= -1;
+			}
 			this.player.scale.x.setTo(-2);
 			if(this.xspeed < 8){
 				this.xspeed += .8;
