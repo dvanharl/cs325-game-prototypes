@@ -20,61 +20,49 @@ BasicGame.Game = function (game) {
     this.physics;   //  the physics manager (Phaser.Physics)
     this.rnd;       //  the repeatable random number generator (Phaser.RandomDataGenerator)
 
-    //  You can use any of these from any function within this State.
-    //  But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
-    
-    // Create your own variables.
-    this.bouncy = null;
+    this.player = null;
+	this.score = null;
+	this.xspeed = 0;
+	this.yspeed = 0;
 };
 
 BasicGame.Game.prototype = {
+	
+	preload: function() {
+		this.world.setBounds(0,0,2000 600);
+	},
 
     create: function () {
-
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        
-        // Create a sprite at the center of the screen using the 'logo' image.
-        this.bouncy = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'logo' );
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        this.bouncy.anchor.setTo( 0.5, 0.5 );
-        
-        // Turn on the arcade physics engine for this sprite.
-        this.game.physics.enable( this.bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        this.bouncy.body.collideWorldBounds = true;
-        
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = this.game.add.text( this.game.world.centerX, 15, "Build something amazing.", style );
-        text.anchor.setTo( 0.5, 0.0 );
-        
-        // When you click on the sprite, you go back to the MainMenu.
-        this.bouncy.inputEnabled = true;
-        this.bouncy.events.onInputDown.add( function() { this.state.start('MainMenu'); }, this );
+		this.player = this.add.sprite(1000,220, "player.png");
+		this.player.anchor.setTo(.5,.5);
+		this.camera.follow(player);
+		
+		
     },
 
     update: function () {
-
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
+		//Movement
+        if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+			if(this.xspeed > -6){
+				this.xspeed -= this.xspeed/
+			}else{
+				this.xspeed = -6;
+			}
+		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+			if(this.xspeed < 6){
+				this.xspeed += this.xspeed/
+			}else{
+				this.xspeed = 6;
+			}
+		}else{
+			this.speed = this.speed/10;
+		}
+		
+		//Shooting
+		if(this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
+			this.yspeed = 4;
+		}
+		this.player.x += this.xspeed;
     },
-
-    quitGame: function (pointer) {
-
-        //  Here you should destroy anything you no longer need.
-        //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
-        //  Then let's go back to the main menu.
-        this.state.start('MainMenu');
-
-    }
 
 };
