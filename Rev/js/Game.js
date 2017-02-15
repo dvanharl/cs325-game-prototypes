@@ -85,6 +85,9 @@ BasicGame.Game.prototype = {
 			this.bullet = this.add.sprite(this.player.x, 420,'bullet');
 			this.bullet.x += (16 * (this.player.scale.x/2));
 		}
+		if(this.bullet != null){
+			this.bullet.x += (16 * (this.player.scale.x/2));
+		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && this.canJump){//Jumping
 			this.yspeed = -15;
