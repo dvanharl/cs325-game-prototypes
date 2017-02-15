@@ -48,7 +48,7 @@ BasicGame.Game.prototype = {
 		//Movement
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
 			this.player.animations.play('walk');
-			this.player.scale.setTo(1);
+			this.player.scale.x.setTo(2);
 			if(this.xspeed > -8){
 				this.xspeed -= .8;
 			}else{
@@ -56,7 +56,7 @@ BasicGame.Game.prototype = {
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
 			this.player.animations.play('walk');
-			this.player.scale.setTo(-1);
+			this.player.scale.x.setTo(-2);
 			if(this.xspeed < 8){
 				this.xspeed += .8;
 			}else{
