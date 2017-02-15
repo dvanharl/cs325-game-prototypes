@@ -29,9 +29,8 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
 
     create: function () {
+		this.worldMap = this.add.sprite(0,0,"worldMap");
 		this.world.setBounds(0,0,2000,600);
-		
-		this.worldMap = this.add.sprite(0,0,"background");
 		
 		this.player = this.add.sprite(1000,220, "player");
 		this.player.anchor.setTo(.5,.5);
