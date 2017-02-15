@@ -101,7 +101,7 @@ BasicGame.Game.prototype = {
 			this.bullet.animations.play('go',22,true);
 			this.bullet.x += (20 * this.bullSpeed);
 			this.bullet.scale.x = -1 * this.bullSpeed;
-			if(this.bullet.x < 0 || this.bullet.x > 2560){
+			if(this.bullet.x < (this.bullX - 435) || this.bullet.x >(this.bullX + 435)){
 				this.bullet.kill();
 				this.canShoot = true;
 			}
