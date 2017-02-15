@@ -32,6 +32,8 @@ BasicGame.Game = function (game) {
 	this.canShoot = true;
 	this.bullet = null;
 	this.bullSped = 0;
+	this.bullX = 0;
+	this.bullY = 0;
 };
 
 BasicGame.Game.prototype = {
@@ -86,10 +88,13 @@ BasicGame.Game.prototype = {
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){//Shooting
-		this.canShoot = false;
+			this.canShoot = false;
 			this.bullSpeed = this.player.scale.x / -2;
+			this.bullY = this.player.y;
+			this.bullX = this.player.x;
 			this.player.animations.play('shoot');
-			this.bullet.x = this.player.x;
+			this.bullet.x = this.bullX;
+			this.bullet.y = this.bullY
 			this.bullet.revive();
 		}
 		if(this.bullet.alive){
