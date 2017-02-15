@@ -43,20 +43,20 @@ BasicGame.Game.prototype = {
 		//Movement
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			this.player.scale.setTo(-1);
-			if(this.xspeed > -6){
-				this.xspeed -= .5;
+			if(this.xspeed > -8){
+				this.xspeed -= .8;
 			}else{
-				this.xspeed = -6;
+				this.xspeed = -8;
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 			this.player.scale.setTo(1);
-			if(this.xspeed < 6){
-				this.xspeed += .5;
+			if(this.xspeed < 8){
+				this.xspeed += .8;
 			}else{
-				this.xspeed = 6;
+				this.xspeed = 8;
 			}
 		}else{
-			this.xspeed = 0;
+			this.xspeed = this.xspeed/4;
 		}
 		
 		//Shooting
