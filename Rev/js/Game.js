@@ -56,18 +56,22 @@ BasicGame.Game.prototype = {
 				this.xspeed = 8;
 			}
 		}else{
-			if(this.xspeed < 0){
-				this.xspeed += 1.6;
-			}else if(this.xspeed > 0){
-				this.xspeed -= 1.6;
-			}
+			this.xspeed = xspeed/1.5;
 		}
 		
 		//Shooting
-		if(this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
-			
+		if(this.input.keyboard.isDown(Phaser.Keyboard.C)){
+			this.yspeed = -30;
+		}
+		if(this.player.y < 450){
+			this.yspeed += 9.8;
+		}else{
+			this.yspeed = 0;
+			this.player.y = 450;
 		}
 		this.player.x += this.xspeed;
+		this.player.y += this.yspeed;
+		
     },
 
 };
