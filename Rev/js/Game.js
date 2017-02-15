@@ -28,7 +28,8 @@ BasicGame.Game = function (game) {
 	this.score = null;
 	this.xspeed = 0;
 	this.yspeed = 0;
-	this.canJump = false;
+	this.canJump = true;
+	this.canShoot = true;
 	this.bullet = null;
 };
 
@@ -83,14 +84,17 @@ BasicGame.Game.prototype = {
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){//Shooting
+		this.canShoot = false;
+			this.bullSpeed = this.player.scale.x / -2;
 			this.player.animations.play('shoot');
 			this.bullet.x = this.player.x;
 			this.bullet.revive();
 		}
 		if(this.bullet.alive){
-			this.bullet.x += (24 * (this.player.scale.x/-2));
+			this.bullet.x += (24 * this.bullSpeed);
 			if(bullet.x < 0 || bullet.x > 2560){
 				this.bullet.kill();
+				this.canShoot = true;
 			}
 		}
 		
