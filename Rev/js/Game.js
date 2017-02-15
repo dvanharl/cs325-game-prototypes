@@ -80,7 +80,7 @@ BasicGame.Game.prototype = {
 			this.yspeed = +10;
 		}
 		
-		if(this.player.y < 450){//Falling
+		if(this.player.y > 450){//Falling
 			this.yspeed -= .5;
 		}else{
 			this.yspeed = 0;
