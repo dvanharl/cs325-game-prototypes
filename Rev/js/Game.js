@@ -43,24 +43,26 @@ BasicGame.Game.prototype = {
     update: function () {
 		//Movement
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+			this.player.scale = -1;
 			if(this.xspeed > -6){
-				this.xspeed -= this.xspeed/
+				this.xspeed -= .5;
 			}else{
 				this.xspeed = -6;
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+			this.player.scale = 1;
 			if(this.xspeed < 6){
-				this.xspeed += this.xspeed/
+				this.xspeed += .5;
 			}else{
 				this.xspeed = 6;
 			}
 		}else{
-			this.speed = this.speed/10;
+			this.speed = this.speed/3;
 		}
 		
 		//Shooting
 		if(this.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)){
-			this.yspeed = 4;
+			
 		}
 		this.player.x += this.xspeed;
     },
