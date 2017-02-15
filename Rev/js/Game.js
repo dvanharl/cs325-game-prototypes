@@ -30,7 +30,7 @@ BasicGame.Game.prototype = {
 
     create: function () {
 		this.worldMap = this.add.sprite(0,0,"worldMap");
-		this.world.setBounds(0,0,2000,600);
+		this.world.setBounds(0,0,2560,600);
 		
 		this.player = this.add.sprite(1000,450, "player");
 		this.player.anchor.setTo(.5,.5);
@@ -41,34 +41,39 @@ BasicGame.Game.prototype = {
 
     update: function () {
 		//Movement
-        if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+        if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
 			this.player.scale.setTo(-1);
 			if(this.xspeed > -8){
 				this.xspeed -= .8;
 			}else{
 				this.xspeed = -8;
 			}
-		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
 			this.player.scale.setTo(1);
 			if(this.xspeed < 8){
 				this.xspeed += .8;
 			}else{
 				this.xspeed = 8;
 			}
-		}else{
+		}else{ //Idle
 			this.xspeed = this.xspeed/1.5;
 		}
 		
-		//Shooting
-		if(this.input.keyboard.isDown(Phaser.Keyboard.X)){
+		if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){//Shooting
+		}
+		
+		if(this.input.keyboard.isDown(Phaser.Keyboard.X)){//Jumping
 			this.yspeed = -30;
 		}
-		if(this.player.y < 450){
+		
+		if(this.player.y < 450){//Falling
 			this.yspeed += 9.8;
 		}else{
 			this.yspeed = 0;
 			this.player.y = 450;
 		}
+		
+		//Update Position
 		this.player.x += this.xspeed;
 		this.player.y += this.yspeed;
 		
