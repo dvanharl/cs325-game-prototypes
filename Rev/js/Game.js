@@ -29,6 +29,7 @@ BasicGame.Game = function (game) {
 	this.xspeed = 0;
 	this.yspeed = 0;
 	this.canJump = false;
+	this.bullet = null;
 };
 
 BasicGame.Game.prototype = {
@@ -42,10 +43,12 @@ BasicGame.Game.prototype = {
 		this.player.scale.setTo(2);
 		this.camera.follow(this.player);
 		
+		//Player Parameters
+		
 		//Player Animation Manager
 		this.player.animations.add('idle',[0,1,2,3,4,5], 9, true, true);
 		this.player.animations.add('walk',[5,6,7,8,9,10,11,12],18,true, true);
-		this.player.animations.add('shoot',[13,14,15,16,17,18],30,true,true);
+		this.player.animations.add('shoot',[13,14,15,16,17,18],30,false,true);
 		
 		
     },
@@ -79,6 +82,8 @@ BasicGame.Game.prototype = {
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){//Shooting
 			this.player.animations.play('shoot');
+			this.bullet = this.add.sprite(this.player.x, 420,'bullet');
+			this.bullet.x += (16 * (this.player.scale.x/2));
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && this.canJump){//Jumping
