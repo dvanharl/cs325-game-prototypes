@@ -48,11 +48,12 @@ BasicGame.Game.prototype = {
 		this.camera.follow(this.player);
 		
 		//Player Parameters
+		this.player.health = 5;
 		
 		//Player Animation Manager
 		this.player.animations.add('idle',[0,1,2,3,4,5], 9, true, true);
 		this.player.animations.add('walk',[5,6,7,8,9,10,11,12],18,true, true);
-		this.player.animations.add('shoot',[13,14,15,16,17],30,false,true);
+		this.player.animations.add('shoot',[13,14,15,16,17,18,19],30,false,true);
 		
 		this.bullet = this.add.sprite(this.player.x, this.player.y,'bullet');
 		this.bullet.animations.add('go');
@@ -97,7 +98,7 @@ BasicGame.Game.prototype = {
 			this.bullet.y = this.bullY
 			this.bullet.revive();
 		}
-		if(this.bullet.alive){
+		if(this.bullet.alive){//Bullet Movement
 			this.bullet.animations.play('go',22,true);
 			this.bullet.x += (20 * this.bullSpeed);
 			this.bullet.scale.x = -1 * this.bullSpeed;
