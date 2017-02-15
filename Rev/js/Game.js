@@ -57,9 +57,9 @@ BasicGame.Game.prototype = {
 			}
 		}else{
 			if(this.xspeed < 0){
-				this.xspeed += 1.25;
+				this.xspeed += 1.6;
 			}else if(this.xspeed > 0){
-				this.xspeed -= 1.25;
+				this.xspeed -= 1.6;
 			}
 		}
 		
