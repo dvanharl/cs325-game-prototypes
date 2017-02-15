@@ -59,7 +59,7 @@ BasicGame.Game.prototype = {
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
 			this.player.animations.play('walk');
-			if(player.scale.x > 0){
+			if(this.player.scale.x > 0){
 				this.player.scale.x *= -1;
 			}
 			this.player.scale.x.setTo(-2);
