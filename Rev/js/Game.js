@@ -38,7 +38,7 @@ BasicGame.Game.prototype = {
 		this.camera.follow(this.player);
 		
 		//Player Animation Manager
-		this.player.animations.add('idle',[0,1,2,3,4,5], 18, true, true);
+		this.player.animations.add('idle',[0,1,2,3,4,5], 9, true, true);
 		this.player.animations.add('walk',[5,6,7,8,9,10,11,12],18,true, true);
 		this.player.animations.add('shoot',[13,14,15,16,17,18],30,false,true);
 		
