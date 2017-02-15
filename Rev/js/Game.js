@@ -31,6 +31,7 @@ BasicGame.Game = function (game) {
 	this.canJump = true;
 	this.canShoot = true;
 	this.bullet = null;
+	this.bullSped = 0;
 };
 
 BasicGame.Game.prototype = {
@@ -93,8 +94,8 @@ BasicGame.Game.prototype = {
 		}
 		if(this.bullet.alive){
 			this.bullet.animations.play('go',22,true);
-			this.bullet.x += (24 * this.bullSpeed);
-			this.bullet.scale.x = this.bullSpeed;
+			this.bullet.x += (20 * this.bullSpeed);
+			this.bullet.scale.x = -1 * this.bullSpeed;
 			if(this.bullet.x < 0 || this.bullet.x > 2560){
 				this.bullet.kill();
 				this.canShoot = true;
