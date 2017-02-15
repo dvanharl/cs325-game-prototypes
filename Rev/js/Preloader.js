@@ -30,7 +30,7 @@ BasicGame.Preloader.prototype = {
 		//	+ lots of other required assets here
         this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.image('worldMap','assets/Background.JPG');
-		this.load.image('player','assets/Fire.png');
+		this.load.spritesheet('player','assets/Fire.png', 25, 25, 9);
 	},
 
 	create: function () {
