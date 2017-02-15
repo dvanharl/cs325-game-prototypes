@@ -56,7 +56,7 @@ BasicGame.Game.prototype = {
 				this.xspeed = 6;
 			}
 		}else{
-			this.xspeed -= 1;
+			this.xspeed = 0;
 		}
 		
 		//Shooting
