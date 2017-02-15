@@ -42,21 +42,21 @@ BasicGame.Game.prototype = {
     update: function () {
 		//Movement
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
-			this.player.scale = -1;
+			this.player.scale.setTo(-1);
 			if(this.xspeed > -6){
 				this.xspeed -= .5;
 			}else{
 				this.xspeed = -6;
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-			this.player.scale = 1;
+			this.player.scale.setTo(1);
 			if(this.xspeed < 6){
 				this.xspeed += .5;
 			}else{
 				this.xspeed = 6;
 			}
 		}else{
-			this.speed = this.speed/3;
+			this.xspeed -= 1;
 		}
 		
 		//Shooting
