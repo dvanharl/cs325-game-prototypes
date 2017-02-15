@@ -1,4 +1,8 @@
-
+window.addEventListener("keydown", function(e){
+	if([32,37,38,39,40].indexOf(e.keyCode) > -1) {
+		e.preventDefault();
+	}
+},false);
 BasicGame.Game = function (game) {
 
     //  When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
@@ -83,7 +87,7 @@ BasicGame.Game.prototype = {
 		}
 		
 		if(this.player.y < 420){//Falling
-			this.yspeed += .8;
+			this.yspeed += 1;
 		}
 		if(this.player.y >=420){
 			this.player.y = 420;
