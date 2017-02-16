@@ -42,7 +42,15 @@ BasicGame.Preloader.prototype = {
 		this.load.image('whiteScreen','assets/whitescreen.png');
 		this.load.image('gameOver','assets/gameover.png');
 		this.load.image('win','assets/win.png');
-		this.load.image('fog','assets/fog.png');
+		this.load.image('fog1','assets/fog1.png');
+		this.load.image('fog2','assets/fog2.png');
+		this.load.image('fog3','assets/fog3.png');
+		this.load.image('fog4','assets/fog4.png');
+		this.load.image('fog5','assets/fog5.png');
+		this.load.image('fog6','assets/fog6.png');
+		this.load.image('back1','assets/background1.png');
+		this.load.image('back2','assets/background2.png');
+		this.load.image('back3','assets/back.png');
 		this.load.spritesheet('player','assets/player.png', 100, 100, 19);
 		this.load.spritesheet('bullet','assets/bullet.png', 70, 30, 9);
 		this.load.spritesheet('enemy','assets/enemy.png',40,40,8);

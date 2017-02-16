@@ -53,7 +53,15 @@ BasicGame.Game = function (game) {
 	this.jump = null;
 	this.loadd = null;
 	
-	this.fog = null;
+	this.fog1 = null;
+	this.fog2 = null;
+	this.fog3 = null;
+	this.fog4 = null;
+	this.fog5 = null;
+	this.fog6 = null;
+	
+	this.back1 = null;
+	this.back2 = null;
 };
 
 BasicGame.Game.prototype = {
@@ -67,6 +75,10 @@ BasicGame.Game.prototype = {
 		this.die = this.add.audio('die');
 		this.jump = this.add.audio('jump');
 		this.loadd = this.add.audio('load');
+		
+		this.add.sprite(0,0,'back');
+		this.back2 = this.add.sprite(0,0,'back2');
+		this.back1 = this.add.sprite(0,0,'back1');
 		
 		this.worldMap = this.add.sprite(0,0,"worldMap");
 		this.world.setBounds(0,0,2560,600);
@@ -108,7 +120,12 @@ BasicGame.Game.prototype = {
 		},this);
 		
 		//Front Stuff
-		this.fog = this.add.sprite(0,0,'fog');
+		this.fog1 = this.add.sprite(0,0,'fog');
+		this.fog2 = this.add.sprite(0,0,'fog');
+		this.fog3 = this.add.sprite(0,0,'fog');
+		this.fog4 = this.add.sprite(0,0,'fog');
+		this.fog5 = this.add.sprite(0,0,'fog');
+		this.fog6 = this.add.sprite(0,0,'fog');
     },
 	
 //UPDATE
