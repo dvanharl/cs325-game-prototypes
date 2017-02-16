@@ -216,7 +216,7 @@ BasicGame.Game.prototype = {
 					this.music.stop();
 					this.score = this.kills;
 					this.kills = 0;
-					this.enemies.destroy();
+					this.enemies = null;
 					this.enemies = this.add.group();
 					this.state.start('GameOver',true,false,this.score,false);
 				}
