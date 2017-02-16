@@ -184,8 +184,10 @@ BasicGame.Game.prototype = {
 		}
 		
 		this.sun.y -= .22;
-		this.back2.x += this.xspeed/4;
-		this.back1.x += this.xspeed/2;
+		if(this.player.x > 0 || this.player.x < 2560){ 
+			this.back2.x += this.xspeed/5;
+			this.back1.x += this.xspeed/3;
+		}
 		
 		//MOVEMENT
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
