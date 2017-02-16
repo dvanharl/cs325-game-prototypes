@@ -82,13 +82,14 @@ BasicGame.Game.prototype = {
 		
 		//Background
 		//this.back = this.add.sprite(0,0,'back');
+		this.world.setBounds(0,0,2560,600);
 		this.sun = this.add.sprite(0,0,'sprite');
 		this.back2 = this.add.sprite(0,0,'back2');
 		this.back1 = this.add.sprite(0,0,'back1');
 		
 		
 		this.worldMap = this.add.sprite(0,0,"worldMap");
-		this.world.setBounds(0,0,2560,600);
+		
 		
 		this.player = this.add.sprite(1000,420, "player");
 		this.player.anchor.setTo(.5,.5);
