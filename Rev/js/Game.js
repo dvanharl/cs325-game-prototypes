@@ -132,12 +132,12 @@ BasicGame.Game.prototype = {
 			this.back.tint = 0xff9999;
 		},this);
 		this.time.events.add(60000, function() {
-			this.maxEnemy = 8;
+			this.maxEnemy = 7;
 			this.back.tint = 0xffff66;
 			this.back2.tint = 0xff9999;
 		},this);
 		this.time.events.add(80000, function() {
-			this.maxEnemy = 13;
+			this.maxEnemy = 10;
 			this.back.tint = 0xccffff;
 			this.back2.tint = 0xffff66;
 			this.back1.tint = 0xff9999;
