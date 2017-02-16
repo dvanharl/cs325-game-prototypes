@@ -211,4 +211,8 @@ BasicGame.Game.prototype = {
 		this.enemies.children[(this.enemies.children.length - 1)].scale.setTo(3);
 		this.enemies.children[(this.enemies.children.length - 1)].animations.add('walk');
 	},
+	
+	render: function(){
+		game.debug.text("Health: " + this.HP, 32, 32);
+		game.debug.text("Time Remaining: " + (90 - this.clock.elapsed),32,64);
 };
