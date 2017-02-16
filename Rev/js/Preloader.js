@@ -37,6 +37,7 @@ BasicGame.Preloader.prototype = {
         this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.image('worldMap','assets/forestmap.png');
 		this.load.image('blackScreen','assets/blackscreen.png');
+		this.load.image('whiteScreen','assets/whitescreen.png');
 		this.load.spritesheet('player','assets/player.png', 100, 100, 19);
 		this.load.spritesheet('bullet','assets/bullet.png', 70, 30, 9);
 		this.load.spritesheet('enemy','assets/enemy.png',40,40,8);

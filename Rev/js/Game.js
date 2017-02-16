@@ -44,6 +44,7 @@ BasicGame.Game = function (game) {
 	this.maxEnemy = 3;
 	this.HP = 5;
 	this.kills = 0;
+	this.score = 0;
 	
 	this.music = null;
 	this.hit = null;
@@ -88,6 +89,12 @@ BasicGame.Game.prototype = {
 		
 		//Enemies
 		this.enemies = this.add.group();
+		
+		this.time.events.add(90000,function() {
+			this.score = this.kills;
+			this.kills = 0;
+			this.state.start('GameOver',this.score,true);
+		},this);
     },
 	
 //UPDATE
@@ -192,13 +199,15 @@ BasicGame.Game.prototype = {
 			}
 			
 			//Player Collision
-			if((this.enemies.children[i].x > this.player.x - 100 && this.enemies.children[i].x < this.player.x + 100) && (this.player.y >= 420)&& !this.invincible){
+			if((this.enemies.children[i].x > this.player.x - 50 && this.enemies.children[i].x < this.player.x + 50) && (this.player.y >= 420)&& !this.invincible){
 				this.hit.play();
 				this.HP -= 1;
 				if(this.HP == 0){
 					this.HP = 5;
 					this.music.stop();
-					this.state.start('MainMenu');
+					this.score = this.kills;
+					this.kills = 0;
+					this.state.start('GameOver',this.score,false);
 				}
 				//Invincibility Frames
 				this.invincible = true;
