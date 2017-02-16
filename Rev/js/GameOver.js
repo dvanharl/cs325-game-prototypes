@@ -28,18 +28,18 @@ BasicGame.GameOver.prototype = {
 			this.gameOverBack = this.game.add.sprite(0,0,'win');
 			this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
 			this.music = this.add.audio('win');
-			this.message = this.add.text(400,100, "CONGRATULATIONS", this.titleStyle);
+			this.message = this.add.text(400,25, "CONGRATULATIONS", this.titleStyle);
 		}else{
 			//Game Over - Lose Screen
 			this.gameOverBack = this.game.add.sprite(0,0,'gameOver');
 			this.retryButton = this.add.button( 303, 400, 'playButton', this.retryGame, this, 'over', 'out', 'down');
 			this.music = this.add.audio('gameover');
-			this.message = this.add.text(400,100, "GAME OVER", this.titleStyle);
+			this.message = this.add.text(400,25, "GAME OVER", this.titleStyle);
 		}
 		this.message.anchor.setTo(0.5,0.5);
 		this.music.play();
 		this.style = { font: "25px", fill: "#ff0000", align: "center" };
-		this.words = this.add.text (400, 200, "Kills: " + this.endScore, this.style);
+		this.words = this.add.text (400, 550, "Kills: " + this.endScore, this.style);
 		this.words.anchor.setTo(0.5,0.5);
 		this.whiteScreen = this.game.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 1500,0,false);
