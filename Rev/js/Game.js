@@ -182,7 +182,6 @@ BasicGame.Game.prototype = {
 		if(this.fog6.x == 2560){
 			this.fog6.x = -600;
 		}
-		this.world.wrap(this.player,100,true);
 		
 		this.sun.y -= .22;
 		this.back2.x += this.xspeed/4;
@@ -325,7 +324,13 @@ BasicGame.Game.prototype = {
 		}
 		
 		//Update Position
+		
 		this.player.x += this.xspeed;
+		if(this.player.x < 0){
+			this.player.x = 0;
+		}else if(this.player.x > 2560){
+			this.player.x = 2560;
+		}
 		this.player.y += this.yspeed;
 		
     },
