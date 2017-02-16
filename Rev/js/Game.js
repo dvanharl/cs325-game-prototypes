@@ -181,8 +181,7 @@ BasicGame.Game.prototype = {
 			}
 			//Bullet Collision
 			if(this.bullet.x == this.enemies.children[i].x){
-				this.dead = this.enemies.remove(this.enemies.children[i]);
-				this.dead.destroy();
+				this.dead = this.enemies.remove(this.enemies.children[i], true);
 				this.bullet.kill();
 			}
 		}
@@ -196,5 +195,6 @@ BasicGame.Game.prototype = {
 //SPAWN ENEMY
 	spawnEnemy: function() {
 		this.enemies.create((this.player.x + (462.5 * this.rnd.sign())),420,'enemy');
+		this.enemies.children[(this.enemies.children.length - 1)].animations.add('walk');
 	},
 };
