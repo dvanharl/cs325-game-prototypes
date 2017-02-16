@@ -26,10 +26,11 @@ BasicGame.Preloader.prototype = {
 		//	As this is just a Project Template I've not provided these assets, swap them for your own.
 		this.load.image('titlePage', 'assets/title.jpg');
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
-		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
+		this.load.audio('titleMusic', ['assets/title.mp3']);
 		//	+ lots of other required assets here
         this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.image('worldMap','assets/forestmap.png');
+		thsi.load.image('blackScreen','assets/blackscreen.png');
 		this.load.spritesheet('player','assets/player.png', 100, 100, 19);
 		this.load.spritesheet('bullet','assets/bullet.png', 70, 30, 9);
 	},

@@ -68,11 +68,11 @@ BasicGame.Game.prototype = {
     update: function () {
 		//Movement
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
-			this.player.animations.play('walk');
 			if(this.player.scale.x < 0){
 				this.player.scale.x *= -1;
 			}
 			if(this.canMove){
+				this.player.animations.play('walk');
 				if(this.xspeed > -8){
 					this.xspeed -= .8;
 				}else{
@@ -80,11 +80,11 @@ BasicGame.Game.prototype = {
 				}
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
-			this.player.animations.play('walk');
 			if(this.player.scale.x > 0){
 				this.player.scale.x *= -1;
 			}
 			if(this.canMove){
+				this.player.animations.play('walk');
 				if(this.xspeed < 8){
 					this.xspeed += .8;
 				}else{
