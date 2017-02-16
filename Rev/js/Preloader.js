@@ -27,6 +27,10 @@ BasicGame.Preloader.prototype = {
 		this.load.image('titlePage', 'assets/title.jpg');
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		this.load.audio('titleMusic', ['assets/title.mp3']);
+		this.load.audio('shoot',['assets/shoot.mp3']);
+		this.load.audio('hit',['assets/hit.mp3']);
+		this.load.audio('die',['assets/die.mp3']);
+		this.load.audio('jump',['assets/jump.mp3']);
 		//	+ lots of other required assets here
         this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.image('worldMap','assets/forestmap.png');

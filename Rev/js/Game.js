@@ -44,11 +44,24 @@ BasicGame.Game = function (game) {
 	this.maxEnemy = 3;
 	this.HP = 5;
 	this.kills = 0;
+	
+	this.music = null;
+	this.hit = null;
+	this.shoot = null;
+	this.die = null;
+	this.jump = null;
 };
 
 BasicGame.Game.prototype = {
 //CREATE
     create: function () {
+		//AUDIO
+		this.music = this.add.audio('titleMusic');
+		this.hit = this.add.audio('hit');
+		this.shoot = this.add.audio('shoot');
+		this.die = this.add.audio('die');
+		this.jump = this.add.audio('jump');
+		
 		this.worldMap = this.add.sprite(0,0,"worldMap");
 		this.world.setBounds(0,0,2560,600);
 		
@@ -112,7 +125,8 @@ BasicGame.Game.prototype = {
 			this.xspeed = this.xspeed/1.5;
 		}
 		//SHOOTING
-		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){
+		if(this.input.keyboard.isDown(Phaser.Keyboard.X) && this.canShoot){
+			this.shoot.play();
 			this.canMove = false;
 			this.canShoot = false;
 			this.shootAnim.play('shoot');
@@ -138,7 +152,8 @@ BasicGame.Game.prototype = {
 		}
 		
 		//JUMPING
-		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && this.canJump){
+		if(this.input.keyboard.isDown(Phaser.Keyboard.Z) && this.canJump){
+			this.jump.play();
 			this.yspeed = -15;
 			this.canJump = false;
 		}
@@ -173,11 +188,12 @@ BasicGame.Game.prototype = {
 			}
 			
 			//Player Collision
-			if((this.enemies.children[i].x > this.player.x - 100 && this.enemies.children[i].x < this.player.x + 100) && ((this.enemies.children[i].y > this.player.y - 100 && this.enemies.children[i].y < this.player.y + 100))&& !this.invincible){
+			if((this.enemies.children[i].x > this.player.x - 100 && this.enemies.children[i].x < this.player.x + 100) && ((this.enemies.children[i].y > this.player.y - 70 && this.enemies.children[i].y < this.player.y + 70))&& !this.invincible){
+				this.hit.play();
 				this.HP -= 1;
 				if(this.HP == 0){
 					this.HP = 5;
-					this.enemies.destroy();
+					
 					this.state.start('MainMenu');
 				}
 				//Invincibility Frames
@@ -191,6 +207,7 @@ BasicGame.Game.prototype = {
 			//Bullet Collision
 			if((this.bullet.x < this.enemies.children[i].x + 62.5 && this.bullet.x > this.enemies.children[i].x - 62.5) && this.bullet.alive){
 				this.dead = this.enemies.remove(this.enemies.children[i], true);
+				this.die.play();
 				this.bullet.kill();
 				this.canShoot = true;
 				this.kills += 1;
@@ -214,6 +231,6 @@ BasicGame.Game.prototype = {
 	
 	render: function(){
 		this.game.debug.text("Health: " + this.HP, 32, 32);
-		this.game.debug.text("Time Remaining: " + (90 - this.time.elapsed),32,64);
+		this.game.debug.text("Time Remaining: " + (90 - this.time.now),32,64);
 	},
 };
