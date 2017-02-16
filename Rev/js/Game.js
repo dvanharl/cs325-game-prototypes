@@ -38,10 +38,15 @@ BasicGame.Game = function (game) {
 	this.bullX = 0;
 	this.bullY = 0;
 	this.shootAnim = null;
+	this.enemies = null;
+	this.invincible = false;
+	this.numEnemy = 0;
+	this.maxEnemy = 3;
+	this.HP = 0;
 };
 
 BasicGame.Game.prototype = {
-
+//CREATE
     create: function () {
 		this.worldMap = this.add.sprite(0,0,"worldMap");
 		this.world.setBounds(0,0,2560,600);
@@ -63,10 +68,14 @@ BasicGame.Game.prototype = {
 		this.bullet.animations.add('go');
 		this.bullet.anchor.setTo(.5,.5);
 		this.bullet.kill();
+		
+		//Enemies
+		this.enemies = this.add.group();
     },
-
+	
+//UPDATE
     update: function () {
-		//Movement
+		//MOVEMENT
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
 			if(this.player.scale.x < 0){
 				this.player.scale.x *= -1;
@@ -101,8 +110,8 @@ BasicGame.Game.prototype = {
 			}
 			this.xspeed = this.xspeed/1.5;
 		}
-		
-		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){//Shooting
+		//SHOOTING
+		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){
 			this.canMove = false;
 			this.canShoot = false;
 			this.shootAnim.play('shoot');
@@ -127,11 +136,12 @@ BasicGame.Game.prototype = {
 			}
 		}
 		
-		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && this.canJump){//Jumping
+		//JUMPING
+		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && this.canJump
 			this.yspeed = -15;
 			this.canJump = false;
 		}
-		
+		//FALLING
 		if(this.player.y < 420){//Falling
 			this.yspeed += 1;
 		}
@@ -139,6 +149,42 @@ BasicGame.Game.prototype = {
 			this.player.y = 420;
 			this.canJump = true;
 		}
+		//SPAWN ENEMIES
+		if(this.numEnemy < this.maxEnemy){
+			this.time.events.add(this.rnd.integerInRange(2000,4000),function() {
+				this.spawnEnemy()
+			},this);
+		}
+		//UPDATE ENEMIES
+		for(var i = this.enemies.children.length - 1; i >= 0 ; i--){
+			//Movement
+			if(this.enemies.children[i].x < this.player.x){
+				this.enemies.children[i].x += 2.5;
+			}else{
+				this.enemies.children[i].x += -2.5;
+			}
+			
+			//Player Collision
+			if(this.enemies.children[i].x == this.player.x && !this.invincible){
+				this.HP -= 1;
+				if(this.HP == 0){
+					this.HP = 5;
+					this.state.start('MainMenu');
+				}
+				//Invincibility Frames
+				this.invincible = true;
+				this.player.tint = 0xff0000;
+				this.time.events.add(2000,function(){
+					this.invincible = false;
+					this.player.tint = 0;
+				},this);
+			}
+			//Bullet Collision
+			if(this.bullet.x == this.enemies.children[i].x){
+				this.dead = this.enemies.remove(this.enemies.children[i]);
+				this.dead.destroy();
+				this.bullet.kill();
+			}
 		
 		//Update Position
 		this.player.x += this.xspeed;
@@ -146,4 +192,8 @@ BasicGame.Game.prototype = {
 		
     },
 
+//SPAWN ENEMY
+	spawnEnemy: function() {
+		this.enemies.create((this.player.x + (462.5 * this.rnd.sign())),420,'enemy');
+	},
 };

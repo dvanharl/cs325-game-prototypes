@@ -33,6 +33,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('blackScreen','assets/blackscreen.png');
 		this.load.spritesheet('player','assets/player.png', 100, 100, 19);
 		this.load.spritesheet('bullet','assets/bullet.png', 70, 30, 9);
+		this.load.spritesheet('enemy','assets/enemy.png',125,125,9);
 	},
 
 	create: function () {
