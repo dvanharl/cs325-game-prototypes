@@ -62,6 +62,7 @@ BasicGame.Game = function (game) {
 	
 	this.back1 = null;
 	this.back2 = null;
+	this.back = null;
 };
 
 BasicGame.Game.prototype = {
@@ -76,7 +77,8 @@ BasicGame.Game.prototype = {
 		this.jump = this.add.audio('jump');
 		this.loadd = this.add.audio('load');
 		
-		this.add.sprite(0,0,'back');
+		//Background
+		this.back = this.add.sprite(0,0,'back');
 		this.back2 = this.add.sprite(0,0,'back2');
 		this.back1 = this.add.sprite(0,0,'back1');
 		
@@ -133,7 +135,7 @@ BasicGame.Game.prototype = {
 		//Background
 		//this.fog.x += .5;
 		//this.world.wrap(this.fog,0,true);
-		this.world.wrap(this.player,0,true);
+		this.world.wrap(this.player,100,true);
 		
 		this.back2.x += this.xSpeed/4;
 		this.back1.x += this.xSpeed/2;
