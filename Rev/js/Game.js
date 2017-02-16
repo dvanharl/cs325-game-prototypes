@@ -167,7 +167,7 @@ BasicGame.Game.prototype = {
 			}
 			
 			//Player Collision
-			if(this.enemies.children[i].x == this.player.x && !this.invincible){
+			if((this.enemies.children[i].x > this.player.x - 100 && this.enemies.children[i].x < this.player.x + 100) && !this.invincible){
 				this.HP -= 1;
 				if(this.HP == 0){
 					this.HP = 5;
@@ -182,7 +182,7 @@ BasicGame.Game.prototype = {
 				},this);
 			}
 			//Bullet Collision
-			if((this.bullet.x < this.enemies.children[i].x + 62.5 || this.bullet.x > this.enemies.children[i].x - 62.5) && this.bullet.alive){
+			if((this.bullet.x < this.enemies.children[i].x + 62.5 && this.bullet.x > this.enemies.children[i].x - 62.5) && this.bullet.alive){
 				this.dead = this.enemies.remove(this.enemies.children[i], true);
 				this.bullet.kill();
 				this.canShoot = true;
