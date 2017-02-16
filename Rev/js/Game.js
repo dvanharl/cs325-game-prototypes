@@ -66,6 +66,8 @@ BasicGame.Game = function (game) {
 	this.back1 = null;
 	
 	this.blackScreen = null;
+	this.words = null;
+	this.style = null;
 };
 
 BasicGame.Game.prototype = {
@@ -156,6 +158,11 @@ BasicGame.Game.prototype = {
 		
 		this.blackScreen = this.add.sprite(0,0,'blackScreen');
 		this.add.tween(this.blackScreen).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
+		
+		this.style =  { font: "50px Georgia", fill: "0xffffff", align: "center" };
+		this.words = this.add.text(1280,300, "SURVIVE 'TIL DAWN", this.style);
+		this.words.anchor.setTo(0.5,0.5);
+		this.add.tween(this.words).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
     },
 	
 //UPDATE
