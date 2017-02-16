@@ -90,10 +90,19 @@ BasicGame.Game.prototype = {
 		//Enemies
 		this.enemies = this.add.group();
 		
-		this.time.events.add(90000,function() {
+		this.time.events.add(90000, function() {
 			this.score = this.kills;
 			this.kills = 0;
 			this.state.start('GameOver',this.score,true);
+		},this);
+		this.time.events.add(30000, function() {
+			this.maxEnemy = 8;
+		},this);
+		this.time.events.add(60000, function() {
+			this.maxEnemy = 14;
+		},this);
+		this.time.events.add(80000, function() {
+			this.maxEnemy = 20;
 		},this);
     },
 	
