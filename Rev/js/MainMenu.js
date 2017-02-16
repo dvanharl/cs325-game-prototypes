@@ -22,16 +22,16 @@ BasicGame.MainMenu.prototype = {
 	},
 
 	update: function () {
-		if(this.blackscreen.alpha == 1){
-			this.state.start('Game');
-		}
 		//	Do some nice funky main menu effect here
 
 	},
 
 	startGame: function (pointer) {
-		this.music.fadeOut(900);
-		this.add.tween(this.blackscreen).to({alpha:1}, 2000,  Phaser.Easing.Linear.None, true, 0, false, false);
+		this.music.fadeOut(2000);
+		this.add.tween(this.blackscreen).to({alpha:1}, 1400,  Phaser.Easing.Linear.None, true, 0, false, false);
+		this.music.onFadeComplete.add(function() {
+			this.state.start('Game');
+		},this);
 	}
 
 };
