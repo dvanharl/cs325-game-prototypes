@@ -216,7 +216,7 @@ BasicGame.Game.prototype = {
 					this.music.stop();
 					this.score = this.kills;
 					this.kills = 0;
-					this.state.start('GameOver',this.score,false);
+					this.state.start('GameOver',true,false,this.score,false);
 				}
 				//Invincibility Frames
 				this.invincible = true;
@@ -249,7 +249,7 @@ BasicGame.Game.prototype = {
 		this.enemies.children[(this.enemies.children.length - 1)].anchor.setTo(.5,.5);
 		this.enemies.children[(this.enemies.children.length - 1)].scale.setTo(3);
 		this.enemies.children[(this.enemies.children.length - 1)].animations.add('walk');
-		this.enemies.children[(this.enemies.children.length - 1)].animations.play('walk');
+		this.enemies.children[(this.enemies.children.length - 1)].animations.play('walk',22,true,false);
 	},
 	
 	render: function(){
