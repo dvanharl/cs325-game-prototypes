@@ -185,6 +185,7 @@ BasicGame.Game.prototype = {
 				this.dead.destroy();
 				this.bullet.kill();
 			}
+		}
 		
 		//Update Position
 		this.player.x += this.xspeed;
