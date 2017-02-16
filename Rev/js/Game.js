@@ -132,7 +132,7 @@ BasicGame.Game.prototype = {
     update: function () {
 		//Background
 		//this.fog.x += .5;
-		this.world.wrap(this.fog,0,true);
+		//this.world.wrap(this.fog,0,true);
 		this.world.wrap(this.player,0,true);
 		
 		this.back2.x += this.xSpeed/4;
