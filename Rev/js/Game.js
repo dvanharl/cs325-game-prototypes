@@ -83,10 +83,10 @@ BasicGame.Game.prototype = {
 		//Background
 		this.back = this.add.sprite(0,0,'back');
 		this.sun = this.add.sprite(0,0,'sun');
-		this.back2 = this.add.sprite(0,0,'bg2');
+		this.back2 = this.add.sprite(1280,300,'bg2');
 		this.back2.anchor.setTo(.5,.5);
-		this.back1 = this.add.sprite(0,0,'bg1');
-		this.back1.anchor.setTo(1280,300);
+		this.back1 = this.add.sprite(1280,300,'bg1');
+		this.back1.anchor.setTo(.5,.5);
 		
 		
 		this.worldMap = this.add.sprite(0,0,"worldMap");
@@ -186,8 +186,8 @@ BasicGame.Game.prototype = {
 		this.world.wrap(this.player,100,true);
 		
 		this.sun.y -= .22;
-		//this.back2.x += this.xSpeed/4;
-		//this.back1.x += this.xSpeed/2;
+		this.back2.x += this.xSpeed/4;
+		this.back1.x += this.xSpeed/2;
 		
 		//MOVEMENT
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
