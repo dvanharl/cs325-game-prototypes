@@ -58,6 +58,7 @@ BasicGame.Game.prototype = {
     create: function () {
 		//AUDIO
 		this.music = this.add.audio('game');
+		this.music.play();
 		this.hit = this.add.audio('hit');
 		this.shoot = this.add.audio('shoot');
 		this.die = this.add.audio('die');
