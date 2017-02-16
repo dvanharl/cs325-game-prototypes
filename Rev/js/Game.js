@@ -182,7 +182,7 @@ BasicGame.Game.prototype = {
 				},this);
 			}
 			//Bullet Collision
-			if(this.bullet.x < this.enemies.children[i].x + 62.5 || this.bullet.x > this.enemies.children[i].x - 62.5){
+			if((this.bullet.x < this.enemies.children[i].x + 62.5 || this.bullet.x > this.enemies.children[i].x - 62.5) && this.bullet.alive){
 				this.dead = this.enemies.remove(this.enemies.children[i], true);
 				this.bullet.kill();
 				this.canShoot = true;
