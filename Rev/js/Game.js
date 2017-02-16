@@ -101,10 +101,8 @@ BasicGame.Game.prototype = {
 			this.bullY = this.player.y;
 			this.bullX = this.player.x;
 			this.shootAnim.play('shoot');
-			this.shootAnim.onComplete.add(function() {this.canMove = true},this);
-			this.bullet.x = this.bullX;
-			this.bullet.y = this.bullY
-			this.bullet.revive();
+			this.shootAnim.onComplete.add(function() {this.canMove = true, this.bullet.x = this.bullX, this.bullet.y = this.bullY,this.bullet.revive()},this);
+			
 		}
 		if(this.bullet.alive){//Bullet Movement
 			this.bullet.animations.play('go',22,true);
