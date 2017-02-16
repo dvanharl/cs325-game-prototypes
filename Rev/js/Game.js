@@ -96,13 +96,13 @@ BasicGame.Game.prototype = {
 			this.state.start('GameOver',this.score,true);
 		},this);
 		this.time.events.add(30000, function() {
-			this.maxEnemy = 8;
+			this.maxEnemy = 5;
 		},this);
 		this.time.events.add(60000, function() {
-			this.maxEnemy = 14;
+			this.maxEnemy = 8;
 		},this);
 		this.time.events.add(80000, function() {
-			this.maxEnemy = 20;
+			this.maxEnemy = 13;
 		},this);
     },
 	
