@@ -94,8 +94,9 @@ BasicGame.Game.prototype = {
 		}else{ //Idle
 			if(this.canMove){
 				this.player.animations.play('idle');
-			}
-			this.xspeed = this.xspeed/1.5;
+				this.xspeed = this.xspeed/1.5;
+			}else{
+				this.xspeed = this.xpeed/4;
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){//Shooting
