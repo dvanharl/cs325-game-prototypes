@@ -231,6 +231,6 @@ BasicGame.Game.prototype = {
 	
 	render: function(){
 		this.game.debug.text("Health: " + this.HP, 32, 32);
-		this.game.debug.text("Time Remaining: " + (90 - this.time.now),32,64);
+		this.game.debug.text("Time Remaining: " + (9000 - this.time.now),32,64);
 	},
 };
