@@ -133,18 +133,41 @@ BasicGame.Game.prototype = {
 		},this);
 		
 		//Front Stuff
-		this.fog1 = this.add.sprite(0,0,'fog');
-		this.fog2 = this.add.sprite(0,0,'fog');
-		this.fog3 = this.add.sprite(0,0,'fog');
-		this.fog4 = this.add.sprite(0,0,'fog');
-		this.fog5 = this.add.sprite(0,0,'fog');
-		this.fog6 = this.add.sprite(0,0,'fog');
+		this.fog1 = this.add.sprite(0,0,'fog1');
+		this.fog2 = this.add.sprite(0,0,'fog2');
+		this.fog3 = this.add.sprite(0,0,'fog3');
+		this.fog4 = this.add.sprite(0,0,'fog4');
+		this.fog5 = this.add.sprite(0,0,'fog5');
+		this.fog6 = this.add.sprite(0,0,'fog6');
     },
 	
 //UPDATE
     update: function () {
 		//Background
-		//this.fog.x += .5;
+		this.fog1.x += 1;
+		if(this.fox1.x == 640){
+			this.fog1.x = -2560;
+		}
+		this.fog2.x += .75;
+		if(this.fog2.x == 860){
+			this.fog2.x = -2300;
+		}
+		this.fog3.x += .5;
+		if(this.fog3.x == 1400){
+			this.fog3.x = -2260;
+		}
+		this.fog4.x += .1.2;
+		if(this.fog4.x == 1500){
+			this.fog4.x = -1660;
+		}
+		this.fog5.x += .5;
+		if(this.fog5.x == 2560){
+			this.fog5.x = -700;
+		}
+		this.fog6.x += 1;
+		if(this.fog6.x == 2560){
+			this.fog6.x = -600;
+		}
 		//this.world.wrap(this.fog,0,true);
 		this.world.wrap(this.player,100,true);
 		
