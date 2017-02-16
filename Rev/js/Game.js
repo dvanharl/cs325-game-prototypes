@@ -208,7 +208,7 @@ BasicGame.Game.prototype = {
 			}
 			
 			//Player Collision
-			if((this.enemies.children[i].x > this.player.x - 50 && this.enemies.children[i].x < this.player.x + 50) && (this.enemies.children[i].y > this.player.y - 100 && this.enemies.children[i].y < this.player.y + 30) && !this.invincible){
+			if((this.enemies.children[i].x > this.player.x - 50 && this.enemies.children[i].x < this.player.x + 50) && (this.enemies.children[i].y > this.player.y - 100 && this.enemies.children[i].y < this.player.y + 50) && !this.invincible){
 				this.hit.play();
 				this.HP -= 1;
 				if(this.HP == 0){
