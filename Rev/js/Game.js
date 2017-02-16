@@ -213,7 +213,7 @@ BasicGame.Game.prototype = {
 	},
 	
 	render: function(){
-		game.debug.text("Health: " + this.HP, 32, 32);
-		game.debug.text("Time Remaining: " + (90 - this.clock.elapsed),32,64);
+		this.game.debug.text("Health: " + this.HP, 32, 32);
+		this.game.debug.text("Time Remaining: " + (90 - this.clock.elapsed),32,64);
 	},
 };

@@ -18,7 +18,7 @@ BasicGame.MainMenu.prototype = {
 
 		this.playButton = this.add.button( 303, 400, 'playButton', this.startGame, this, 'over', 'out', 'down');
 		this.blackScreen = this.add.sprite(0,0,'blackScreen');
-		this.blackScreen.alpha = 0;
+		this.add.tween(this.blackScreen).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
 	},
 
 	update: function () {
