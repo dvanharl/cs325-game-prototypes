@@ -52,6 +52,8 @@ BasicGame.Game = function (game) {
 	this.die = null;
 	this.jump = null;
 	this.loadd = null;
+	
+	this.fog = null;
 };
 
 BasicGame.Game.prototype = {
@@ -104,10 +106,17 @@ BasicGame.Game.prototype = {
 		this.time.events.add(80000, function() {
 			this.maxEnemy = 13;
 		},this);
+		
+		//Front Stuff
+		this.fog = this.add.sprite(0,0,'fog');
     },
 	
 //UPDATE
     update: function () {
+		//Background
+		this.fog.x += .5;
+		this.world.wrap(this.fog,0,true
+		
 		//MOVEMENT
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
 			if(this.player.scale.x < 0){
@@ -196,12 +205,12 @@ BasicGame.Game.prototype = {
 		for(var i = this.enemies.children.length - 1; i >= 0 ; i--){
 			//Movement
 			if(this.enemies.children[i].x < this.player.x){
-				this.enemies.children[i].x += 3.5;
+				this.enemies.children[i].x += 3;
 				if(this.enemies.children[i].scale.x > 0){
 					this.enemies.children[i].scale.x *= -1;
 				}
 			}else{
-				this.enemies.children[i].x += -3.5;
+				this.enemies.children[i].x += -3;
 				if(this.enemies.children[i].scale.x < 0){
 					this.enemies.children[i].scale.x *= -1;
 				}
