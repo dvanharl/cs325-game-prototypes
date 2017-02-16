@@ -182,12 +182,11 @@ BasicGame.Game.prototype = {
 		if(this.fog6.x == 2560){
 			this.fog6.x = -600;
 		}
-		//this.world.wrap(this.fog,0,true);
 		this.world.wrap(this.player,100,true);
 		
 		this.sun.y -= .22;
-		this.back2.x += this.xSpeed/4;
-		this.back1.x += this.xSpeed/2;
+		//this.back2.x += this.xSpeed/4;
+		//this.back1.x += this.xSpeed/2;
 		
 		//MOVEMENT
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
