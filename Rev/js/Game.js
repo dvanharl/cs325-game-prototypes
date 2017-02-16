@@ -156,7 +156,7 @@ BasicGame.Game.prototype = {
 		if(this.fog3.x == 1400){
 			this.fog3.x = -2260;
 		}
-		this.fog4.x += .1.2;
+		this.fog4.x += 1.2;
 		if(this.fog4.x == 1500){
 			this.fog4.x = -1660;
 		}
