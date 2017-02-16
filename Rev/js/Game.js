@@ -87,7 +87,7 @@ BasicGame.Game.prototype = {
 		this.back1 = this.add.sprite(0,300,'back1');
 		
 		
-		this.worldMap = this.add.sprite(0,0,"worldMap");
+		//this.worldMap = this.add.sprite(0,0,"worldMap");
 		this.world.setBounds(0,0,2560,600);
 		
 		this.player = this.add.sprite(1000,420, "player");
@@ -131,14 +131,14 @@ BasicGame.Game.prototype = {
 		},this);
 		this.time.events.add(60000, function() {
 			this.maxEnemy = 8;
-			this.back.tint = 0xffff66;
-			//this.back2.tint = 0xff9999;
+			//this.back.tint = 0xffff66;
+			this.back2.tint = 0xff9999;
 		},this);
 		this.time.events.add(80000, function() {
 			this.maxEnemy = 13;
-			this.back.tint = 0xccffff;
+			//this.back.tint = 0xccffff;
 			this.back2.tint = 0xffff66;
-			//this.back1.tint = 0xff9999;
+			this.back1.tint = 0xff9999;
 		},this);
 		
 		//Front Stuff
