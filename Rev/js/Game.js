@@ -177,6 +177,7 @@ BasicGame.Game.prototype = {
 				this.HP -= 1;
 				if(this.HP == 0){
 					this.HP = 5;
+					this.enemies.destroy();
 					this.state.start('MainMenu');
 				}
 				//Invincibility Frames
