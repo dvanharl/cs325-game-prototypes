@@ -78,11 +78,11 @@ BasicGame.Game.prototype = {
 		this.music.play();
 		this.hit = this.add.audio('hit');
 		this.shoot = this.add.audio('shoot');
-		this.shoot.volume = .80;
+		this.shoot.volume = .70;
 		this.die = this.add.audio('die');
 		this.die.volume = .80;
 		this.jump = this.add.audio('jump');
-		this.jump.volume = .80;
+		this.jump.volume = .70;
 		this.loadd = this.add.audio('load');
 		
 		//Background
