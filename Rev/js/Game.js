@@ -50,6 +50,7 @@ BasicGame.Game = function (game) {
 	this.shoot = null;
 	this.die = null;
 	this.jump = null;
+	this.loadd = null;
 };
 
 BasicGame.Game.prototype = {
@@ -61,6 +62,7 @@ BasicGame.Game.prototype = {
 		this.shoot = this.add.audio('shoot');
 		this.die = this.add.audio('die');
 		this.jump = this.add.audio('jump');
+		this.loadd = this.add.audio('load');
 		
 		this.worldMap = this.add.sprite(0,0,"worldMap");
 		this.world.setBounds(0,0,2560,600);
@@ -126,11 +128,12 @@ BasicGame.Game.prototype = {
 		}
 		//SHOOTING
 		if(this.input.keyboard.isDown(Phaser.Keyboard.X) && this.canShoot){
-			this.shoot.play();
+			this.loadd.play();
 			this.canMove = false;
 			this.canShoot = false;
 			this.shootAnim.play('shoot');
 			this.shootAnim.onComplete.add(function() {
+				this.shoot.play();
 				this.bullSpeed = this.player.scale.x / -2;
 				this.bullY = this.player.y + 40;
 				this.bullX = this.player.x;
@@ -227,6 +230,7 @@ BasicGame.Game.prototype = {
 		this.enemies.children[(this.enemies.children.length - 1)].anchor.setTo(.5,.5);
 		this.enemies.children[(this.enemies.children.length - 1)].scale.setTo(3);
 		this.enemies.children[(this.enemies.children.length - 1)].animations.add('walk');
+		this.enemies.children[(this.enemies.children.length - 1)].animations.play('walk');
 	},
 	
 	render: function(){
