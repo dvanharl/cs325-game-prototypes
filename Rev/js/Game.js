@@ -162,8 +162,10 @@ BasicGame.Game.prototype = {
 			//Movement
 			if(this.enemies.children[i].x < this.player.x){
 				this.enemies.children[i].x += 2.5;
+				this.enemies.children[i].scale.setTo(-3);
 			}else{
 				this.enemies.children[i].x += -2.5;
+				this.enemies.children[i].scale.setTo(3);
 			}
 			
 			//Player Collision
@@ -200,6 +202,7 @@ BasicGame.Game.prototype = {
 //SPAWN ENEMY
 	spawnEnemy: function() {
 		this.enemies.create((this.player.x + (462.5 * this.rnd.sign())),450,'enemy');
+		if(this.enemies.children[(this.enemies.children.length - 1)].x < this.player.x
 		this.enemies.children[(this.enemies.children.length - 1)].anchor.setTo(.5,.5);
 		this.enemies.children[(this.enemies.children.length - 1)].animations.add('walk');
 	},
