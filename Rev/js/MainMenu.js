@@ -16,13 +16,13 @@ BasicGame.MainMenu.prototype = {
 		this.music.play();
 
 		this.playButton = this.add.button( 303, 400, 'playButton', this.startGame, this, 'over', 'out', 'down');
-		this.blackscreen = this.add.sprite('blackScreen');
+		this.blackscreen = this.add.sprite(0,0,'blackScreen');
 		this.blackscreen.alpha = 0;
 
 	},
 
 	update: function () {
-		if(blackscreen.alpha == 1){
+		if(this.blackscreen.alpha == 1){
 			this.state.start('Game');
 		}
 		//	Do some nice funky main menu effect here
@@ -31,7 +31,7 @@ BasicGame.MainMenu.prototype = {
 
 	startGame: function (pointer) {
 		this.music.fadeOut(900);
-		this.add.tween(this.blackscreen).to({alpha:1}, 1500,  Phaser.Easing.Linear.None, true, 0, false, false);
+		this.add.tween(this.blackscreen).to({alpha:1}, 2000,  Phaser.Easing.Linear.None, true, 0, false, false);
 	}
 
 };
