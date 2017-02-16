@@ -216,8 +216,8 @@ BasicGame.Game.prototype = {
 					this.music.stop();
 					this.score = this.kills;
 					this.kills = 0;
-					this.enemies = null;
-					this.enemies = this.add.group();
+					this.maxEnemy = 3;
+					this.numEnemy = 0;
 					this.state.start('GameOver',true,false,this.score,false);
 				}
 				//Invincibility Frames
