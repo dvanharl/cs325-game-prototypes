@@ -184,13 +184,7 @@ BasicGame.Game.prototype = {
 		}
 		
 		this.sun.y -= .22;
-		if(this.player.x <= 400){
-			this.back2.x = 1280 + -480/8;
-			this.back1.x = 1280 + -480/6;
-		}else if(this.player.x >= 2160){
-			this.back2.x = 1280 + 480/8;
-			this.back1.x = 1280 + 480/6;
-		}else{
+		if(this.player.x > 400 && this.player.x < 2160){
 			this.back2.x = 1280 + (this.player.x - 1280)/8;
 			this.back1.x = 1280 + (this.player.x - 1280)/6;
 		}
