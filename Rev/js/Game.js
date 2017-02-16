@@ -81,7 +81,7 @@ BasicGame.Game.prototype = {
 		this.loadd = this.add.audio('load');
 		
 		//Background
-		this.back = this.add.sprite(0,0,'back');
+		//this.back = this.add.sprite(0,0,'back');
 		this.sun = this.add.sprite(0,0,'sprite');
 		this.back2 = this.add.sprite(0,0,'back2');
 		this.back1 = this.add.sprite(0,0,'back1');
@@ -118,16 +118,16 @@ BasicGame.Game.prototype = {
 		},this);
 		this.time.events.add(30000, function() {
 			this.maxEnemy = 5;
-			this.back.tint = 0xff9999;
+			//this.back.tint = 0xff9999;
 		},this);
 		this.time.events.add(60000, function() {
 			this.maxEnemy = 8;
-			this.back.tint = 0xffff66;
+			//this.back.tint = 0xffff66;
 			this.back2.tint = 0xff9999;
 		},this);
 		this.time.events.add(80000, function() {
 			this.maxEnemy = 13;
-			this.back.tint = 0xccffff;
+			//this.back.tint = 0xccffff;
 			this.back2.tint = 0xffff66;
 			this.back1.tint = 0xff9999;
 		},this);
