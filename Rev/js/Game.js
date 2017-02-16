@@ -42,7 +42,7 @@ BasicGame.Game = function (game) {
 	this.invincible = false;
 	this.numEnemy = 0;
 	this.maxEnemy = 3;
-	this.HP = 0;
+	this.HP = 5;
 	this.kills = 0;
 };
 
@@ -58,7 +58,7 @@ BasicGame.Game.prototype = {
 		this.camera.follow(this.player);
 		
 		//Player Parameters
-		this.player.health = 5;
+		this.HP = 5;
 		
 		//Player Animation Manager
 		this.player.animations.add('idle',[0,1,2,3,4,5], 9, true, true);
