@@ -314,7 +314,7 @@ BasicGame.Game.prototype = {
 			if((this.bullet.x < this.enemies.children[i].x + 30 && this.bullet.x > this.enemies.children[i].x - 30) && (this.bullet.y < this.enemies.children[i].y + 60 && this.bullet.y > this.enemies.children[i].y - 60) && this.bullet.alive){
 				this.die.play();
 				this.enemies.children[i].tint = 0xff0000;
-				this.add.tween(this.enemies.children[i]).to({alpha:0}, 100, Phaser.Easing.Linear.None, true, 0,0,false);
+				this.add.tween(this.enemies.children[i]).to({alpha:.1}, 100, Phaser.Easing.Linear.None, true, 0,0,false);
 				this.time.events.add(100,function(){
 					this.dead = this.enemies.remove(this.enemies.children[i], true);
 					this.bullet.kill();
