@@ -82,7 +82,7 @@ BasicGame.Game.prototype = {
 		
 		//Background
 		this.back = this.add.sprite(0,0,'back');
-		this.sun = this.add.sprite(0,0,'sprite');
+		this.sun = this.add.sprite(0,0,'sun');
 		this.back2 = this.add.sprite(0,0,'back2');
 		this.back1 = this.add.sprite(0,0,'back1');
 		
@@ -294,7 +294,7 @@ BasicGame.Game.prototype = {
 				//Invincibility Frames
 				this.invincible = true;
 				this.player.tint = 0xff0000;
-				this.time.events.add(1500,function(){
+				this.time.events.add(1000,function(){
 					this.invincible = false;
 					this.player.tint = 0xffffff;
 				},this);
