@@ -43,6 +43,7 @@ BasicGame.Game = function (game) {
 	this.numEnemy = 0;
 	this.maxEnemy = 3;
 	this.HP = 0;
+	this.kills = 0;
 };
 
 BasicGame.Game.prototype = {
@@ -183,6 +184,8 @@ BasicGame.Game.prototype = {
 			if(this.bullet.x == this.enemies.children[i].x){
 				this.dead = this.enemies.remove(this.enemies.children[i], true);
 				this.bullet.kill();
+				this.canShoot = true;
+				this.kills += 1;
 			}
 		}
 		
@@ -194,7 +197,7 @@ BasicGame.Game.prototype = {
 
 //SPAWN ENEMY
 	spawnEnemy: function() {
-		this.enemies.create((this.player.x + (462.5 * this.rnd.sign())),420,'enemy');
+		this.enemies.create((this.player.x + (462.5 * this.rnd.sign())),450,'enemy');
 		this.enemies.children[(this.enemies.children.length - 1)].anchor.setTo(.5,.5);
 		this.enemies.children[(this.enemies.children.length - 1)].animations.add('walk');
 	},
