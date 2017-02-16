@@ -152,6 +152,7 @@ BasicGame.Game.prototype = {
 		}
 		//SPAWN ENEMIES
 		if(this.numEnemy < this.maxEnemy){
+			this.numEnemy += 1;
 			this.time.events.add(this.rnd.integerInRange(2000,4000),function() {
 				this.spawnEnemy()
 			},this);
@@ -177,7 +178,7 @@ BasicGame.Game.prototype = {
 				this.player.tint = 0xff0000;
 				this.time.events.add(2000,function(){
 					this.invincible = false;
-					this.player.tint = 0;
+					this.player.tint = 0xffffff;
 				},this);
 			}
 			//Bullet Collision
@@ -186,6 +187,7 @@ BasicGame.Game.prototype = {
 				this.bullet.kill();
 				this.canShoot = true;
 				this.kills += 1;
+				this.numEnemy -= 1;
 			}
 		}
 		
