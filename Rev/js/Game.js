@@ -218,6 +218,10 @@ BasicGame.Game.prototype = {
 					this.kills = 0;
 					this.maxEnemy = 3;
 					this.numEnemy = 0;
+					this.invincible = false;
+					this.canShoot = true;
+					this.canJump = true;
+					this.canMove = true;
 					this.state.start('GameOver',true,false,this.score,false);
 				}
 				//Invincibility Frames
@@ -256,6 +260,6 @@ BasicGame.Game.prototype = {
 	
 	render: function(){
 		this.game.debug.text("Health: " + this.HP, 32, 32);
-		this.game.debug.text("Time Remaining: " + (90000 - this.time.now),32,64);
+		this.game.debug.text("Kills: " + this.kills,32,64);
 	},
 };
