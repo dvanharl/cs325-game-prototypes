@@ -137,7 +137,7 @@ BasicGame.Game.prototype = {
 		}
 		
 		//JUMPING
-		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && this.canJump
+		if(this.input.keyboard.isDown(Phaser.Keyboard.UP) && this.canJump){
 			this.yspeed = -15;
 			this.canJump = false;
 		}
