@@ -184,7 +184,7 @@ BasicGame.Game.prototype = {
 		}
 		
 		this.sun.y -= .22;
-		if(this.player.x > 0 || this.player.x < 2560){ 
+		if(this.player.x > 1|| this.player.x < 2559){ 
 			this.back2.x += this.xspeed/5;
 			this.back1.x += this.xspeed/3;
 		}
