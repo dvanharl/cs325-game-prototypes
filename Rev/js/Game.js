@@ -162,14 +162,18 @@ BasicGame.Game.prototype = {
 			//Movement
 			if(this.enemies.children[i].x < this.player.x){
 				this.enemies.children[i].x += 2.5;
-				this.enemies.children[i].scale.setTo(-3);
+				if(this.enemies.children[i].scale.x > 0){
+					this.enemies.children[i].scale.x *= -1;
+				}
 			}else{
 				this.enemies.children[i].x += -2.5;
-				this.enemies.children[i].scale.setTo(3);
+				if(this.enemies.children[i].scale.x < 0){
+					this.enemies.children[i].scale.x *= -1;
+				}
 			}
 			
 			//Player Collision
-			if((this.enemies.children[i].x > this.player.x - 100 && this.enemies.children[i].x < this.player.x + 100) && !this.invincible){
+			if((this.enemies.children[i].x > this.player.x - 100 && this.enemies.children[i].x < this.player.x + 100) && ((this.enemies.children[i].y > this.player.y - 100 && this.enemies.children[i].y < this.player.y + 100))&& !this.invincible){
 				this.HP -= 1;
 				if(this.HP == 0){
 					this.HP = 5;
@@ -203,6 +207,7 @@ BasicGame.Game.prototype = {
 	spawnEnemy: function() {
 		this.enemies.create((this.player.x + (462.5 * this.rnd.sign())),450,'enemy');
 		this.enemies.children[(this.enemies.children.length - 1)].anchor.setTo(.5,.5);
+		this.enemies.children[(this.enemies.children.length - 1)].scale.setTo(3);
 		this.enemies.children[(this.enemies.children.length - 1)].animations.add('walk');
 	},
 };
