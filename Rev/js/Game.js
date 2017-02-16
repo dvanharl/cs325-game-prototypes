@@ -196,12 +196,12 @@ BasicGame.Game.prototype = {
 		for(var i = this.enemies.children.length - 1; i >= 0 ; i--){
 			//Movement
 			if(this.enemies.children[i].x < this.player.x){
-				this.enemies.children[i].x += 2.5;
+				this.enemies.children[i].x += 3.5;
 				if(this.enemies.children[i].scale.x > 0){
 					this.enemies.children[i].scale.x *= -1;
 				}
 			}else{
-				this.enemies.children[i].x += -2.5;
+				this.enemies.children[i].x += -3.5;
 				if(this.enemies.children[i].scale.x < 0){
 					this.enemies.children[i].scale.x *= -1;
 				}
