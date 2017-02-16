@@ -22,7 +22,7 @@ BasicGame.GameOver.prototype = {
 	},
 	
 	create: function() {
-		this.titleStyle =  { font: "50px Helvetica", fill: "#000000", align: "center" };
+		this.titleStyle =  { font: "50px Helvetica", fill: "#ff0000", align: "center" };
 		if (this.didI){
 			//Game Over - Win Screen
 			this.gameOverBack = this.game.add.sprite(0,0,'win');
@@ -38,7 +38,7 @@ BasicGame.GameOver.prototype = {
 		}
 		this.message.anchor.setTo(0.5,0.5);
 		this.music.play();
-		this.style = { font: "25px", fill: "#000000", align: "center" };
+		this.style = { font: "25px", fill: "#ff0000", align: "center" };
 		this.words = this.add.text (this.world.centerX, 300, "Kills: " + this.endScore, this.style);
 		this.words.anchor.setTo(0.5,0.5);
 		this.whiteScreen = this.game.add.sprite(0,0,'whiteScreen');
