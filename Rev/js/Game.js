@@ -135,6 +135,9 @@ BasicGame.Game.prototype = {
 		this.world.wrap(this.fog,0,true);
 		this.world.wrap(this.player,0,true);
 		
+		this.back2.x += this.xSpeed/4;
+		this.back1.x += this.xSpeed/2;
+		
 		//MOVEMENT
         if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
 			if(this.player.scale.x < 0){
