@@ -184,7 +184,6 @@ BasicGame.Game.prototype = {
 			//Bullet Collision
 			if(this.bullet.x < this.enemies.children[i].x + 62.5 || this.bullet.x > this.enemies.children[i].x - 62.5){
 				this.dead = this.enemies.remove(this.enemies.children[i], true);
-				this.dead.kill();
 				this.bullet.kill();
 				this.canShoot = true;
 				this.kills += 1;
