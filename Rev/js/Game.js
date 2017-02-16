@@ -101,9 +101,9 @@ BasicGame.Game.prototype = {
 		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){//Shooting
 			this.canMove = false;
 			this.canShoot = false;
-			this.bullSpeed = this.player.scale.x / -2;
 			this.shootAnim.play('shoot');
 			this.shootAnim.onComplete.add(function() {
+				this.bullSpeed = this.player.scale.x / -2;
 				this.bullY = this.player.y + 50;
 				this.bullX = this.player.x;
 				this.canMove = true, 
