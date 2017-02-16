@@ -83,8 +83,8 @@ BasicGame.Game.prototype = {
 		//Background
 		//this.back = this.add.sprite(0,0,'back');
 		this.sun = this.add.sprite(0,0,'sun');
-		this.back2 = this.add.sprite(0,300,'back2');
-		this.back1 = this.add.sprite(0,300,'back1');
+		this.back2 = this.add.sprite(0,0,'back2');
+		this.back1 = this.add.sprite(0,0,'back1');
 		
 		
 		//this.worldMap = this.add.sprite(0,0,"worldMap");
