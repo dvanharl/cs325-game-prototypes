@@ -302,7 +302,7 @@ BasicGame.Game.prototype = {
 				//Invincibility Frames
 				this.invincible = true;
 				this.player.tint = 0xff0000;
-				this.time.events.add(1000,function(){
+				this.time.events.add(1250,function(){
 					this.invincible = false;
 					this.player.tint = 0xffffff;
 				},this);
