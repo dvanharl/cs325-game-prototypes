@@ -34,7 +34,7 @@ BasicGame.Game = function (game) {
 	this.canMove = true;
 	
 	this.bullet = null;
-	this.bullSped = 0;
+	this.bullSpeed = 0;
 	this.bullX = 0;
 	this.bullY = 0;
 	this.shootAnim = null;
@@ -108,7 +108,7 @@ BasicGame.Game.prototype = {
 				this.bullX = this.player.x;
 				this.canMove = true, 
 				this.bullet.x = this.bullX, 
-				this.bullet.y = this.bull - Y,
+				this.bullet.y = this.bullY,
 				this.bullet.revive()}
 			,this);
 			
