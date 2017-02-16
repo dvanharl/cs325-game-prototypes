@@ -28,12 +28,16 @@ BasicGame.Game = function (game) {
 	this.score = null;
 	this.xspeed = 0;
 	this.yspeed = 0;
+	
 	this.canJump = true;
 	this.canShoot = true;
+	this.canMove = true;
+	
 	this.bullet = null;
 	this.bullSped = 0;
 	this.bullX = 0;
 	this.bullY = 0;
+	this.shootAnim = null;
 };
 
 BasicGame.Game.prototype = {
@@ -53,7 +57,7 @@ BasicGame.Game.prototype = {
 		//Player Animation Manager
 		this.player.animations.add('idle',[0,1,2,3,4,5], 9, true, true);
 		this.player.animations.add('walk',[5,6,7,8,9,10,11,12],18,true, true);
-		this.player.animations.add('shoot',[13,14,15,16,17,18,19],30,false,true);
+		this.shootAnim = this.player.animations.add('shoot',[13,14,15,16,17,18,19],30,false,true);
 		
 		this.bullet = this.add.sprite(this.player.x, this.player.y,'bullet');
 		this.bullet.animations.add('go');
@@ -63,7 +67,7 @@ BasicGame.Game.prototype = {
 
     update: function () {
 		//Movement
-        if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
+        if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && this.canMove){//Move Left
 			this.player.animations.play('walk');
 			if(this.player.scale.x < 0){
 				this.player.scale.x *= -1;
@@ -73,7 +77,7 @@ BasicGame.Game.prototype = {
 			}else{
 				this.xspeed = -8;
 			}
-		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
+		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT) && this.canMove){//Move Right
 			this.player.animations.play('walk');
 			if(this.player.scale.x > 0){
 				this.player.scale.x *= -1;
@@ -84,16 +88,20 @@ BasicGame.Game.prototype = {
 				this.xspeed = 8;
 			}
 		}else{ //Idle
-			this.player.animations.play('idle');
+			if(this.canMove){
+				this.player.animations.play('idle');
+			}
 			this.xspeed = this.xspeed/1.5;
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){//Shooting
+			this.canMove = false;
 			this.canShoot = false;
 			this.bullSpeed = this.player.scale.x / -2;
 			this.bullY = this.player.y;
 			this.bullX = this.player.x;
-			this.player.animations.play('shoot');
+			this.shootAnim.play('shoot');
+			this.shootAnim.onComplete(function() {this.canMove = true},this);
 			this.bullet.x = this.bullX;
 			this.bullet.y = this.bullY
 			this.bullet.revive();
