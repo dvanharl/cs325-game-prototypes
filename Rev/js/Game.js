@@ -176,7 +176,7 @@ BasicGame.Game.prototype = {
 				//Invincibility Frames
 				this.invincible = true;
 				this.player.tint = 0xff0000;
-				this.time.events.add(2000,function(){
+				this.time.events.add(1500,function(){
 					this.invincible = false;
 					this.player.tint = 0xffffff;
 				},this);
@@ -184,6 +184,7 @@ BasicGame.Game.prototype = {
 			//Bullet Collision
 			if(this.bullet.x == this.enemies.children[i].x){
 				this.dead = this.enemies.remove(this.enemies.children[i], true);
+				this.dead.kill();
 				this.bullet.kill();
 				this.canShoot = true;
 				this.kills += 1;
