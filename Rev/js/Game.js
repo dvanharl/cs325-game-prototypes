@@ -78,6 +78,8 @@ BasicGame.Game.prototype = {
 				}else{
 					this.xspeed = -8;
 				}
+			}else{
+				this.xspeed = this.xspeed/1.5;
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
 			if(this.player.scale.x > 0){
@@ -90,13 +92,14 @@ BasicGame.Game.prototype = {
 				}else{
 					this.xspeed = 8;
 				}
+			}else{
+				this.xspeed = this.xspeed/1.5;
 			}
 		}else{ //Idle
 			if(this.canMove){
 				this.player.animations.play('idle');
-				this.xspeed = this.xspeed/1.5;
-			}else{
-				this.xspeed = this.xpeed/4;
+			}
+			this.xspeed = this.xspeed/1.5;
 		}
 		
 		if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN) && this.canShoot){//Shooting
