@@ -83,8 +83,8 @@ BasicGame.Game.prototype = {
 		//Background
 		//this.back = this.add.sprite(0,0,'back');
 		this.sun = this.add.sprite(0,0,'sun');
-		this.back2 = this.add.sprite(1280,300,'back2');
-		this.back1 = this.add.sprite(1280,300,'back1');
+		this.back2 = this.add.sprite(0,300,'back2');
+		this.back1 = this.add.sprite(0,300,'back1');
 		
 		
 		this.worldMap = this.add.sprite(0,0,"worldMap");
@@ -110,6 +110,7 @@ BasicGame.Game.prototype = {
 		
 		//Enemies
 		this.enemies = this.add.group();
+		this.maxEnemy = 3;
 		
 		this.time.events.add(90000, function() {
 			this.HP = 5;
@@ -313,7 +314,6 @@ BasicGame.Game.prototype = {
 			//Bullet Collision
 			if((this.bullet.x < this.enemies.children[i].x + 30 && this.bullet.x > this.enemies.children[i].x - 30) && (this.bullet.y < this.enemies.children[i].y + 60 && this.bullet.y > this.enemies.children[i].y - 60) && this.bullet.alive){
 				this.die.play();
-				this.enemies.children[i].tint = 0xff0000;
 				this.add.tween(this.enemies.children[i]).to({alpha:.1}, 100, Phaser.Easing.Linear.None, true, 0,0,false);
 				this.dead = this.enemies.remove(this.enemies.children[i], true);
 				this.bullet.kill();
