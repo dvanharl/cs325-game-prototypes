@@ -27,9 +27,8 @@ BasicGame.MainMenu.prototype = {
 	},
 
 	startGame: function (pointer) {
-		
+		this.add.tween(this.blackScreen).to({alpha:1}, 1500, Phaser.Easing.Linear.None, true, 0,0,false);
 		this.music.fadeOut(2000);
-		this.add.tween(this.blackScreen).to({alpha:1}, 1500, Phaser.Easing.Linear.None, true, 1500,0,false);
 		this.music.onFadeComplete.add(function() {
 			this.state.start('Game');
 		},this);
