@@ -227,7 +227,7 @@ BasicGame.Game.prototype = {
 				},this);
 			}
 			//Bullet Collision
-			if((this.bullet.x < this.enemies.children[i].x + 20 && this.bullet.x > this.enemies.children[i].x - 20) && (this.bullet.y < this.enemies.children[i].y + 20 && this.bullet.y > this.enemies.children[i].y - 20) && this.bullet.alive){
+			if((this.bullet.x < this.enemies.children[i].x + 20 && this.bullet.x > this.enemies.children[i].x - 20) && (this.bullet.y < this.enemies.children[i].y + 30 && this.bullet.y > this.enemies.children[i].y - 30) && this.bullet.alive){
 				this.dead = this.enemies.remove(this.enemies.children[i], true);
 				this.die.play();
 				this.bullet.kill();
@@ -245,7 +245,7 @@ BasicGame.Game.prototype = {
 
 //SPAWN ENEMY
 	spawnEnemy: function() {
-		this.enemies.create((this.player.x + (462.5 * this.rnd.sign())),450 + (this.rnd.integerInRange(.200,100)),'enemy');
+		this.enemies.create((this.player.x + (462.5 * this.rnd.sign())),450 + (this.rnd.integerInRange(-200,10)),'enemy');
 		this.enemies.children[(this.enemies.children.length - 1)].anchor.setTo(.5,.5);
 		this.enemies.children[(this.enemies.children.length - 1)].scale.setTo(3);
 		this.enemies.children[(this.enemies.children.length - 1)].animations.add('walk');
