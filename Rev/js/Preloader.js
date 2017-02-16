@@ -48,8 +48,8 @@ BasicGame.Preloader.prototype = {
 		this.load.image('fog4','assets/fog4.png');
 		this.load.image('fog5','assets/fog5.png');
 		this.load.image('fog6','assets/fog6.png');
-		this.load.image('back1','assets/background1.png');
-		this.load.image('back2','assets/background2.png');
+		this.load.image('back1','assets/movingback1.png');
+		this.load.image('back2','assets/movingback2.png');
 		this.load.image('back','assets/back.png');
 		this.load.image('sun','assets/sun.png');
 		this.load.spritesheet('player','assets/player.png', 100, 100, 19);
