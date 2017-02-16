@@ -105,7 +105,7 @@ BasicGame.Game.prototype = {
 			this.shootAnim.play('shoot');
 			this.shootAnim.onComplete.add(function() {
 				this.bullSpeed = this.player.scale.x / -2;
-				this.bullY = this.player.y + 50;
+				this.bullY = this.player.y + 40;
 				this.bullX = this.player.x;
 				this.canMove = true, 
 				this.bullet.x = this.bullX, 
