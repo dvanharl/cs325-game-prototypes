@@ -57,7 +57,7 @@ BasicGame.Game.prototype = {
 //CREATE
     create: function () {
 		//AUDIO
-		this.music = this.add.audio('titleMusic');
+		this.music = this.add.audio('game');
 		this.hit = this.add.audio('hit');
 		this.shoot = this.add.audio('shoot');
 		this.die = this.add.audio('die');
@@ -235,6 +235,6 @@ BasicGame.Game.prototype = {
 	
 	render: function(){
 		this.game.debug.text("Health: " + this.HP, 32, 32);
-		this.game.debug.text("Time Remaining: " + (9000 - this.time.now),32,64);
+		this.game.debug.text("Time Remaining: " + (90000 - this.time.now),32,64);
 	},
 };

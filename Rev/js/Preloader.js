@@ -32,6 +32,7 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('die',['assets/die.mp3']);
 		this.load.audio('jump',['assets/jump.mp3']);
 		this.load.audio('load',['assets/load.mp3']);
+		this.load.audio('game',['assets/game.mp3']);
 		//	+ lots of other required assets here
         this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.image('worldMap','assets/forestmap.png');
