@@ -60,9 +60,12 @@ BasicGame.Game = function (game) {
 	this.fog5 = null;
 	this.fog6 = null;
 	
-	this.back1 = null;
-	this.back2 = null;
 	this.back = null;
+	this.sun = null;
+	this.back2 = null;
+	this.back1 = null;
+	
+	
 };
 
 BasicGame.Game.prototype = {
@@ -79,8 +82,10 @@ BasicGame.Game.prototype = {
 		
 		//Background
 		this.back = this.add.sprite(0,0,'back');
+		this.sun = this.add.sprite(0,0,'sprite');
 		this.back2 = this.add.sprite(0,0,'back2');
 		this.back1 = this.add.sprite(0,0,'back1');
+		
 		
 		this.worldMap = this.add.sprite(0,0,"worldMap");
 		this.world.setBounds(0,0,2560,600);
@@ -113,12 +118,18 @@ BasicGame.Game.prototype = {
 		},this);
 		this.time.events.add(30000, function() {
 			this.maxEnemy = 5;
+			this.back.tint = 0xff9999;
 		},this);
 		this.time.events.add(60000, function() {
 			this.maxEnemy = 8;
+			this.back.tint = 0xffff66;
+			this.back2.tint = 0xff9999;
 		},this);
 		this.time.events.add(80000, function() {
 			this.maxEnemy = 13;
+			this.back.tint = 0xccffff;
+			this.back2.tint = 0xffff66;
+			this.back1.tint = 0xff9999;
 		},this);
 		
 		//Front Stuff
@@ -137,6 +148,7 @@ BasicGame.Game.prototype = {
 		//this.world.wrap(this.fog,0,true);
 		this.world.wrap(this.player,100,true);
 		
+		this.sun.y -= .22;
 		this.back2.x += this.xSpeed/4;
 		this.back1.x += this.xSpeed/2;
 		
