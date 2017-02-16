@@ -159,7 +159,7 @@ BasicGame.Game.prototype = {
 		this.blackScreen = this.add.sprite(0,0,'blackScreen');
 		this.add.tween(this.blackScreen).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
 		
-		this.style =  { font: "50px Georgia", fill: "0xffffff", align: "center" };
+		this.style =  { font: "50px Georgia", fill: "0x000000", align: "center" };
 		this.words = this.add.text(this.player.x,300, "SURVIVE 'TIL DAWN", this.style);
 		this.words.anchor.setTo(0.5,0.5);
 		this.add.tween(this.words).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
