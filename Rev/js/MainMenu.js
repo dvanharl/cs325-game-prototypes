@@ -22,7 +22,9 @@ BasicGame.MainMenu.prototype = {
 	},
 
 	update: function () {
-
+		if(blackscreen.alpha == 1){
+			this.state.start('Game');
+		}
 		//	Do some nice funky main menu effect here
 
 	},
@@ -30,11 +32,6 @@ BasicGame.MainMenu.prototype = {
 	startGame: function (pointer) {
 		this.music.fadeOut(900);
 		this.fadeOut = this.add.tween(this.blackscreen).to({alpha:1}, 1500,  Phaser.Easing.Linear.None, true, 0, false, false);
-		this.fadeOut.onComplete.add(function() {
-			this.state.start('Game')
-		},this);
-		
-
 	}
 
 };
