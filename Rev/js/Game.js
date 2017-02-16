@@ -159,7 +159,7 @@ BasicGame.Game.prototype = {
     update: function () {
 		if(this.HP == 5 && this.invincible == true){
 			this.invincible = false;
-		)
+		}
 		//Background
 		this.fog1.x += 1;
 		if(this.fog1.x == 640){
