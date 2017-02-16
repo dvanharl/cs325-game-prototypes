@@ -195,6 +195,7 @@ BasicGame.Game.prototype = {
 //SPAWN ENEMY
 	spawnEnemy: function() {
 		this.enemies.create((this.player.x + (462.5 * this.rnd.sign())),420,'enemy');
+		this.enemies.children[(this.enemies.children.length - 1)].anchor.setTo(.5,.5);
 		this.enemies.children[(this.enemies.children.length - 1)].animations.add('walk');
 	},
 };
