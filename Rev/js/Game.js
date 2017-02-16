@@ -145,7 +145,7 @@ BasicGame.Game.prototype = {
     update: function () {
 		//Background
 		this.fog1.x += 1;
-		if(this.fox1.x == 640){
+		if(this.fog1.x == 640){
 			this.fog1.x = -2560;
 		}
 		this.fog2.x += .75;
