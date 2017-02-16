@@ -112,9 +112,17 @@ BasicGame.Game.prototype = {
 		this.enemies = this.add.group();
 		
 		this.time.events.add(90000, function() {
+			this.HP = 5;
+			this.music.stop();
 			this.score = this.kills;
 			this.kills = 0;
-			this.state.start('GameOver',this.score,true);
+			this.maxEnemy = 3;
+			this.numEnemy = 0;
+			this.invincible = false;
+			this.canShoot = true;
+			this.canJump = true;
+			this.canMove = true;
+			this.state.start('GameOver',true, false,this.score,true);
 		},this);
 		this.time.events.add(30000, function() {
 			this.maxEnemy = 5;
