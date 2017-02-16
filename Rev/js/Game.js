@@ -192,12 +192,12 @@ BasicGame.Game.prototype = {
 			}
 			
 			//Player Collision
-			if((this.enemies.children[i].x > this.player.x - 100 && this.enemies.children[i].x < this.player.x + 100) && ((this.enemies.children[i].y > this.player.y - 70 && this.enemies.children[i].y < this.player.y + 50))&& !this.invincible){
+			if((this.enemies.children[i].x > this.player.x - 100 && this.enemies.children[i].x < this.player.x + 100) && (this.player.y >= 420)&& !this.invincible){
 				this.hit.play();
 				this.HP -= 1;
 				if(this.HP == 0){
 					this.HP = 5;
-					
+					this.music.stop();
 					this.state.start('MainMenu');
 				}
 				//Invincibility Frames
