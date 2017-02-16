@@ -22,7 +22,7 @@ BasicGame.GameOver.prototype = {
 	},
 	
 	create: function() {
-		this.titleStyle =  { font: "50px Helvetica", fill: "0xff0000", align: "center" };
+		this.titleStyle =  { font: "50px Georgia", fill: "0xff0000", align: "center" };
 		if (this.didI){
 			//Game Over - Win Screen
 			this.gameOverBack = this.game.add.sprite(0,0,'win');
