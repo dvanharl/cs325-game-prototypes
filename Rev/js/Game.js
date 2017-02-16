@@ -57,7 +57,7 @@ BasicGame.Game.prototype = {
 		//Player Animation Manager
 		this.player.animations.add('idle',[0,1,2,3,4,5], 9, true, true);
 		this.player.animations.add('walk',[5,6,7,8,9,10,11,12],18,true, true);
-		this.shootAnim = this.player.animations.add('shoot',[13,14,15,16,17,18,19],30,false,true);
+		this.shootAnim = this.player.animations.add('shoot',[13,14,15,16,17,18,19],22,false,true);
 		
 		this.bullet = this.add.sprite(this.player.x, this.player.y,'bullet');
 		this.bullet.animations.add('go');
@@ -67,25 +67,29 @@ BasicGame.Game.prototype = {
 
     update: function () {
 		//Movement
-        if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && this.canMove){//Move Left
+        if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
 			this.player.animations.play('walk');
 			if(this.player.scale.x < 0){
 				this.player.scale.x *= -1;
 			}
-			if(this.xspeed > -8){
-				this.xspeed -= .8;
-			}else{
-				this.xspeed = -8;
+			if(this.canMove){
+				if(this.xspeed > -8){
+					this.xspeed -= .8;
+				}else{
+					this.xspeed = -8;
+				}
 			}
-		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT) && this.canMove){//Move Right
+		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
 			this.player.animations.play('walk');
 			if(this.player.scale.x > 0){
 				this.player.scale.x *= -1;
 			}
-			if(this.xspeed < 8){
-				this.xspeed += .8;
-			}else{
-				this.xspeed = 8;
+			if(this.canMove){
+				if(this.xspeed < 8){
+					this.xspeed += .8;
+				}else{
+					this.xspeed = 8;
+				}
 			}
 		}else{ //Idle
 			if(this.canMove){
@@ -98,10 +102,15 @@ BasicGame.Game.prototype = {
 			this.canMove = false;
 			this.canShoot = false;
 			this.bullSpeed = this.player.scale.x / -2;
-			this.bullY = this.player.y;
-			this.bullX = this.player.x;
 			this.shootAnim.play('shoot');
-			this.shootAnim.onComplete.add(function() {this.canMove = true, this.bullet.x = this.bullX, this.bullet.y = this.bullY,this.bullet.revive()},this);
+			this.shootAnim.onComplete.add(function() {
+				this.bullY = this.player.y + 50;
+				this.bullX = this.player.x;
+				this.canMove = true, 
+				this.bullet.x = this.bullX, 
+				this.bullet.y = this.bull - Y,
+				this.bullet.revive()}
+			,this);
 			
 		}
 		if(this.bullet.alive){//Bullet Movement
