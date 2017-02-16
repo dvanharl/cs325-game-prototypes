@@ -101,7 +101,7 @@ BasicGame.Game.prototype = {
 			this.bullY = this.player.y;
 			this.bullX = this.player.x;
 			this.shootAnim.play('shoot');
-			this.shootAnim.onComplete(function() {this.canMove = true},this);
+			this.shootAnim.onComplete.add(function() {this.canMove = true},this);
 			this.bullet.x = this.bullX;
 			this.bullet.y = this.bullY
 			this.bullet.revive();
