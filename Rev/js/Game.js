@@ -65,7 +65,7 @@ BasicGame.Game = function (game) {
 	this.back2 = null;
 	this.back1 = null;
 	
-	
+	this.blackScreen = null;
 };
 
 BasicGame.Game.prototype = {
@@ -147,6 +147,9 @@ BasicGame.Game.prototype = {
 		this.fog4 = this.add.sprite(0,0,'fog4');
 		this.fog5 = this.add.sprite(0,0,'fog5');
 		this.fog6 = this.add.sprite(0,0,'fog6');
+		
+		this.blackScreen = this.add.sprite(0,0,'blackScreen');
+		this.add.tween(this.blackScreen).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
     },
 	
 //UPDATE
@@ -309,12 +312,18 @@ BasicGame.Game.prototype = {
 			}
 			//Bullet Collision
 			if((this.bullet.x < this.enemies.children[i].x + 30 && this.bullet.x > this.enemies.children[i].x - 30) && (this.bullet.y < this.enemies.children[i].y + 60 && this.bullet.y > this.enemies.children[i].y - 60) && this.bullet.alive){
-				this.dead = this.enemies.remove(this.enemies.children[i], true);
-				this.die.play();
-				this.bullet.kill();
-				this.canShoot = true;
-				this.kills += 1;
-				this.numEnemy -= 1;
+				this.enemies.children[i].tint = 0xff0000;
+				this.add.tween(this.enemies.children[i]).to({alpha:0}, 300, Phaser.Easing.Linear.None, true, 0,0,false);
+				this.time.events.add(300,function(){
+					this.invincible = false;
+					this.player.tint = 0xffffff;
+					this.dead = this.enemies.remove(this.enemies.children[i], true);
+					this.die.play();
+					this.bullet.kill();
+					this.canShoot = true;
+					this.kills += 1;
+					this.numEnemy -= 1;
+				},this);
 			}
 		}
 		
