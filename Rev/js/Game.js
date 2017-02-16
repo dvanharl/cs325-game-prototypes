@@ -78,7 +78,7 @@ BasicGame.Game.prototype = {
 				}else{
 					this.xspeed = -8;
 				}
-			}else{
+			}else if(!this.canMove && this.player.y == 420){
 				this.xspeed = this.xspeed/1.5;
 			}
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
@@ -92,7 +92,7 @@ BasicGame.Game.prototype = {
 				}else{
 					this.xspeed = 8;
 				}
-			}else{
+			}else if(!this.canMove && this.player.y == 420){
 				this.xspeed = this.xspeed/1.5;
 			}
 		}else{ //Idle
