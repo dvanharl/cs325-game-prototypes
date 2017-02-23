@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Ephemeral Maelstrom</title>
+	<script src="js/phaser.min.js"></script>
+	<!-- Boot.js must come first since it creates the BasicGame object
+	that stores all the states. -->
+	<script src="js/Boot.js"></script>
+	<script src="js/Preloader.js"></script>
+	<script src="js/MainMenu.js"></script>
+	<script src="js/Game.js"></script>
+	<script src="js/GameOver.js"></script>
+	<!-- main.js must come last since it references the other ones. -->
+	<script src="js/main.js"></script>
+
+<style>
+body
+{
+    color: #777;
+    font-family: "Avenir", Verdana, sans-serif;
+}
+#readme
+{
+    margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+<div id="game"></div>
+<div id="readme">
+<h2>Ephemeral Maelstrom</h2>
+<ul>
+
+<li><strong>High Concept:</strong>
+A fast-paced rush to destroy the incoming asteroid to stop it from destroying the earth!
+</li>
+
+<li><strong>Theme:</strong>
+"Cowboy" & "Asteroid falling to earth"
+</li>
+
+<li><strong>Mandated Variety:</strong>
+Mouse position/click input implemented.
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+I want players to feel powerful playing the space cowboy as they blow through cult members and the massive meteor to pieces. They can also try to get the top score.
+</li>
+
+<li><strong>Gameplay:</strong>
+Players have one minute to stop the meteor from crashing into the earth! Use the mouse to shoot your gun. Shoot at the meteor to chip away at it until it breaks and win! However, the cult members will appear, trying to shoot at you. Shoot them or else you will lose a health point. Lose all of them and it's game over! Points: Hitting Meteor - 100pts, Killing Enemy - 200pts, Destroying Meteor - 10,000 pts
+</li>
+
+<li><strong>Prototype Goal:</strong>
+This game tests quick reflexes and clicking skill to quell the enemies appearing while taking care of the meteor. The later game would include dynamic timers and shaking effects to better show the meteor's approach, as well as a health bar for the meteor, but due to time constraints, this couldn't be met.
+</li>
+
+<li><strong>Features:</strong>
+Custom GUI and animations! Go for the high score!
+</li>
+
+<li><strong>Setting/Premise:</strong>
+A paragraph about the world your game is set in and who the characters are. What makes the game world and its occupants unique and interesting? Do the tokens represent something? If the game has a backstory, put it here. If the game is abstract, then say so.
+</li>
+
+<li><strong>Story:</strong>
+A meteor is hurtling towards the earth! It's too close for any normal weaponry to divert it. Luckily, Esgau, the Space Cowboy, stopped on his way to find a space companion and came across this predicament. With his ion arm cannon, he surely has enough power to rid of it! Unfortunately, local cults pining for the end of days have heard of his plans to stop the meteor, and in turn plan to stop him! Will Esgau save the earth, or will it shatter into pieces, drifting into the unknown abyss?
+</li>
+
+<li><strong>Target Audience:</strong>
+Players looking for quick, on-the-draw, action.
+</li>
+
+<li><strong>Play Time:</strong>
+Each round will take at most 1 minute at which point the time limit will run out.
+</li>
+
+<li><strong>Strategies:</strong>
+Focus on the meteor but try to take care of enemies immediately as they appear.
+</li>
+
+<li><strong>Assets:</strong>
+	<ul>
+		<li>Pictures/Sprites: Self-Made</li>
+		<li>Sound Effects: Self-Made</li>
+		<li>Music:
+			<ul>
+				<li>Title Screen: "Operation Intrude N313 ~ Theme of Tara" [Metal Gear (MSX2)]</li>
+				<li>Main Game: "Escape -Beyond Big Boss-" [Metal Gear (MSX2)]</li>
+				<li>Game Over: "Just Another Dead Soldier" [Metal Gear (MSX2)]</li>
+				<li>Victory: "Level Complete" [Battletoads and Double Dragon (NES)]</li>
+			</ul>
+		</li>
+	</ul>
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+Which other game most closely resembles your game? If you are borrowing code from a Phaser Example, you must say so here. If you borrow code from elsewhere, you must say so here.
+<ul>
+<li>The code for this example is adapted from the <a href="https://github.com/photonstorm/phaser/tree/v2.6.2/resources/Project%20Templates/Basic">Phaser Basic Project Template</a></li>
+<li>Fade tween code adapted from <a href="https://phaser.io/examples/v2/tweens/fading-in-a-sprite">Fading In A Sprite</a></li>
+<li>Selecting child in group adapted from <a href="http://www.html5gamedevs.com/topic/15852-detecting-click-on-child-in-a-group-of-sprites/">Detecting click on child in group</a></li>
+</ul>
+</li>
+
+</ul>
+</div>
+</body>
+</html>
