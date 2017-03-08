@@ -59,7 +59,7 @@ BasicGame.Game.prototype = {
     },
 	
 	render: function() {
-		this.debug.text('Lives: ' + this.pHealth);
+		//this.debug.text('Lives: ' + this.pHealth);
 	},
 	
 	updateMove: function () {
