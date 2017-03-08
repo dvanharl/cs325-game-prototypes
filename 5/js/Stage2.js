@@ -90,6 +90,7 @@ BasicGame.Stage2.prototype = {
 				this.map.replace(5,1,80,80,640,440,this.floor);
 				this.map.replace(2,5,80,80,640,440,this.floor);
 			}
+		}
     },
 	
 	render: function() {
