@@ -150,12 +150,12 @@ BasicGame.Stage1.prototype = {
 			this.canTurn2 = false;
 			this.time.events.add(1850,function() {
 				this.turn2 += 1;
-				if(this.turn1 % 4 == 0){
+				if(this.turn2 % 4 == 0){
 					this.enemy2.scale.x = 1;
 					this.enemy2.animations.play('side');
 				}else if(this.turn2 % 4 == 1){
 					this.enemy2.animations.play('up');
-				}else if(this.turn1 % 4 == 2){
+				}else if(this.turn2 % 4 == 2){
 					this.enemy2.scale.x = -1;
 					this.enemy2.animations.play('side');
 				}else{
