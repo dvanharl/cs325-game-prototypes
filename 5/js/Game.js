@@ -83,15 +83,15 @@ BasicGame.Game.prototype = {
 	updateMove: function () {
 		//Left/Right
 		if(this.arrows.left.isDown){
-			this.player.body.moveLeft(300);
+			this.player.body.moveLeft(200);
 		}else if(this.arrows.left.isDown){
-			this.player.body.moveRight(300);
+			this.player.body.moveRight(200);
 		}
 		//Up/Down
 		if(this.arrows.left.isDown){
-			this.player.body.moveUp(300);
+			this.player.body.moveUp(200);
 		}else if(this.arrows.left.isDown)){
-			this.player.body.moveDown(300);
+			this.player.body.moveDown(200);
 		}
 	}
 };
