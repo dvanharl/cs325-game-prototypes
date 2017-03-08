@@ -70,45 +70,19 @@ BasicGame.Game.prototype = {
 	},
 	
 	updateMove: function () {
-		if(this.canMove){
-			//Left
-			if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
-				/*if((this.player.x - 1)){
-					this.canMove = false;
-					this.xSpeed = -.5;
-				}*/
-				this.player.x += -2;
-			//Right
-			}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-				/*if((this.player.x + 1)){
-					this.canMove = false;
-					this.xSpeed = -.5;
-				}*/
-				this.player.x += 2;
-			//Up
-			}
-			if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
-				/*if((this.player.y - 1)){
-					this.canMove = false;
-					this.ySpeed = -.5;
-				}*/
-				this.player.y += -2;
-			//Down
-			}else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
-				/*if((this.player.y + 1)){
-					this.canMove = false;
-					this.ySpeed += .5;
-				}*/
-				this.player.y += 2;
-			}
-		}/*else{
-			this.player.x += xSpeed;
-			this.player.y = ySpeed;
-			if(this.player.x % 10 == 0 || this.player.y % 10 == 0){
-				this.xSpeed = 0;
-				this.ySpeed = 0;
-				this.canMove = true;
-			}
-		}*/
+		//Left
+		if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+			this.player.x += -2;
+		//Right
+		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+			this.player.x += 2;
+		//Up
+		}
+		if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
+			this.player.y += -2;
+		//Down
+		}else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+			this.player.y += 2;
+		}
 	}
 };
