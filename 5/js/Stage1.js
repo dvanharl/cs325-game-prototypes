@@ -126,7 +126,7 @@ BasicGame.Stage1.prototype = {
 	updateEnemy: function () {
 		if(this.canTurn1){
 			this.canTurn1 = false;
-			this.time.events.add(1600,function() {
+			this.time.events.add(1300,function() {
 				this.turn1 = (this.turn1 + 1) % 4;
 				if(this.turn1 == 0){
 					this.enemy1.scale.x = 1;
@@ -145,7 +145,7 @@ BasicGame.Stage1.prototype = {
 		
 		if(this.canTurn2){
 			this.canTurn2 = false;
-			this.time.events.add(1100,function() {
+			this.time.events.add(900,function() {
 				this.turn2 = (this.turn2 + 1) % 4;
 				if(this.turn2 == 0){
 					this.enemy2.animations.play('up');
