@@ -72,6 +72,7 @@ BasicGame.Game.prototype = {
 
     update: function () {
 		//MOVEMENT
+		this.player.body.setZeroVelocity();
         this.updateMove();
     },
 	
