@@ -38,7 +38,7 @@ BasicGame.Game = function (game) {
 
 BasicGame.Game.prototype = {
     create: function () {
-		this.physics.startSystem(Phaser.Physics.ARCADE);
+		this.physics.startSystem(Phaser.Physics.P2JS);
 		
 		//Set up map
 		this.map = this.add.tilemap('stage1');
@@ -46,23 +46,23 @@ BasicGame.Game.prototype = {
 		this.floor = this.map.createLayer('Floor');
 		this.wall = this.map.createLayer('Walls');
 		this.map.setCollisionBetween(1, 300, true, 'Walls');
-		//this.physics.p2.convertTilemap(this.map, this.wall);
+		this.physics.p2.convertTilemap(this.map, this.wall);
 		
 		
 		//Set up Player
 		this.player = this.add.sprite(420, 540, 'player');
 		this.player.anchor.setTo(.5,.5);
-		this.physics.enable(this.player, Phaser.Physics.ARCADE);
-		//this.player.body.
+		this.physics.p2.enable(this.player);
+		
 		this.pHealth = 3;
 		
 		//Set up Enemies
+		
     },
 
     update: function () {
 		//MOVEMENT
         this.updateMove();
-		this.physics.arcade.collide(this.player, this.wall);
     },
 	
 	render: function() {
