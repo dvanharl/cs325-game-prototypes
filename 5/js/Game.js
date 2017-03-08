@@ -70,29 +70,29 @@ BasicGame.Game.prototype = {
 					this.canMove = false;
 					this.xSpeed = -.5;
 				}*/
-				this.player.x += -.5;
+				this.player.x += -2;
 			//Right
 			}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 				/*if((this.player.x + 1)){
 					this.canMove = false;
 					this.xSpeed = -.5;
 				}*/
-				this.player.x += .5;
+				this.player.x += 2;
 			//Up
-			}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
+			}
+			if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
 				/*if((this.player.y - 1)){
 					this.canMove = false;
 					this.ySpeed = -.5;
 				}*/
-				this.player.y += -.5;
+				this.player.y += -2;
 			//Down
-			}
-			if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+			}else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
 				/*if((this.player.y + 1)){
 					this.canMove = false;
 					this.ySpeed += .5;
 				}*/
-				this.player.y += .5;
+				this.player.y += 2;
 			}
 		}/*else{
 			this.player.x += xSpeed;
