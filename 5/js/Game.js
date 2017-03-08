@@ -42,8 +42,8 @@ BasicGame.Game.prototype = {
 		this.map = this.add.tilemap('stage1');
 		this.map.addTilesetImage('tiles', 'tiles');
 		this.floor = this.map.createLayer('Floor');
-		this.Wall = this.map.createLayer('Wall');
-		this.map.setCollisionBetween(1, 300, true, 'Wall');
+		this.wall = this.map.createLayer('Walls');
+		this.map.setCollisionBetween(1, 300, true, 'Walls');
 		
 		//Set up Player
 		this.player = this.add.sprite(400, 300, 'player');
