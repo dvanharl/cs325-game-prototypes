@@ -124,11 +124,11 @@ BasicGame.Stage2.prototype = {
 		//If in pit, restart and subtract life
 		if(this.map.getTileWorldXY(this.player.x,this.player.y, 40,40, 'Pit', true).index == 5){
 			this.pHealth -= 1;
-			this.reset();
+			this.respawn();
 		}
 	},
 	
-	reset: function () {
+	respawn: function () {
 		this.player.x = 60;
 		this.player.y = 300;
 	}
