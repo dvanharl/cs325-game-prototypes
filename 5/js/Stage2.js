@@ -122,7 +122,7 @@ BasicGame.Stage2.prototype = {
 	
 	tileCheck: function () {
 		//If in pit, restart and subtract life
-		if(this.map.getTileWorldXY(this.player.x,this.player.y, 40,40, 'Pit', true) != -1){
+		if(this.map.getTileWorldXY(this.player.x,this.player.y, 40,40, 'Pit', true) == 5){
 			this.pHealth -= 1;
 			this.reset();
 		}
