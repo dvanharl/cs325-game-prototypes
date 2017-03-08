@@ -81,14 +81,14 @@ BasicGame.Stage2.prototype = {
 		if(this.input.keyboard.isDown(Phaser.Keyboard.Z) && this.canColor){
 			this.color = (this.color + 1 % 3);
 			if(this.color == 0){//Yellow to Red
-				this.map.replace(5,2,80,80,640,440,this.floor);
-				this.map.replace(3,5,80,80,640,440,this.floor);
+				this.map.replace(5,2,0,0,20,15,'Floor');
+				this.map.replace(3,5,0,0,20,15,'Floor');
 			}else if(this.color == 1){//Red to Blue
-				this.map.replace(5,3,80,80,640,440,this.floor);
-				this.map.replace(1,5,80,80,640,440,this.floor);
+				this.map.replace(5,3,0,0,20,15,'Floor');
+				this.map.replace(1,5,0,0,20,15,'Floor');
 			}else{//Blue to Yellow
-				this.map.replace(5,1,80,80,640,440,this.floor);
-				this.map.replace(2,5,80,80,640,440,this.floor);
+				this.map.replace(5,1,0,0,20,15,'Floor');
+				this.map.replace(2,5,0,0,20,15,'Floor');
 			}
 		}
     },
