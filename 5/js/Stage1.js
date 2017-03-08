@@ -105,6 +105,7 @@ BasicGame.Stage1.prototype = {
 	},
 	
 	nextStage: function(){
+		this.pHealth = 3;
 		this.state.start('Stage2');
 	}
 };
