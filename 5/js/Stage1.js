@@ -146,7 +146,7 @@ BasicGame.Stage1.prototype = {
 		if(this.canTurn2){
 			this.canTurn2 = false;
 			this.time.events.add(1850,function() {
-				this.turn2 = (turn2 + 1) % 3;
+				this.turn2 = (this.turn2 + 1) % 3;
 				if(this.turn2 % 4 == 0){
 					this.enemy2.animations.play('up');
 				}else if(this.turn2 % 4 == 1){
