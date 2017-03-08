@@ -26,9 +26,9 @@ BasicGame.Preloader.prototype = {
 		
 		this.load.spritesheet('player', 'assets/player.png', 25, 25, 1);
 		
-		this.load.spritesheet('renemy', 'assets/renemy.png', 19, 19, 12);
-		this.load.spritesheet('benemy', 'assets/benemy.png', 19, 19, 12);
-		this.load.spritesheet('yenemy', 'assets/yenemy.png', 19, 19, 12);
+		this.load.spritesheet('renemy', 'assets/renemy.png', 38, 38, 12);
+		this.load.spritesheet('benemy', 'assets/benemy.png', 38, 38, 12);
+		this.load.spritesheet('yenemy', 'assets/yenemy.png', 38, 38, 12);
 	},
 
 	create: function () {
