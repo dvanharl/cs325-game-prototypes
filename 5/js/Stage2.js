@@ -88,8 +88,8 @@ BasicGame.Stage2.prototype = {
 				this.map.replace(5,3,0,0,20,15,'Floor');
 				this.map.replace(1,5,0,0,20,15,'Floor');
 			}else{//Blue to Yellow
-				this.map.replace(2,5,0,0,20,15,'Floor');
 				this.map.replace(5,1,0,0,20,15,'Floor');
+				this.map.replace(2,5,0,0,20,15,'Floor');
 			}
 			this.time.events.add(2500,function() {
 				this.canColor = true;
