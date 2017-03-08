@@ -79,6 +79,7 @@ BasicGame.Stage2.prototype = {
         this.updateMove();
 		this.pitCheck();
 		if(this.input.keyboard.isDown(Phaser.Keyboard.Z) && this.canColor){
+			this.canColor = false;
 			this.color += 1;
 			if(this.color % 3 == 0){//Yellow to Red
 				this.map.replace(5,2,0,0,20,15,'Floor');
@@ -90,6 +91,9 @@ BasicGame.Stage2.prototype = {
 				this.map.replace(5,1,0,0,20,15,'Floor');
 				this.map.replace(2,5,0,0,20,15,'Floor');
 			}
+			this.time.events.add(500,function() {
+				this.canColor = true;
+			},this);
 		}
     },
 	
