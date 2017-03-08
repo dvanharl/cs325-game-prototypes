@@ -39,6 +39,8 @@ BasicGame.Stage2 = function (game) {
 	this.arrows = null;
 	this.color = 0;
 	this.canColor = true;
+	
+	
 };
 
 BasicGame.Stage2.prototype = {
@@ -71,6 +73,7 @@ BasicGame.Stage2.prototype = {
 		this.arrows = this.input.keyboard.createCursorKeys();
 		
 		this.map.replace(3,5,0,0,20,15,'Floor');
+		
     },
 
     update: function () {

@@ -37,6 +37,9 @@ BasicGame.Stage1 = function (game) {
 	this.finish = null;
 	
 	this.arrows = null;
+	
+	this.enemy1 = null;
+	this.enemy2 = null;
 };
 
 BasicGame.Stage1.prototype = {
@@ -69,7 +72,17 @@ BasicGame.Stage1.prototype = {
 		this.arrows = this.input.keyboard.createCursorKeys();
 		
 		//Set up Enemies
+		this.enemy1 = this.add.sprite(340,380, 'benemy');
+		this.enemy1.anchor.setTo(.5,.5);
+		this.enemy1.animations.add('side',[0,1,2,3], .25, true, true);
+		this.enemy1.animations.add('up',[4,5,6,7], .25, true, true);
+		this.enemy1.animations.add('down',[8,9,10,11], .25, true, true);
 		
+		this.enemy2 = this.add.sprite(460,220, 'yenemy');
+		this.enemy2.anchor.setTo(.5,.5);
+		this.enemy2.animations.add('side',[0,1,2,3], .25, true, true);
+		this.enemy2.animations.add('up',[4,5,6,7], .25, true, true);
+		this.enemy2.animations.add('down',[8,9,10,11], .25, true, true);
     },
 
     update: function () {
