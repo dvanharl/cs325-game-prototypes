@@ -64,6 +64,8 @@ BasicGame.Game.prototype = {
 		
 		this.pHealth = 3;
 		
+		this.arrows = this.input.keyboard.createCursorKeys();
+		
 		//Set up Enemies
 		
     },
@@ -78,22 +80,17 @@ BasicGame.Game.prototype = {
 	},
 	
 	updateMove: function () {
-		//Left
-		if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+		//Left/Right
+		if(this.arrows.left.isDown){
 			this.player.body.moveLeft(300);
-		//Right
-		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+		}else if(this.arrows.left.isDown){
 			this.player.body.moveRight(300);
-			//this.player.x += 2;
-		//Up
 		}
-		if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
+		//Up/Down
+		if(this.arrows.left.isDown){
 			this.player.body.moveUp(300);
-			//this.player.y += -2;
-		//Down
-		}else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+		}else if(this.arrows.left.isDown)){
 			this.player.body.moveDown(300);
-			//this.player.y += 2;
 		}
 	}
 };
