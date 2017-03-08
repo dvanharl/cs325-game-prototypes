@@ -125,7 +125,8 @@ BasicGame.Stage1.prototype = {
 	
 	updateEnemy: function () {
 		if(this.canTurn1){
-			this.time.events.add(700,function() {
+			this.canTurn1 = false;
+			this.time.events.add(1200,function() {
 				this.turn1 += 1;
 				if(this.turn1 % 4 == 0){
 					this.enemy1.scale.x = -1;
@@ -138,11 +139,13 @@ BasicGame.Stage1.prototype = {
 				}else{
 					this.enemy1.animations.play('side');
 				}
+				this.canTurn1 = true;
 			},this);
 		}
 		
 		if(this.canTurn2){
-			this.time.events.add(550,function() {
+			this.canTurn2 = false;
+			this.time.events.add(1050,function() {
 				this.turn2 += 1;
 				if(this.turn1 % 4 == 0){
 					this.enemy2.scale.x = -1;
@@ -155,6 +158,7 @@ BasicGame.Stage1.prototype = {
 				}else{
 					this.enemy2.animations.play('side');
 				}
+				this.canTurn2 = true;
 			},this);
 		}
 	},
