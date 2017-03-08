@@ -129,8 +129,10 @@ BasicGame.Stage2.prototype = {
 	},
 	
 	respawn: function () {
-		this.physics.p2.removeBody(this.physics.p2.getBody(this.player));
+		this.player.kill();
 		this.player.x = 60;
 		this.player.y = 300;
+		this.player.revive();
+		this.physics.p2.enable(this.player);
 	}
 };
