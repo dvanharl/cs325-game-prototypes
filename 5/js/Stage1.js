@@ -134,14 +134,11 @@ BasicGame.Stage1.prototype = {
 				}else if(this.turn1 == 1){
 					this.enemy1.animations.play('up');
 				}else if(this.turn1 == 2){
-					this.enemy1.scale.x = -1;
 					this.enemy1.animations.play('side');
+					this.enemy1.scale.x = -1;
 				}else{
 					this.enemy1.animations.play('down');
 				}
-			},this);
-		}else{
-			this.time.events.add(2200,function() {
 				this.canTurn1 = true;
 			},this);
 		}
