@@ -29,7 +29,7 @@ BasicGame.Game = function (game) {
 	this.xSpeed = 0;
 	this.ySpeed = 0;
 	this.pHealth = 0;
-	this.canMove = false;
+	this.canMove = true;
 	
 	this.map = null;
 	this.floor = null;
