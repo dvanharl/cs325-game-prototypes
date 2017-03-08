@@ -91,7 +91,7 @@ BasicGame.Stage2.prototype = {
 				this.map.replace(5,1,0,0,20,15,'Floor');
 				this.map.replace(2,5,0,0,20,15,'Floor');
 			}
-			this.time.events.add(500,function() {
+			this.time.events.add(100,function() {
 				this.canColor = true;
 			},this);
 		}
