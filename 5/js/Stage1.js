@@ -126,7 +126,7 @@ BasicGame.Stage1.prototype = {
 	updateEnemy: function () {
 		if(this.canTurn1){
 			this.canTurn1 = false;
-			this.time.events.add(2200,function() {
+			this.time.events.add(1600,function() {
 				this.turn1 = (this.turn1 + 1) % 4;
 				if(this.turn1 == 0){
 					this.enemy1.scale.x = 1;
@@ -145,14 +145,16 @@ BasicGame.Stage1.prototype = {
 		
 		if(this.canTurn2){
 			this.canTurn2 = false;
-			this.time.events.add(1850,function() {
-				this.turn2 = (this.turn2 + 1) % 3;
-				if(this.turn2 % 4 == 0){
+			this.time.events.add(1100,function() {
+				this.turn2 = (this.turn2 + 1) % 4;
+				if(this.turn2 == 0){
 					this.enemy2.animations.play('up');
-				}else if(this.turn2 % 4 == 1){
+				}else if(this.turn2 == 1){
 					this.enemy2.animations.play('side');
-				}else{
+				}else if(this.turn2 == 2){
 					this.enemy2.animations.play('down');
+				}else{
+					this.enemy2.animations.play('side');
 				}
 				this.canTurn2 = true;
 			},this);
