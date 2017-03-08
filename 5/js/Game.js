@@ -50,7 +50,7 @@ BasicGame.Game.prototype = {
 		
 		
 		//Set up Player
-		this.player = this.add.sprite(420, 540, 'player');
+		this.player = this.add.sprite(400, 300, 'player');
 		this.player.anchor.setTo(.5,.5);
 		this.physics.p2.enable(this.player);
 		
