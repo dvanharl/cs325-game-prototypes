@@ -90,7 +90,7 @@ BasicGame.Game.prototype = {
 		//Up/Down
 		if(this.arrows.left.isDown){
 			this.player.body.moveUp(200);
-		}else if(this.arrows.left.isDown)){
+		}else if(this.arrows.left.isDown){
 			this.player.body.moveDown(200);
 		}
 	}
