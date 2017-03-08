@@ -4,7 +4,7 @@ window.addEventListener("keydown", function(e){
 	}
 },false);
 
-BasicGame.Game = function (game) {
+BasicGame.Stage1 = function (game) {
 
     //  When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
 
@@ -38,7 +38,7 @@ BasicGame.Game = function (game) {
 	this.arrows = null;
 };
 
-BasicGame.Game.prototype = {
+BasicGame.Stage1.prototype = {
     create: function () {
 		this.physics.startSystem(Phaser.Physics.P2JS);
 		this.physics.p2.defaultRestitution = 0.0;
