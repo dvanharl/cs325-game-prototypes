@@ -84,13 +84,13 @@ BasicGame.Game.prototype = {
 		//Left/Right
 		if(this.arrows.left.isDown){
 			this.player.body.moveLeft(200);
-		}else if(this.arrows.left.isDown){
+		}else if(this.arrows.right.isDown){
 			this.player.body.moveRight(200);
 		}
 		//Up/Down
-		if(this.arrows.left.isDown){
+		if(this.arrows.up.isDown){
 			this.player.body.moveUp(200);
-		}else if(this.arrows.left.isDown){
+		}else if(this.arrows.down.isDown){
 			this.player.body.moveDown(200);
 		}
 	}
