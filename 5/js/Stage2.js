@@ -58,7 +58,7 @@ BasicGame.Stage2.prototype = {
 		
 		
 		//Set up Player
-		this.player = this.add.sprite(420, 540, 'player');
+		this.player = this.add.sprite(60, 300, 'player');
 		this.player.anchor.setTo(.5,.5);
 		this.physics.p2.enable(this.player);
 		this.player.body.setZeroDamping();
