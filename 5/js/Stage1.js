@@ -34,6 +34,7 @@ BasicGame.Stage1 = function (game) {
 	this.map = null;
 	this.floor = null;
 	this.wall = null;
+	this.finish = null;
 	
 	this.arrows = null;
 };
@@ -48,6 +49,7 @@ BasicGame.Stage1.prototype = {
 		this.map.addTilesetImage('floortile', 'tiles');
 		this.floor = this.map.createLayer('Floor');
 		this.wall = this.map.createLayer('Walls');
+		this.finish = this.map.createLayer('Finish');
 		this.map.setCollisionBetween(1, 300, true, 'Walls');
 		this.map.setCollisionBetween(1, 200, false, 'Floor');
 		this.physics.p2.convertTilemap(this.map, this.wall);
@@ -99,7 +101,7 @@ BasicGame.Stage1.prototype = {
 		}
 	},
 	checkTile: function() {
-		if(this.player.x - 12 > 360 && this.player.x + 12 < 400 && this.player.y - 12 > 40 && this.player.y + 12 < 80){
+		if(this.player.x - 10 > 360 && this.player.x + 10 < 400 && this.player.y - 10 > 40 && this.player.y + 10 < 80){
 			this.nextStage();
 		}
 	},
