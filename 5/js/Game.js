@@ -26,79 +26,82 @@ BasicGame.Game = function (game) {
     this.rnd;       //  the repeatable random number generator (Phaser.RandomDataGenerator)
 
 	this.player = null;
+	this.xSpeed = 0;
+	this.ySpeed = 0;
 	this.pHealth = 0;
-	this.pMagic = 0;
-	this.casting = false;
-	this.numSpell = 0;
-	this.intensity = 0;
+	this.canMove = false;
+	
+	this.map = null;
+	this.floor = null;
+	this.wall = null;
 };
 
 BasicGame.Game.prototype = {
     create: function () {
+		//Set up map
+		this.map = this.add.tilemap('stage1');
+		this.addTilesetImage('tiles', 'tiles');
+		this.floor = this.map.createLayer('Floor');
+		this.wall = this.map.createLayer('Wall');
+		this.map.setCollisionBetween(1, 300, true, 'Wall');
+		
+		//Set up Player
+		this.player = this.add.sprite(450, 570, 'player');
+		this.pHealth = 3;
+		
+		//Set up Enemies
     },
 
     update: function () {
 		//MOVEMENT
-        if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){//Move Left
-			this.player.x += -3;
-		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){//Move Right
-			this.player.x += 3;
-		}
-		
-		if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){//Move Up
-			this.player.y += -3;
-		}else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){//Move Down
-			this.player.y += 3;
-		}
+        this.updateMove();
 		
     },
 	
 	render: function() {
+		this.debug.text('Lives: ' + this.pHealth);
 	},
 	
-	moveCamera: function() {
-	},
-	
-	loadSpell: function() {
-		if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
-			this.intensity =+ 1;
-		}else if(this.input.keyboard.isDown(Phaser.Keyboard.X)){
-			this.intensity =+ 2;
-		}
-		
-		this.numSpell += 1;
-		//Check numSpell
-		if(this.numSpell == 2){
-			this.castSpell();
-		}else{
-		}
-	},
-	
-	castSpell: function() {
-		if(this.numSpell == 1){ //1 Spell
-			if(this.intensity == 1){//Z
-			}else if(this.intensity == 2){//X
+	updateMove: function () {
+		if(this.canMove){
+			//Left
+			if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+				/*if((this.player.x - 1)){
+					this.canMove = false;
+					this.xSpeed = -.5;
+				}*/
+				this.player.x += -.5;
+			//Right
+			}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+				/*if((this.player.x + 1)){
+					this.canMove = false;
+					this.xSpeed = -.5;
+				}*/
+				this.player.x += .5;
+			//Up
+			}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
+				/*if((this.player.y - 1)){
+					this.canMove = false;
+					this.ySpeed = -.5;
+				}*/
+				this.player.y += -.5;
+			//Down
 			}
-		}else if(this.numSpell == 2){ //2 Spells
-			if(this.intensity == 2){//ZZ
-			}else if(this.intensity == 3){//ZX
-			}else if(this.intensity == 4){//XX
+			if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+				/*if((this.player.y + 1)){
+					this.canMove = false;
+					this.ySpeed += .5;
+				}*/
+				this.player.y += .5;
 			}
-		}
-		
-		//Revert Spell stuff
-		this.casting = false;
-		this.numSpell = 0;
-		this.intensity = 0;
-	},
-	
-	bomb: function(){
-	},
-	
-	enemySpawn: function() {
-	},
-	
-	enemyAttack: function() {
-	},
-
+		}/*else{
+			this.player.x += xSpeed;
+			this.player.y = ySpeed;
+			if(this.player.x % 10 == 0 || this.player.y % 10 == 0){
+				this.xSpeed = 0;
+				this.ySpeed = 0;
+				this.canMove = true;
+			}
+		}*/
+	}
 };
