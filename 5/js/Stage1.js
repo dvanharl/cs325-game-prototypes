@@ -40,6 +40,12 @@ BasicGame.Stage1 = function (game) {
 	
 	this.enemy1 = null;
 	this.enemy2 = null;
+	
+	this.turn1 = 0;
+	this.turn2 = 0;
+	
+	this.canTurn1 = true;
+	this.canTurn2 = true;
 };
 
 BasicGame.Stage1.prototype = {
@@ -81,10 +87,10 @@ BasicGame.Stage1.prototype = {
 		
 		this.enemy2 = this.add.sprite(460,220, 'yenemy');
 		this.enemy2.anchor.setTo(.5,.5);
-		this.enemy2.animations.add('side',[0,1,2,3], 1.5, true, true);
-		this.enemy2.animations.add('up',[4,5,6,7], 1.5, true, true);
-		this.enemy2.animations.add('down',[8,9,10,11], 1.5, true, true);
-		this.enemy2.animations.play('up');
+		this.enemy2.animations.add('side',[0,1,2,3], 2.1, true, true);
+		this.enemy2.animations.add('up',[4,5,6,7], 2.1, true, true);
+		this.enemy2.animations.add('down',[8,9,10,11], 2.1, true, true);
+		this.enemy2.animations.play('side');
     },
 
     update: function () {
@@ -95,6 +101,7 @@ BasicGame.Stage1.prototype = {
 		//Check tile
 		this.checkTile();
 		//Enemy Movement
+		this.updateEnemy();
     },
 	
 	render: function() {
@@ -115,6 +122,43 @@ BasicGame.Stage1.prototype = {
 			this.player.body.moveDown(200);
 		}
 	},
+	
+	updateEnemy: function () {
+		if(this.canTurn1){
+			this.time.events.add(700,function() {
+				this.turn1 += 1;
+				if(this.turn1 % 4 == 0){
+					this.enemy1.scale.x = -1;
+					this.enemy1.animations.play('side');
+				}else if(this.turn1 % 4 == 1){
+					this.enemy1.animations.play('up');
+				}else if(this.turn1 % 4 == 2){
+					this.enemy1.scale.x = -1;
+					this.enemy1.animations.play('side');
+				}else{
+					this.enemy1.animations.play('side');
+				}
+			},this);
+		}
+		
+		if(this.canTurn2){
+			this.time.events.add(550,function() {
+				this.turn2 += 1;
+				if(this.turn1 % 4 == 0){
+					this.enemy2.scale.x = -1;
+					this.enemy2.animations.play('side');
+				}else if(this.turn2 % 4 == 1){
+					this.enemy2.animations.play('up');
+				}else if(this.turn1 % 4 == 2){
+					this.enemy2.scale.x = -1;
+					this.enemy2.animations.play('side');
+				}else{
+					this.enemy2.animations.play('side');
+				}
+			},this);
+		}
+	},
+	
 	checkTile: function() {
 		//If at finish, move to next stage
 		if(this.player.x - 12 > 360 && this.player.x + 12 < 400 && this.player.y - 12 > 40 && this.player.y + 12 < 80){
