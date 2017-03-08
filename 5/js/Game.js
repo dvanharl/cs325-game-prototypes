@@ -34,6 +34,8 @@ BasicGame.Game = function (game) {
 	this.map = null;
 	this.floor = null;
 	this.wall = null;
+	
+	this.arrows = null;
 };
 
 BasicGame.Game.prototype = {
@@ -51,7 +53,7 @@ BasicGame.Game.prototype = {
 		
 		
 		//Set up Player
-		this.player = this.add.sprite(400, 300, 'player');
+		this.player = this.add.sprite(420, 540, 'player');
 		this.player.anchor.setTo(.5,.5);
 		this.physics.p2.enable(this.player);
 		
@@ -75,17 +77,20 @@ BasicGame.Game.prototype = {
 	updateMove: function () {
 		//Left
 		if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
-			this.player.x += -2;
+			this.player.body.moveLeft(300);
 		//Right
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-			this.player.x += 2;
+			this.player.body.moveRight(300);
+			//this.player.x += 2;
 		//Up
 		}
 		if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
-			this.player.y += -2;
+			this.player.body.moveUp(300);
+			//this.player.y += -2;
 		//Down
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
-			this.player.y += 2;
+			this.player.body.moveDown(300);
+			//this.player.y += 2;
 		}
 	}
 };
