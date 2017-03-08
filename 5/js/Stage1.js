@@ -80,16 +80,16 @@ BasicGame.Stage1.prototype = {
 		//Set up Enemies
 		this.enemy1 = this.add.sprite(340,380, 'benemy');
 		this.enemy1.anchor.setTo(.5,.5);
-		this.enemy1.animations.add('side',[0,1,2,3], 1.7, true, true);
-		this.enemy1.animations.add('up',[4,5,6,7], 1.7, true, true);
-		this.enemy1.animations.add('down',[8,9,10,11], 1.7, true, true);
+		this.enemy1.animations.add('side',[0,1,2,3], 5, true, true);
+		this.enemy1.animations.add('up',[4,5,6,7], 5, true, true);
+		this.enemy1.animations.add('down',[8,9,10,11], 5, true, true);
 		this.enemy1.animations.play('up');
 		
 		this.enemy2 = this.add.sprite(460,220, 'yenemy');
 		this.enemy2.anchor.setTo(.5,.5);
-		this.enemy2.animations.add('side',[0,1,2,3], 2.1, true, true);
-		this.enemy2.animations.add('up',[4,5,6,7], 2.1, true, true);
-		this.enemy2.animations.add('down',[8,9,10,11], 2.1, true, true);
+		this.enemy2.animations.add('side',[0,1,2,3], 8, true, true);
+		this.enemy2.animations.add('up',[4,5,6,7], 8, true, true);
+		this.enemy2.animations.add('down',[8,9,10,11], 8, true, true);
 		this.enemy2.animations.play('side');
     },
 
