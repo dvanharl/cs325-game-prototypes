@@ -129,7 +129,7 @@ BasicGame.Stage1.prototype = {
 			this.time.events.add(1200,function() {
 				this.turn1 += 1;
 				if(this.turn1 % 4 == 0){
-					this.enemy1.scale.x = -1;
+					this.enemy1.scale.x = 1;
 					this.enemy1.animations.play('side');
 				}else if(this.turn1 % 4 == 1){
 					this.enemy1.animations.play('up');
@@ -137,7 +137,7 @@ BasicGame.Stage1.prototype = {
 					this.enemy1.scale.x = -1;
 					this.enemy1.animations.play('side');
 				}else{
-					this.enemy1.animations.play('side');
+					this.enemy1.animations.play('down');
 				}
 				this.canTurn1 = true;
 			},this);
@@ -148,7 +148,7 @@ BasicGame.Stage1.prototype = {
 			this.time.events.add(1050,function() {
 				this.turn2 += 1;
 				if(this.turn1 % 4 == 0){
-					this.enemy2.scale.x = -1;
+					this.enemy2.scale.x = 1;
 					this.enemy2.animations.play('side');
 				}else if(this.turn2 % 4 == 1){
 					this.enemy2.animations.play('up');
@@ -156,7 +156,7 @@ BasicGame.Stage1.prototype = {
 					this.enemy2.scale.x = -1;
 					this.enemy2.animations.play('side');
 				}else{
-					this.enemy2.animations.play('side');
+					this.enemy2.animations.play('down');
 				}
 				this.canTurn2 = true;
 			},this);
