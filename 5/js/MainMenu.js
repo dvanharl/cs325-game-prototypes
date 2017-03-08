@@ -35,7 +35,7 @@ BasicGame.MainMenu.prototype = {
 		//this.music.stop();
 
 		//	And start the actual game
-		this.state.start('Stage1');
+		this.state.start('Stage2');
 
 	}
 
