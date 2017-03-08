@@ -74,6 +74,10 @@ BasicGame.Stage1.prototype = {
 		//MOVEMENT
 		this.player.body.setZeroVelocity();
         this.updateMove();
+		
+		//Check tile
+		
+		//Enemy Movement
     },
 	
 	render: function() {
@@ -92,6 +96,11 @@ BasicGame.Stage1.prototype = {
 			this.player.body.moveUp(200);
 		}else if(this.arrows.down.isDown){
 			this.player.body.moveDown(200);
+		}
+	},
+	checkTile: function() {
+		if(this.player.x - 12 > 360 && this.player.x + 12 < 400 && this.player.y - 12 > 40 && this.player.y + 12 < 80){
+			this.nextStage();
 		}
 	},
 	
