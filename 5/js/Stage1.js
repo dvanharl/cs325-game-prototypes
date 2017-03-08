@@ -139,6 +139,9 @@ BasicGame.Stage1.prototype = {
 				}else{
 					this.enemy1.animations.play('down');
 				}
+			},this);
+		}else{
+			this.time.events.add(2200,function() {
 				this.canTurn1 = true;
 			},this);
 		}
