@@ -70,7 +70,7 @@ BasicGame.Stage2.prototype = {
 		
 		this.arrows = this.input.keyboard.createCursorKeys();
 		
-		this.map.replace(3,5,1,300,20,15,'Floor');
+		this.map.replace(3,5,1,1,20,15,'Floor');
     },
 
     update: function () {
