@@ -46,6 +46,7 @@ BasicGame.Game.prototype = {
 		this.floor = this.map.createLayer('Floor');
 		this.wall = this.map.createLayer('Walls');
 		this.map.setCollisionBetween(1, 300, true, 'Walls');
+		this.map.setCollisionBetween(1, 200, false, 'Floor');
 		this.physics.p2.convertTilemap(this.map, this.wall);
 		
 		
