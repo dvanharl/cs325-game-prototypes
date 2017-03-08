@@ -54,6 +54,8 @@ BasicGame.Game.prototype = {
 		this.player.anchor.setTo(.5,.5);
 		this.physics.p2.enable(this.player);
 		
+		this.camera.follow(this.player);
+		
 		this.pHealth = 3;
 		
 		//Set up Enemies
