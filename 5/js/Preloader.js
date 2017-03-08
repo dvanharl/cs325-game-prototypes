@@ -21,6 +21,7 @@ BasicGame.Preloader.prototype = {
 		//this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
 
         this.load.tilemap('stage1', 'assets/stage1.json', null, Phaser.Tilemap.TILED_JSON);
+		this.load.tilemap('stage2', 'assets/stage2.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.image('tiles', 'assets/floortile.png');
 		this.load.spritesheet('player', 'assets/player.png', 25, 25, 1);
 	},

@@ -10,14 +10,12 @@ BasicGame.GameOver = function (game) {
 	this.music = null;
 	this.style = null;
 	this.titleStyle = null;
-	this.words = null;
 	this.message = null;
 };
 
 BasicGame.GameOver.prototype = {
 	
-	init: function (score, win) {
-		this.endScore = score;
+	init: function (level, win) {
 		this.didI = win;
 	},
 	
@@ -38,9 +36,6 @@ BasicGame.GameOver.prototype = {
 		}
 		this.message.anchor.setTo(0.5,0.5);
 		this.music.play();
-		this.style = { font: "25px", fill: "#ff0000", align: "center" };
-		this.words = this.add.text (400, 550, "Kills: " + this.endScore, this.style);
-		this.words.anchor.setTo(0.5,0.5);
 		this.whiteScreen = this.game.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 1500,0,false);
 	},

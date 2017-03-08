@@ -4,7 +4,7 @@ window.addEventListener("keydown", function(e){
 	}
 },false);
 
-BasicGame.Stage1 = function (game) {
+BasicGame.Stage2 = function (game) {
 
     //  When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
 
@@ -34,20 +34,24 @@ BasicGame.Stage1 = function (game) {
 	this.map = null;
 	this.floor = null;
 	this.wall = null;
+	this.pit = null;
 	
 	this.arrows = null;
+	this.color = 0;
+	this.canColor = true;
 };
 
-BasicGame.Stage1.prototype = {
+BasicGame.Stage2.prototype = {
     create: function () {
 		this.physics.startSystem(Phaser.Physics.P2JS);
 		this.physics.p2.defaultRestitution = 0.0;
 		
 		//Set up map
-		this.map = this.add.tilemap('stage1');
+		this.map = this.add.tilemap('stage2');
 		this.map.addTilesetImage('floortile', 'tiles');
 		this.floor = this.map.createLayer('Floor');
 		this.wall = this.map.createLayer('Walls');
+		this.pit = this.map.createLayer('Pit');
 		this.map.setCollisionBetween(1, 300, true, 'Walls');
 		this.map.setCollisionBetween(1, 200, false, 'Floor');
 		this.physics.p2.convertTilemap(this.map, this.wall);
@@ -66,14 +70,26 @@ BasicGame.Stage1.prototype = {
 		
 		this.arrows = this.input.keyboard.createCursorKeys();
 		
-		//Set up Enemies
-		
+		this.map.replace(3,5,240,80,480,400,this.floor);
     },
 
     update: function () {
 		//MOVEMENT
 		this.player.body.setZeroVelocity();
         this.updateMove();
+		this.pitCheck();
+		if(this.input.keyboard.isDown(Phaser.Keyboard.Z) && this.canColor){
+			this.color = (this.color + 1 % 3);
+			if(this.color == 0){//Yellow to Red
+				this.map.replace(5,2,80,80,640,440,this.floor);
+				this.map.replace(3,5,80,80,640,440,this.floor);
+			}else if(this.color == 1){//Red to Blue
+				this.map.replace(5,3,80,80,640,440,this.floor);
+				this.map.replace(1,5,80,80,640,440,this.floor);
+			}else{//Blue to Yellow
+				this.map.replace(5,1,80,80,640,440,this.floor);
+				this.map.replace(2,5,80,80,640,440,this.floor);
+			}
     },
 	
 	render: function() {
@@ -95,7 +111,7 @@ BasicGame.Stage1.prototype = {
 		}
 	},
 	
-	nextStage: function(){
-		this.state.start('Stage2');
+	pitCheck: function () {
+		//If in pit, restart and subtract life
 	}
 };
