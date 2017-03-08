@@ -41,6 +41,7 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
     create: function () {
 		this.physics.startSystem(Phaser.Physics.P2JS);
+		this.physics.p2.defaultRestitution = 0.0;
 		
 		//Set up map
 		this.map = this.add.tilemap('stage1');
@@ -56,6 +57,8 @@ BasicGame.Game.prototype = {
 		this.player = this.add.sprite(420, 540, 'player');
 		this.player.anchor.setTo(.5,.5);
 		this.physics.p2.enable(this.player);
+		this.player.body.setZeroDamping();
+		this.player.body.fixedRotation = true;
 		
 		this.camera.follow(this.player);
 		
