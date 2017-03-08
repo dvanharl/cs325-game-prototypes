@@ -46,7 +46,10 @@ BasicGame.Game.prototype = {
 		this.map.setCollisionBetween(1, 300, true, 'Walls');
 		
 		//Set up Player
-		this.player = this.add.sprite(400, 300, 'player');
+		this.player = this.add.sprite(450, 570, 'player');
+		this.player.anchor.setTo(.5,.5);
+		this.physics.enable(this.player, Phaser.Physics.ARCADE);
+		//this.player.body.
 		this.pHealth = 3;
 		
 		//Set up Enemies
