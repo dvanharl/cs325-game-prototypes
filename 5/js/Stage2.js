@@ -77,24 +77,8 @@ BasicGame.Stage2.prototype = {
 		//MOVEMENT
 		this.player.body.setZeroVelocity();
         this.updateMove();
-		this.pitCheck();
-		if(this.input.keyboard.isDown(Phaser.Keyboard.Z) && this.canColor){
-			this.canColor = false;
-			this.color += 1;
-			if(this.color % 3 == 0){//Yellow to Red
-				this.map.replace(5,2,0,0,20,15,'Floor');
-				this.map.replace(3,5,0,0,20,15,'Floor');
-			}else if(this.color % 3 == 1){//Red to Blue
-				this.map.replace(5,3,0,0,20,15,'Floor');
-				this.map.replace(1,5,0,0,20,15,'Floor');
-			}else{//Blue to Yellow
-				this.map.replace(5,1,0,0,20,15,'Floor');
-				this.map.replace(2,5,0,0,20,15,'Floor');
-			}
-			this.time.events.add(2500,function() {
-				this.canColor = true;
-			},this);
-		}
+		this.tileCheck();
+		this.updateColor();
     },
 	
 	render: function() {
@@ -116,7 +100,36 @@ BasicGame.Stage2.prototype = {
 		}
 	},
 	
-	pitCheck: function () {
+	updateColor: function () {
+		if(this.input.keyboard.isDown(Phaser.Keyboard.Z) && this.canColor){
+			this.canColor = false;
+			this.color += 1;
+			if(this.color % 3 == 0){//Yellow to Red
+				this.map.replace(5,2,0,0,20,15,'Floor');
+				this.map.replace(3,5,0,0,20,15,'Floor');
+			}else if(this.color % 3 == 1){//Red to Blue
+				this.map.replace(5,3,0,0,20,15,'Floor');
+				this.map.replace(1,5,0,0,20,15,'Floor');
+			}else{//Blue to Yellow
+				this.map.replace(5,1,0,0,20,15,'Floor');
+				this.map.replace(2,5,0,0,20,15,'Floor');
+			}
+			this.time.events.add(1500,function() {
+				this.canColor = true;
+			},this);
+		}
+	},
+	
+	tileCheck: function () {
 		//If in pit, restart and subtract life
+		if(this.map.getTileWorldXY(this.player.x,this.player.y, 40,40, 'Pit', true) != -1){
+			this.pHealth -= 1;
+			this.reset();
+		}
+	},
+	
+	reset: function () {
+		this.player.x = 60;
+		this.player.y = 300;
 	}
 };

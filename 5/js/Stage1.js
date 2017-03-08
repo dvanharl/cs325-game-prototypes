@@ -101,9 +101,11 @@ BasicGame.Stage1.prototype = {
 		}
 	},
 	checkTile: function() {
+		//If at finish, move to next stage
 		if(this.player.x - 12 > 360 && this.player.x + 12 < 400 && this.player.y - 12 > 40 && this.player.y + 12 < 80){
 			this.nextStage();
 		}
+		//If caught, damage and reset
 	},
 	
 	nextStage: function(){
