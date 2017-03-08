@@ -129,10 +129,11 @@ BasicGame.Stage2.prototype = {
 	},
 	
 	respawn: function () {
-		this.player.kill();
-		this.player.x = 60;
-		this.player.y = 300;
-		this.player.revive();
+		this.player.destroy();
+		this.player = this.add.sprite(60, 300, 'player');
+		this.player.anchor.setTo(.5,.5);
 		this.physics.p2.enable(this.player);
+		this.player.body.setZeroDamping();
+		this.player.body.fixedRotation = true;
 	}
 };
