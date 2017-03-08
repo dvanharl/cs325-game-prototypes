@@ -127,13 +127,13 @@ BasicGame.Stage1.prototype = {
 		if(this.canTurn1){
 			this.canTurn1 = false;
 			this.time.events.add(2200,function() {
-				this.turn1 += 1;
-				if(this.turn1 % 4 == 0){
+				this.turn1 = (this.turn1 + 1) % 4;
+				if(this.turn1 == 0){
 					this.enemy1.scale.x = 1;
 					this.enemy1.animations.play('side');
-				}else if(this.turn1 % 4 == 1){
+				}else if(this.turn1 == 1){
 					this.enemy1.animations.play('up');
-				}else if(this.turn1 % 4 == 2){
+				}else if(this.turn1 == 2){
 					this.enemy1.scale.x = -1;
 					this.enemy1.animations.play('side');
 				}else{
