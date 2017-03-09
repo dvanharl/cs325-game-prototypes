@@ -48,12 +48,15 @@ BasicGame.Stage1 = function (game) {
 	this.canTurn2 = true;
 	
 	this.music = null;
+	this.caught = null;
 };
 
 BasicGame.Stage1.prototype = {
     create: function () {
 		this.music = this.add.audio('stage1');
 		this.music.play();
+		
+		this.caught = this.add.audio('caught');
 		
 		this.physics.startSystem(Phaser.Physics.P2JS);
 		this.physics.p2.defaultRestitution = 0.0;
@@ -176,6 +179,7 @@ BasicGame.Stage1.prototype = {
 		//If caught, damage and reset
 		if((this.player.y - 12 > 360 && this.player.y + 12 < 400 && this.turn1 == 2 && this.canMove) || (this.player.y - 12 > 200 && this.player.y + 12 < 240 && this.canMove && (this.turn2 == 1 ||this.turn2 == 3))){
 			this.canMove = false;
+			this.caught.play();
 			this.player.tint = 0xff0000;
 			this.time.events.add(2000,function() {
 				this.player.tint = 0xffffff;
