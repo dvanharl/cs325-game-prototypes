@@ -167,11 +167,10 @@ BasicGame.Stage1.prototype = {
 			this.nextStage();
 		}
 		//If caught, damage and reset
-		if((this.player.y - 12 > 360 && this.player.y + 12 < 400 && this.turn1 == 2) || (this.player.y - 12 > 200 && this.player.y + 12 < 240) && this.canMove){
+		if((this.player.y - 12 > 360 && this.player.y + 12 < 400 && this.turn1 == 2) || (this.player.y - 12 > 200 && this.player.y + 12 < 240 && (this.turn2 == 1 ||this.turn2 == 3)) && this.canMove){
 			this.canMove = false;
 			this.player.tint = 0xff0000;
 			this.time.events.add(2000,function() {
-				this.player. = true;
 				this.player.tint = 0xffffff;
 				this.pHealth -= 1;
 				this.respawn();
