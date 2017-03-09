@@ -133,6 +133,10 @@ BasicGame.Stage2.prototype = {
 	},
 	
 	tileCheck: function () {
+		//Finsh Check
+		if(this.player.x - 12 > 720 && this.player.x + 12 < 760 && this.player.y - 12 > 480 && this.player.y + 12 < 520){
+			this.nextStage();
+		}
 		//If in pit, restart and subtract life
 		this.tileType = this.map.getTileWorldXY(this.player.x,this.player.y, 40,40, 'Pit', true).index;
 		if(this.tileType == 5){
@@ -148,5 +152,11 @@ BasicGame.Stage2.prototype = {
 		this.physics.p2.enable(this.player);
 		this.player.body.setZeroDamping();
 		this.player.body.fixedRotation = true;
+	},
+	
+	nextStage: function(){
+		this.music.stop();
+		this.pHealth = 3;
+		this.state.start('MainMenu');
 	}
 };

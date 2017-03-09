@@ -185,6 +185,9 @@ BasicGame.Stage1.prototype = {
 				this.player.tint = 0xffffff;
 				this.pHealth -= 1;
 				this.respawn();
+				if(this.pHealth == 0){
+					this.endGame();
+				}
 			},this);
 		}
 	},
@@ -203,5 +206,11 @@ BasicGame.Stage1.prototype = {
 		this.music.stop();
 		this.pHealth = 3;
 		this.state.start('Stage2');
+	},
+	
+	endGame: function() {
+		this.music.stop();
+		this.pHealth = 3;
+		this.state.start('MainMenu');
 	}
 };
