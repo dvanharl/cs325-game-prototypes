@@ -46,7 +46,7 @@ BasicGame.Stage2 = function (game) {
 
 BasicGame.Stage2.prototype = {
     create: function () {
-		this.music = this.add.audio('stage1');
+		this.music = this.add.audio('stage2');
 		this.music.play();
 		
 		this.physics.startSystem(Phaser.Physics.P2JS);
