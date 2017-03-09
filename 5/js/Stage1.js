@@ -46,10 +46,15 @@ BasicGame.Stage1 = function (game) {
 	
 	this.canTurn1 = true;
 	this.canTurn2 = true;
+	
+	this.music = null;
 };
 
 BasicGame.Stage1.prototype = {
     create: function () {
+		this.music = this.add.audio('stage1');
+		this.music.play();
+		
 		this.physics.startSystem(Phaser.Physics.P2JS);
 		this.physics.p2.defaultRestitution = 0.0;
 		
@@ -182,7 +187,7 @@ BasicGame.Stage1.prototype = {
 	
 	respawn: function () {
 		this.player.destroy();
-		this.player = this.add.sprite(60, 300, 'player');
+		this.player = this.add.sprite(420, 520, 'player');
 		this.player.anchor.setTo(.5,.5);
 		this.physics.p2.enable(this.player);
 		this.player.body.setZeroDamping();
@@ -191,6 +196,7 @@ BasicGame.Stage1.prototype = {
 	},
 	
 	nextStage: function(){
+		this.music.stop();
 		this.pHealth = 3;
 		this.state.start('Stage2');
 	}

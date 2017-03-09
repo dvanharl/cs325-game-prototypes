@@ -40,11 +40,13 @@ BasicGame.Stage2 = function (game) {
 	this.color = 0;
 	this.canColor = true;
 	
-	
+	this.music = null;
 };
 
 BasicGame.Stage2.prototype = {
     create: function () {
+		this.music = this.add.audio('stage1');
+		
 		this.physics.startSystem(Phaser.Physics.P2JS);
 		this.physics.p2.defaultRestitution = 0.0;
 		
