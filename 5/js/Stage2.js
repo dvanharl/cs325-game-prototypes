@@ -35,6 +35,7 @@ BasicGame.Stage2 = function (game) {
 	this.floor = null;
 	this.wall = null;
 	this.pit = null;
+	this.finish = null;
 	
 	this.arrows = null;
 	this.color = 0;
@@ -46,6 +47,7 @@ BasicGame.Stage2 = function (game) {
 BasicGame.Stage2.prototype = {
     create: function () {
 		this.music = this.add.audio('stage1');
+		this.music.play();
 		
 		this.physics.startSystem(Phaser.Physics.P2JS);
 		this.physics.p2.defaultRestitution = 0.0;
@@ -56,6 +58,7 @@ BasicGame.Stage2.prototype = {
 		this.floor = this.map.createLayer('Floor');
 		this.wall = this.map.createLayer('Walls');
 		this.pit = this.map.createLayer('Pit');
+		this.finish = this.map.createLayer('Finish');
 		this.map.setCollisionBetween(1, 300, true, 'Walls');
 		this.map.setCollisionBetween(1, 200, false, 'Floor');
 		this.physics.p2.convertTilemap(this.map, this.wall);
@@ -128,7 +131,7 @@ BasicGame.Stage2.prototype = {
 	tileCheck: function () {
 		//If in pit, restart and subtract life
 		this.tileType = this.map.getTileWorldXY(this.player.x,this.player.y, 40,40, 'Pit', true).index;
-		if(this.tileType){
+		if(this.tileType == 5){
 			this.pHealth -= 1;
 			this.respawn();
 		}
