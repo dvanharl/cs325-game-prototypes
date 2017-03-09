@@ -42,12 +42,15 @@ BasicGame.Stage2 = function (game) {
 	this.canColor = true;
 	
 	this.music = null;
+	this.change = null;
 };
 
 BasicGame.Stage2.prototype = {
     create: function () {
 		this.music = this.add.audio('stage2');
 		this.music.play();
+		
+		this.change = this.add.audio('changecolor');
 		
 		this.physics.startSystem(Phaser.Physics.P2JS);
 		this.physics.p2.defaultRestitution = 0.0;
@@ -110,6 +113,7 @@ BasicGame.Stage2.prototype = {
 	
 	updateColor: function () {
 		if(this.input.keyboard.isDown(Phaser.Keyboard.Z) && this.canColor){
+			this.change.play();
 			this.canColor = false;
 			this.color += 1;
 			if(this.color % 3 == 0){//Yellow to Red
