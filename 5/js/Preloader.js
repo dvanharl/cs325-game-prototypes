@@ -20,7 +20,7 @@ BasicGame.Preloader.prototype = {
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		this.load.audio('titleMusic', ['assets/snake.mp3']);
 		this.load.audio('stage1',['assets/sneak1.mp3']);
-		this.load.augio('stage2',['assets/sneak2.mp3']);
+		this.load.audio('stage2',['assets/sneak2.mp3']);
 
         this.load.tilemap('stage1', 'assets/stage1.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.tilemap('stage2', 'assets/stage2.json', null, Phaser.Tilemap.TILED_JSON);
