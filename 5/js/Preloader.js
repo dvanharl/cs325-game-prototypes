@@ -16,7 +16,7 @@ BasicGame.Preloader.prototype = {
 		this.load.setPreloadSprite(this.preloadBar);
 
 
-		this.load.image('titlePage', 'assets/title.jpg');
+		this.load.image('titlePage', 'assets/title.png');
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		//this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
 
