@@ -50,6 +50,7 @@ BasicGame.MainMenu.prototype = {
 		this.add.tween(this.whiteScreen).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
 		
 		this.canMove = true;
+		this.music.volume = .5;
 	},
 
 	update: function () {
@@ -87,10 +88,10 @@ BasicGame.MainMenu.prototype = {
 			}
 		}
 		
-		if(this.sel < 0){
+		if(this.sel < 0 && this.canMove){
 			this.playB.play('idle');
 			this.controls.animations.stop(true, false);
-		}else{
+		}else if(this.sel > 0 && this.canMove){
 			this.controls.play('idle');
 			this.playB.animations.stop(true, false);
 		}
