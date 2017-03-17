@@ -30,6 +30,7 @@ BasicGame.MainMenu.prototype = {
 
 		this.playB = this.add.sprite(325, 400, 'play');
 		this.playB.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29], 30, true, true);
+		this.playB.animations.add('select',[30,31], 30, true, true);
 		this.playB.play('idle');
 		
 		this.controls = this.add.sprite(325, 480, 'controls');
@@ -60,6 +61,7 @@ BasicGame.MainMenu.prototype = {
 
 			if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
 				if(this.sel == -1){
+					this.playB.play('select');
 					this.startGame();
 				}else{
 					this.openControls();
