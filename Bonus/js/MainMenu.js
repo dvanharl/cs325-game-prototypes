@@ -89,10 +89,10 @@ BasicGame.MainMenu.prototype = {
 		
 		if(this.sel < 0){
 			this.playB.play('idle');
-			this.controls.stop(true, false);
+			this.controls.animations.stop(true, false);
 		}else{
 			this.controls.play('idle');
-			this.playB.stop(true, false);
+			this.playB.animations.stop(true, false);
 		}
 	},
 
