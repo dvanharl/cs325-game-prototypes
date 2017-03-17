@@ -31,7 +31,7 @@ BasicGame.MainMenu.prototype = {
 		this.play = this.add.sprite(325, 400, 'play');
 		this.controls = this.add.sprite(325, 480, 'controls');
 		
-		this.cursor = this.add.sprite(250, 400, 'cursor');
+		this.cursor = this.add.sprite(225, 400, 'cursor');
 		this.cursor.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], 30, true, true);
 		this.cursor.play('idle');
 		
