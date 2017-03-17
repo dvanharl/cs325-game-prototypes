@@ -7,7 +7,7 @@ window.addEventListener("keydown", function(e){
 BasicGame.MainMenu = function (game) {
 
 	this.music = null;
-	this.play = null;
+	this.playB = null;
 	this.controls = null;
 	this.sel = null;
 	this.cursor = null;
@@ -28,8 +28,13 @@ BasicGame.MainMenu.prototype = {
 
 		this.add.sprite(0, 0, 'titlePage');
 
-		this.play = this.add.sprite(325, 400, 'play');
+		this.playB = this.add.sprite(325, 400, 'play');
+		this.playB.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29], 30, true, true);
+		this.playB.play('idle')
+		
 		this.controls = this.add.sprite(325, 480, 'controls');
+		this.controls.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], 30, true, true);
+		this.controls.play('idle');
 		
 		this.cursor = this.add.sprite(225, 400, 'cursor');
 		this.cursor.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], 30, true, true);
