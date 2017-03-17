@@ -12,6 +12,7 @@ BasicGame.MainMenu = function (game) {
 	this.sel = null;
 	this.cursor = null;
 	this.opCon = null;
+	this.canMove = null;
 
 };
 
@@ -47,15 +48,27 @@ BasicGame.MainMenu.prototype = {
 		
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
+		
+		this.canMove = true;
 	},
 
 	update: function () {
-		if(!this.opCon){
+		if(!this.opCon && this.canMove){
 			if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
 				this.sel = this.sel * -1;
+				this.canMove = false;
+				this.time.events.add(1000, function() {
+					this.canMove = true;
+				},this);
 			}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
 				this.sel = this.sel * -1;
+				this.canMove = false;
+				this.time.events.add(1000, function() {
+					this.canMove = true;
+				},this);
 			}
+			
+			
 			
 			this.cursor.y = 440 + (40 * this.sel);
 
@@ -74,7 +87,7 @@ BasicGame.MainMenu.prototype = {
 			}
 		}
 		
-		if(sel < 0){
+		if(this.sel < 0){
 			this.playB.play('idle');
 			this.controls.stop(true, false);
 		}else{
@@ -84,9 +97,11 @@ BasicGame.MainMenu.prototype = {
 	},
 
 	startGame: function (pointer) {
+		this.canMove = false;
 		this.add.tween(this.whiteScreen).to({alpha:1}, 1500, Phaser.Easing.Linear.None, true, 0,0,false);
 		this.music.fadeOut(2000);
 		this.music.onFadeComplete.add(function() {
+			this.canMove = true;
 			this.state.start('Stage1');
 		},this);
 	},
