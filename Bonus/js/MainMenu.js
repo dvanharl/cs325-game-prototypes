@@ -30,7 +30,7 @@ BasicGame.MainMenu.prototype = {
 
 		this.playB = this.add.sprite(325, 400, 'play');
 		this.playB.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29], 30, true, true);
-		this.playB.play('idle')
+		this.playB.play('idle');
 		
 		this.controls = this.add.sprite(325, 480, 'controls');
 		this.controls.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], 30, true, true);
@@ -70,6 +70,14 @@ BasicGame.MainMenu.prototype = {
 				this.controls.kill();
 				this.opCon = false;
 			}
+		}
+		
+		if(sel < 0){
+			this.playB.play('idle');
+			this.controls.stop(true, false);
+		}(sel > 0){
+			this.controls.play('idle');
+			this.playB.stop(true, false);
 		}
 	},
 
