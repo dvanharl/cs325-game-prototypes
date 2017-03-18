@@ -9,6 +9,7 @@ BasicGame.MainMenu = function (game) {
 	this.music = null;
 	this.playB = null;
 	this.controls = null;
+	this.contP = null;
 	this.sel = null;
 	this.cursor = null;
 	this.opCon = null;
@@ -40,17 +41,21 @@ BasicGame.MainMenu.prototype = {
 		
 		this.cursor = this.add.sprite(225, 400, 'cursor');
 		this.cursor.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], 30, true, true);
+		this.cursor.animations.add('select',[22], 1, true, true);
 		this.cursor.play('idle');
 		
 		this.sel = -1;
 		this.playB.play('idle');
 		this.opCon = false;
 		
+		this.contP = this.add.sprite(100, 100, 'controlPanel');
+		this.contP.kill();
+		
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.add.tween(this.whiteScreen).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
 		
 		this.canMove = true;
-		this.music.volume = .5;
+		this.music.volume = .25;
 	},
 
 	update: function () {
@@ -58,13 +63,13 @@ BasicGame.MainMenu.prototype = {
 			if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
 				this.sel = this.sel * -1;
 				this.canMove = false;
-				this.time.events.add(500, function() {
+				this.time.events.add(250, function() {
 					this.canMove = true;
 				},this);
 			}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
 				this.sel = this.sel * -1;
 				this.canMove = false;
-				this.time.events.add(500, function() {
+				this.time.events.add(250, function() {
 					this.canMove = true;
 				},this);
 			}
@@ -82,6 +87,7 @@ BasicGame.MainMenu.prototype = {
 			this.cursor.y = 440 + (40 * this.sel);
 
 			if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
+				this.cursor.play('select');
 				if(this.sel == -1){
 					this.playB.play('select');
 					this.startGame();
@@ -91,7 +97,9 @@ BasicGame.MainMenu.prototype = {
 			}
 		}else{
 			if(this.input.keyboard.isDown(Phaser.Keyboard.X)){
-				this.controls.kill();
+				this.cursor.play('idle');
+				this.controls.play('idle');
+				this.contP.kill();
 				this.opCon = false;
 			}
 		}
@@ -110,7 +118,7 @@ BasicGame.MainMenu.prototype = {
 	},
 	
 	openControls: function (){
-		this.controls.revive();
+		this.contP.revive();
 		this.opCon = true;
 	}
 };

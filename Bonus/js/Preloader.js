@@ -19,7 +19,10 @@ BasicGame.Preloader.prototype = {
 
 		this.load.image('titlePage', 'assets/title.jpg');
 		this.load.image('whiteScreen', 'assets/whitescreen.png');
+		this.load.image('controlPanel', 'assets/controlPanel.png');
+		
 		this.load.audio('titleMusic', ['assets/title.mp3']);
+		
 		this.load.spritesheet('cursor', 'assets/menucursor.png',190,70,23);
 		this.load.spritesheet('play', 'assets/menuplay.png', 190,70,32);
 		this.load.spritesheet('controls', 'assets/menucontrols.png',380,70,31);
