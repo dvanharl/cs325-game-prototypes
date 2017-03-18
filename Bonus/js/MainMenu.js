@@ -43,6 +43,7 @@ BasicGame.MainMenu.prototype = {
 		this.cursor.play('idle');
 		
 		this.sel = -1;
+		this.playB.play('idle');
 		this.opCon = false;
 		
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
@@ -68,7 +69,13 @@ BasicGame.MainMenu.prototype = {
 				},this);
 			}
 			
-			
+			if(this.sel < 0){
+				this.playB.play('idle');
+				this.controls.animations.stop(true, false);
+			}else if(this.sel > 0){
+				this.controls.play('idle');
+				this.playB.animations.stop(true, false);
+			}
 			
 			this.cursor.y = 440 + (40 * this.sel);
 
@@ -87,13 +94,7 @@ BasicGame.MainMenu.prototype = {
 			}
 		}
 		
-		if(this.sel < 0 && this.canMove){
-			this.playB.play('idle');
-			this.controls.animations.stop(true, false);
-		}else if(this.sel > 0 && this.canMove){
-			this.controls.play('idle');
-			this.playB.animations.stop(true, false);
-		}
+		
 	},
 
 	startGame: function (pointer) {
