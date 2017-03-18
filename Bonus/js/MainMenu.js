@@ -71,7 +71,7 @@ BasicGame.MainMenu.prototype = {
 			
 			if(this.sel < 0){
 				this.playB.play('idle');
-				this.controls.animations.setFrame(0);
+				this.controls.animations.setFrame(0, true);
 				this.controls.animations.stop(true, false);
 			}else if(this.sel > 0){
 				this.controls.play('idle');
