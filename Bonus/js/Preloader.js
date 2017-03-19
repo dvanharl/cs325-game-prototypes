@@ -26,6 +26,9 @@ BasicGame.Preloader.prototype = {
 		this.load.spritesheet('cursor', 'assets/menucursor.png',190,70,23);
 		this.load.spritesheet('play', 'assets/menuplay.png', 190,70,32);
 		this.load.spritesheet('controls', 'assets/menucontrols.png',380,70,31);
+		
+		this.load.image('tiles', 'assets/floortile.png');
+		 this.load.tilemap('stage1', 'assets/stage1.json', null, Phaser.Tilemap.TILED_JSON);
 	},
 
 	create: function () {

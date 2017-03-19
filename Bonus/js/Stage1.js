@@ -25,14 +25,94 @@ BasicGame.Stage1 = function (game) {
     this.physics;   //  the physics manager (Phaser.Physics)
     this.rnd;       //  the repeatable random number generator (Phaser.RandomDataGenerator)
 
+	this.canMove = null;
+	this.whiteScreen = null;
+	this.whiteTween = null;
+	this.arrows = null;
+	this.map = null;
+	this.floor = null;
+	this.wall = null;
+	this.caught = null;
+	
+	this.bro1 = null;
+	this.bro2 = null;
 };
 
 BasicGame.Stage1.prototype = {
 
     create: function () {
+		this.canMove = true;
+		
+		this.music = this.add.audio('stage1');
+		this.music.play();
+		
+		this.caught = this.add.audio('caught');
+		
+		this.physics.startSystem(Phaser.Physics.P2JS);
+		this.physics.p2.defaultRestitution = 0.0;
+		
+		//MAP
+		this.map = this.add.tilemap('stage1');
+		this.map.addTilesetImage('tilemap', 'tiles');
+		this.floor = this.map.createLayer('Floor');
+		this.wall = this.map.createLayer('Buildings');
+		this.map.setCollisionBetween(1, 300, true, 'Buildings');
+		this.map.setCollisionBetween(1, 200, false, 'Floor');
+		this.physics.p2.convertTilemap(this.map, this.wall);
+		
+		//BRO1
+		this.bro1 = this.add.sprite(420, 540, 'bro1');
+		this.bro1.anchor.setTo(.5,.5);
+		this.physics.p2.enable(this.bro1);
+		this.bro1.body.setZeroDamping();
+		this.bro1.body.fixedRotation = true;
+		
+		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
+		this.arrows = this.input.keyboard.createCursorKeys();
     },
 
     update: function () {
-    }
+		if(this.canMove){
+			this.updateMove();
+		}
+    },
+	
+	//HELPER FUNCTIONS
+	cutscene: function () {
+		this.canMove = false;
+	},
+	
+	updateMove: function() {
+		//Left/Right
+		if(this.arrows.left.isDown){
+			this.bro1.body.moveLeft(200);
+		}else if(this.arrows.right.isDown){
+			this.bro1.body.moveRight(200);
+		}
+		//Up/Down
+		if(this.arrows.up.isDown){
+			this.bro1.body.moveUp(200);
+		}else if(this.arrows.down.isDown){
+			this.bro1.body.moveDown(200);
+		}
+	},
+	
+	retry: function () {
+		this.lives = 3;
+		this.resetField();
+	},
+	
+	resetField: function () {
+		this.canMove = false;
+		
+		//Replace Actors
+		
+		//Fade in return
+		this.whiteScreen.alpha = 1;
+		this.whiteTween = this.add.tween(this.whiteScreen).to({alpha:0}, 1000, Phaser.Easing.Linear.None, true, 0,0,false);
+		this.time.events.add(1000, function() {
+			this.canMove = true;
+		},this);
+	}
 
 };
