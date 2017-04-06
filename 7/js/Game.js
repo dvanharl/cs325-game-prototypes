@@ -86,7 +86,7 @@ BasicGame.Game.prototype = {
 		}else{
 			this.spawning = true;
 			this.timeE = this.rnd.integerInRange(1000,4000)
-			this.time.events.add(timeE,function() {
+			this.time.events.add(this.timeE,function() {
 				this.spawnCop()
 			},this);
 		}
