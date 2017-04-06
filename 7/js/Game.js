@@ -73,6 +73,7 @@ BasicGame.Game.prototype = {
 			}
 			if (this.police.x <= -200){
 				this.police.kill();
+				this.siren.stop()
 			}
 		}else{
 			this.time.events.add(this.rnd.integerInRange(2000,4000),function() {
@@ -86,6 +87,7 @@ BasicGame.Game.prototype = {
 	},
 	
 	spawnCop: function() {
+		this.siren.fadeIn(2000);
 		this.police.x = 1200;
 		this.police.revive();
 	},
