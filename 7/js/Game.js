@@ -50,7 +50,7 @@ BasicGame.Game.prototype = {
 		this.spawning = false;
 		
 		//Spawn Player and basic player mechs
-		this.player = this.add.sprite(400,300,'player');
+		this.player = this.add.sprite(400,400,'player');
 		this.player.anchor.setTo(.5,.5);
 		this.score = 0;
 		this.hiding = false;
@@ -83,6 +83,7 @@ BasicGame.Game.prototype = {
 				this.resetGame();
 			}
 			if (this.police.x <= -200){
+				this.spawning = false;
 				this.police.kill();
 				this.siren.stop()
 			}
@@ -103,7 +104,6 @@ BasicGame.Game.prototype = {
 		this.siren.fadeIn(1500);
 		this.police.x = 1200;
 		this.police.revive();
-		this.spawning = false;
 	},
 	
     resetGame: function () {
