@@ -34,6 +34,7 @@ BasicGame.Game.prototype = {
     create: function () {
 		//Audio
 		this.siren = this.add.audio('siren');
+		this.clunk = this.add.audio('clunk');
 		
 		//Spawn Background
 		this.background = this.add.sprite('background');
@@ -56,7 +57,10 @@ BasicGame.Game.prototype = {
     update: function () {
 		//Hiding
 		if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
-			this.hiding = true;
+			if(this.hiding == false){
+				this.hiding = true;
+				this.clunk.play();
+			}
 			this.player.animations.play('hiding');
 		}else{
 			this.hiding = false;
