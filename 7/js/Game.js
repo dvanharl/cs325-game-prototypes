@@ -55,7 +55,7 @@ BasicGame.Game.prototype = {
 
     update: function () {
 		//Hiding
-		if(this.input.keyboard.isDown(Phaser.Keyboard.SPACE)){
+		if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
 			this.hiding = true;
 			this.player.animations.play('hiding');
 		}else{
