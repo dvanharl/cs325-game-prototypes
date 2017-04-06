@@ -40,7 +40,7 @@ BasicGame.Game.prototype = {
 		
 		//Make cop and make invisible
 		this.police = this.add.sprite(1200,400,'police');
-		this.
+		this.police.kill();
 		
 		//Spawn Player and basic player mechs
 		this.player = this.add.sprite(400,300,'player');
