@@ -62,7 +62,7 @@ BasicGame.Game.prototype = {
 			this.hiding = false;
 			this.player.animations.play('idle');
 			//Increase score
-			score += 1;
+			this.score += 1;
 		}
 		
 		//SPAWN ENEMIES
