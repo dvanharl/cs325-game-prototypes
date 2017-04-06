@@ -39,19 +39,22 @@ BasicGame.Game.prototype = {
 		this.clunk = this.add.audio('clunk');
 		
 		//Spawn Background
-		this.background = this.add.sprite('background');
+		this.background = this.add.sprite(400,300,'background');
+		this.background.anchor.setTo(.5,.5);
 		
 		//Make cop and make invisible
 		this.police = this.add.sprite(1200,400,'police');
+		this.police.anchor.setTo(.5,.5);
 		this.police.kill();
+		this.timeE = 0;
+		this.spawning = false;
 		
 		//Spawn Player and basic player mechs
 		this.player = this.add.sprite(400,300,'player');
 		this.player.anchor.setTo(.5,.5);
 		this.score = 0;
 		this.hiding = false;
-		this.timeE = 0;
-		this.spawning = false;
+		
 		
 		//Player Animation Manager
 		this.player.animations.add('idle',[0,1], 1.5, true, true);
