@@ -67,6 +67,13 @@ BasicGame.Stage1.prototype = {
 		this.bro1.body.setZeroDamping();
 		this.bro1.body.fixedRotation = true;
 		
+		//BRO2
+		this.bro2 = this.add.sprite(420, 540, 'bro2');
+		this.bro2.anchor.setTo(.5,.5);
+		this.physics.p2.enable(this.bro2);
+		this.bro2.body.setZeroDamping();
+		this.bro2.body.fixedRotation = true;
+		
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.arrows = this.input.keyboard.createCursorKeys();
     },
