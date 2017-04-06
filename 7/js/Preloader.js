@@ -28,8 +28,10 @@ BasicGame.Preloader.prototype = {
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		this.load.audio('titleMusic', ['assets/title.mp3']);
 		this.load.audio('siren',['assets/siren.mp3']);
+		this.load.audio('clunk',['assets/clunk.mp3']);
 		//	+ lots of other required assets here
         this.load.image('police', 'assets/police.png' );
+		this.load.image('background','assets/background.jpg');
 		this.load.spritesheet('player','assets/player.png',300,300,3);
 	},
 

@@ -27,6 +27,8 @@ BasicGame.Game = function (game) {
 	this.police = null;
 	
 	this.background = null;
+	this.timeE = 0;
+	this.spawning = false;
 };
 
 BasicGame.Game.prototype = {
@@ -48,6 +50,8 @@ BasicGame.Game.prototype = {
 		this.player.anchor.setTo(.5,.5);
 		this.score = 0;
 		this.hiding = false;
+		this.timeE = 0;
+		this.spawning = false;
 		
 		//Player Animation Manager
 		this.player.animations.add('idle',[0,1], 1.5, true, true);
@@ -70,7 +74,7 @@ BasicGame.Game.prototype = {
 		}
 		
 		//SPAWN ENEMIES
-		if(this.police.alive){
+		if(this.police.alive && !this.spawning){
 			this.police.x -= 25;
 			if (this.police.x > 200 && this.police.x < 600 && !this.hiding){
 				this.resetGame();
@@ -80,7 +84,9 @@ BasicGame.Game.prototype = {
 				this.siren.stop()
 			}
 		}else{
-			this.time.events.add(this.rnd.integerInRange(2000,4000),function() {
+			this.spawning = true;
+			this.timeE = this.rnd.integerInRange(1000,4000)
+			this.time.events.add(timeE,function() {
 				this.spawnCop()
 			},this);
 		}
@@ -91,14 +97,17 @@ BasicGame.Game.prototype = {
 	},
 	
 	spawnCop: function() {
-		this.siren.fadeIn(2000);
+		this.siren.fadeIn(1500);
 		this.police.x = 1200;
 		this.police.revive();
+		this.spawning = false;
 	},
 	
     resetGame: function () {
 		this.score = 0;
 		this.police.kill();
+		this.siren.stop();
+		this.clunk.stop();
         this.state.start('MainMenu');
 
     }
