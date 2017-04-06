@@ -57,10 +57,10 @@ BasicGame.Game.prototype = {
 		//Hiding
 		if(this.input.keyboard.isDown(Phaser.Keyboard.SPACE)){
 			this.hiding = true;
-			this.player.play('hiding')
+			this.player.animations.play('hiding');
 		}else{
 			this.hiding = false;
-			this.player.play('idle')
+			this.player.animations.play('idle');
 			//Increase score
 			score += 1;
 		}
