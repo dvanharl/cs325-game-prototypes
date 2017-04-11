@@ -77,19 +77,17 @@ BasicGame.Game.prototype = {
 		}
 		
 		//SPAWN ENEMIES
-		if(this.police.alive && !this.spawning){
+		if(this.police.alive){
 			this.police.x -= 25;
 			if (this.police.x > 200 && this.police.x < 600 && !this.hiding){
 				this.resetGame();
 			}
 			if (this.police.x <= -200){
-				this.spawning = false;
 				this.police.kill();
 				this.siren.stop()
 			}
 		}else{
-			this.spawning = true;
-			this.timeE = this.rnd.integerInRange(1000,4000)
+			this.timeE = this.rnd.integerInRange(4000)
 			this.time.events.add(this.timeE,function() {
 				this.spawnCop()
 			},this);
