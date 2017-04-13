@@ -111,7 +111,6 @@ BasicGame.Game.prototype = {
 	
     resetGame: function () {
 		this.score = 0;
-		this.police.kill();
 		this.siren.stop();
 		this.clunk.stop();
         this.state.start('MainMenu');
