@@ -60,6 +60,11 @@ BasicGame.Game.prototype = {
 		//Player Animation Manager
 		this.player.animations.add('idle',[2], 1.5, true, true);
 		this.player.animations.add('grabbing',[0,1],1.5,true, true);
+		
+		this.time.events.add(7000,function() {
+				this.spawnCop();
+			},this);
+		}
     },
 
     update: function () {
@@ -68,14 +73,11 @@ BasicGame.Game.prototype = {
 			this.hiding = false;
 			this.player.animations.play('grabbing');
 			this.score += 1;
-		}else{
+		}else if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			this.hiding = false;
-			this.player.animations.play('idle');
-		}
-		//Movement
-		if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			this.player.x -= 4;
 		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+			this.hiding = false;
 			this.player.x += 4;
 		}else{
 			if(this.hiding == false){
@@ -87,7 +89,7 @@ BasicGame.Game.prototype = {
 		
 		//SPAWN ENEMIES
 		if(this.police.alive){
-			this.police.x -= 25;
+			this.police.x -= 10;
 			if (this.police.x > 200 && this.police.x < 600 && !this.hiding){
 				this.resetGame();
 			}
@@ -95,11 +97,7 @@ BasicGame.Game.prototype = {
 				this.police.kill();
 				this.siren.stop();
 			}
-		}else{
-			this.time.events.add(7000,function() {
-				this.spawnCop();
-			},this);
-		}
+		}	
     },
 	
 	render: function() {
