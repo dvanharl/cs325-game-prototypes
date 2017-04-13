@@ -61,8 +61,13 @@ BasicGame.Game.prototype = {
 		this.player.animations.add('idle',[2], 1.5, true, true);
 		this.player.animations.add('grabbing',[0,1],1.5,true, true);
 		
-		this.time.events.add(7000,function() {
-				this.spawnCop();
+		this.police = this.add.group();
+		
+		this.time.events.loop(17000,function() {
+				this.police.create(1200,400,'police');
+				this.siren.fadeIn(1500);
+				this.police.x = 1200;
+				this.police.revive();
 			},this);
 		}
     },
@@ -87,28 +92,20 @@ BasicGame.Game.prototype = {
 			this.player.animations.play('idle');
 		}
 		
-		//SPAWN ENEMIES
-		if(this.police.alive){
-			this.police.x -= 10;
-			if (this.police.x > 200 && this.police.x < 600 && !this.hiding){
+		//Move any police
+		for (var i =0; i < this.police.children.length(); i++){
+			this.police.children[i].x -= 25;
+			if((this.police.children[i].x > this.player.x - 50) && (this.police.children[i].x < this.player.x + 50)){
 				this.resetGame();
 			}
-			if (this.police.x <= -200){
-				this.police.kill();
-				this.siren.stop();
-			}
-		}	
+		}
     },
 	
 	render: function() {
 		this.game.debug.text("Brains needed for RUSH: " + (5000 - this.score), 32, 32);
 	},
 	
-	spawnCop: function() {
-		this.siren.fadeIn(1500);
-		this.police.x = 1200;
-		this.police.revive();
-	},
+	
 	
     resetGame: function () {
 		this.score = 0;
