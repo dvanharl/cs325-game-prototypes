@@ -46,6 +46,14 @@ BasicGame.Game.prototype = {
 		this.background = this.add.sprite(400,300,'background');
 		this.background.anchor.setTo(.5,.5);
 		
+		//Make cop group
+		this.police = this.add.group();
+		
+		this.time.events.loop(17000,function() {
+			this.police.create(1400,250,'police');
+			this.siren.fadeIn(1500);
+		},this);
+		
 		//Spawn Player and basic player mechs
 		this.player = this.add.sprite(400,400,'player');
 		this.player.anchor.setTo(.5,.5);
@@ -61,13 +69,7 @@ BasicGame.Game.prototype = {
 		this.player.animations.add('idle',[2], 1.5, true, true);
 		this.player.animations.add('grabbing',[0,1],1.5,true, true);
 		
-		//Make cop group
-		this.police = this.add.group();
 		
-		this.time.events.loop(17000,function() {
-			this.police.create(1400,400,'police');
-			this.siren.fadeIn(1500);
-		},this);
 		
 		//Make crowd group
 		this.crowdL = this.add.group();
@@ -133,6 +135,7 @@ BasicGame.Game.prototype = {
 					this.resetGame();
 				}
 				this.crowdL.remove(this.crowdL.children[i], true);
+				continue;
 			}
 			if(this.crowdL.children[i].x <= -400){
 				this.crowdL.remove(this.crowdL.children[i], true);
@@ -147,6 +150,7 @@ BasicGame.Game.prototype = {
 					this.resetGame();
 				}
 				this.crowdR.remove(this.crowdR.children[i], true);
+				continue;
 			}
 			if(this.crowdR.children[i].x >= 1200){
 				this.crowdR.remove(this.crowdR.children[i], true);
