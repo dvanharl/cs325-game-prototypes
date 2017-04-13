@@ -126,7 +126,7 @@ BasicGame.Game.prototype = {
 		
 		//Update Crowds
 		for(var i = this.crowdL.children.length - 1; i >= 0 ; i--){
-			this.crowdL.children[i].x -= 4;
+			this.crowdL.children[i].x -= 2;
 			if((this.crowdL.children[i].x > this.player.x - 50) && (this.crowdL.children[i].x < this.player.x + 50) && (!this.hiding)){
 				this.noteriety += (20 * this.mult);
 				if (this.noteriety >= 1000){
@@ -140,7 +140,7 @@ BasicGame.Game.prototype = {
 		}
 		
 		for(var i = this.crowdR.children.length - 1; i >= 0 ; i--){
-			this.crowdR.children[i].x += 4;
+			this.crowdR.children[i].x += 2;
 			if((this.crowdR.children[i].x > this.player.x - 50) && (this.crowdR.children[i].x < this.player.x + 50) && (!this.hiding)){
 				this.noteriety += (20 * this.mult);
 				if (this.noteriety >= 1000){
@@ -148,7 +148,7 @@ BasicGame.Game.prototype = {
 				}
 				this.crowdR.remove(this.crowdR.children[i], true);
 			}
-			if(this.crowdR.children[i].x <= -400){
+			if(this.crowdR.children[i].x >= 1200){
 				this.crowdR.remove(this.crowdR.children[i], true);
 			}
 		}
