@@ -66,7 +66,6 @@ BasicGame.Game.prototype = {
 		this.time.events.loop(17000,function() {
 			this.police.create(1200,400,'police');
 			this.siren.fadeIn(1500);
-			this.police.x = 1200;
 		},this);
     },
 
@@ -92,12 +91,12 @@ BasicGame.Game.prototype = {
 		
 		//Move any police
 		for(var i = this.police.children.length - 1; i >= 0 ; i--){
-			this.police.children[i].x -= 25;
+			this.police.children[i].x -= 10;
 			if((this.police.children[i].x > this.player.x - 50) && (this.police.children[i].x < this.player.x + 50) && (!this.hiding)){
 				this.resetGame();
 			}
-			if(this.police.children[i].x < -200){
-				this.siren.stop()
+			if(this.police.children[i].x =< -400){
+				this.siren.fadeOut(1500);
 				this.police.remove(this.police.children[i], true);
 			}
 		}
