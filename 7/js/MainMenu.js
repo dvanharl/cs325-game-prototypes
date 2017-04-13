@@ -109,7 +109,7 @@ BasicGame.MainMenu.prototype = {
 		this.music.fadeOut(2000);
 		this.music.onFadeComplete.add(function() {
 			this.canMove = true;
-			this.state.start('Stage1');
+			this.state.start('Game');
 		},this);
 	},
 	
