@@ -25,7 +25,8 @@ BasicGame.Game = function (game) {
 	
 	this.noteriety = 0;
 	this.police = null;
-	this.crowd = null;
+	this.crowdL = null;
+	this.crowdR = null;
 	
 	this.background = null;
 	this.timeE = 0;
@@ -131,10 +132,10 @@ BasicGame.Game.prototype = {
 				if (this.noteriety >= 1000){
 					this.resetGame();
 				}
-				this.crowdL.remove(this.police.children[i], true);
+				this.crowdL.remove(this.crowdL.children[i], true);
 			}
-			if(this.crowsL.children[i].x <= -400){
-				this.crowdL.remove(this.police.children[i], true);
+			if(this.crowdL.children[i].x <= -400){
+				this.crowdL.remove(this.crowdL.children[i], true);
 			}
 		}
 		
@@ -145,10 +146,10 @@ BasicGame.Game.prototype = {
 				if (this.noteriety >= 1000){
 					this.resetGame();
 				}
-				this.crowdL.remove(this.police.children[i], true);
+				this.crowdR.remove(this.crowdR.children[i], true);
 			}
 			if(this.crowdR.children[i].x <= -400){
-				this.crowdL.remove(this.police.children[i], true);
+				this.crowdR.remove(this.crowdR.children[i], true);
 			}
 		}
 		
