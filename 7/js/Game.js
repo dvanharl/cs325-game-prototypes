@@ -95,7 +95,7 @@ BasicGame.Game.prototype = {
 			if((this.police.children[i].x > this.player.x - 50) && (this.police.children[i].x < this.player.x + 50) && (!this.hiding)){
 				this.resetGame();
 			}
-			if(this.police.children[i].x =< -400){
+			if(this.police.children[i].x <= -400){
 				this.siren.fadeOut(1500);
 				this.police.remove(this.police.children[i], true);
 			}
