@@ -24,6 +24,7 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('clunk',['assets/clunk.mp3']);
         this.load.image('police', 'assets/police.png' );
 		this.load.image('background','assets/background.jpg');
+		this.load.image('whiteScreen','assets/whitescreen.png');
 		this.load.spritesheet('player','assets/player.png',300,300,3);
 		
 		this.load.spritesheet('cursor', 'assets/menucursor.png',190,70,23);
