@@ -70,9 +70,9 @@ BasicGame.Game.prototype = {
 			this.score += 1;
 		}
 		//Movement
-		if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT){
+		if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			this.player.x -= 4;
-		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT){
+		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 			this.player.x += 4;
 		}else{
 			if(this.hiding == false){
