@@ -64,11 +64,10 @@ BasicGame.Game.prototype = {
 		this.police = this.add.group();
 		
 		this.time.events.loop(17000,function() {
-				this.police.create(1200,400,'police');
-				this.siren.fadeIn(1500);
-				this.police.x = 1200;
-			},this);
-		}
+			this.police.create(1200,400,'police');
+			this.siren.fadeIn(1500);
+			this.police.x = 1200;
+		},this);
     },
 
     update: function () {
