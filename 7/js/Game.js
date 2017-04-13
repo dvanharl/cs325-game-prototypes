@@ -73,7 +73,7 @@ BasicGame.Game.prototype = {
 		this.crowdR = this.add.group();
 		
 		this.time.events.loop(this.rnd.integerInRange(1000,5500),function() {
-			if(this.rnd.integerInRange(1) == 0){
+			if(this.rnd.integerInRange(0,1) == 0){
 				this.guy = this.crowdL.create(1000,525,'crowd');
 				this.guy.anchor.setTo(.5,.5);
 				
@@ -131,13 +131,30 @@ BasicGame.Game.prototype = {
 				if (this.noteriety >= 1000){
 					this.resetGame();
 				}
+				this.crowdL.remove(this.police.children[i], true);
 			}
 			if(this.police.children[i].x <= -400){
 				this.crowdL.remove(this.police.children[i], true);
 			}
 		}
 		
-		this.noteriety -= 1;
+		for(var i = this.crowdR.children.length - 1; i >= 0 ; i--){
+			this.crowdR.children[i].x += 4;
+			if((this.crowdR.children[i].x > this.player.x - 50) && (this.crowdR.children[i].x < this.player.x + 50) && (!this.hiding)){
+				this.noteriety += (20 * this.mult);
+				if (this.noteriety >= 1000){
+					this.resetGame();
+				}
+				this.crowdL.remove(this.police.children[i], true);
+			}
+			if(this.police.children[i].x <= -400){
+				this.crowdL.remove(this.police.children[i], true);
+			}
+		}
+		
+		if(this.noteriety > 0){
+			this.noteriety -= 1;
+		}
     },
 	
 	render: function() {
