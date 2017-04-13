@@ -99,8 +99,6 @@ BasicGame.MainMenu.prototype = {
 				this.opCon = false;
 			}
 		}
-		
-		
 	},
 
 	startGame: function (pointer) {

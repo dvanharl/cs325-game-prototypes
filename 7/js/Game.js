@@ -68,6 +68,9 @@ BasicGame.Game.prototype = {
 			this.hiding = false;
 			this.player.animations.play('grabbing');
 			this.score += 1;
+		}else{
+			this.hiding = false;
+			this.player.animations.play('idle');
 		}
 		//Movement
 		if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
@@ -100,7 +103,7 @@ BasicGame.Game.prototype = {
     },
 	
 	render: function() {
-		this.game.debug.text("Brains needed for RUSH: " + (500 - this.score), 32, 32);
+		this.game.debug.text("Brains needed for RUSH: " + (5000 - this.score), 32, 32);
 	},
 	
 	spawnCop: function() {
