@@ -133,7 +133,7 @@ BasicGame.Game.prototype = {
 				}
 				this.crowdL.remove(this.police.children[i], true);
 			}
-			if(this.police.children[i].x <= -400){
+			if(this.crowsL.children[i].x <= -400){
 				this.crowdL.remove(this.police.children[i], true);
 			}
 		}
@@ -147,7 +147,7 @@ BasicGame.Game.prototype = {
 				}
 				this.crowdL.remove(this.police.children[i], true);
 			}
-			if(this.police.children[i].x <= -400){
+			if(this.crowdR.children[i].x <= -400){
 				this.crowdL.remove(this.police.children[i], true);
 			}
 		}
