@@ -23,7 +23,7 @@ BasicGame.Game = function (game) {
 	this.score = 0;
 	this.hiding = false;
 	
-	this.noteriety = null;
+	this.noteriety = 0;
 	this.police = null;
 	
 	this.background = null;
@@ -54,26 +54,32 @@ BasicGame.Game.prototype = {
 		this.player.anchor.setTo(.5,.5);
 		this.score = 0;
 		this.hiding = false;
+		this.noteriety = 0;
 		
 		
 		//Player Animation Manager
-		this.player.animations.add('idle',[0,1], 1.5, true, true);
-		this.player.animations.add('hiding',[2],1.5,true, true);
+		this.player.animations.add('idle',[2], 1.5, true, true);
+		this.player.animations.add('grabbing',[0,1],1.5,true, true);
     },
 
     update: function () {
-		//Hiding
+		//Grabbing
 		if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
+			this.hiding = false;
+			this.player.animations.play('grabbing');
+			this.score += 1;
+		}
+		//Movement
+		if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT){
+			this.player.x -= 4;
+		}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT){
+			this.player.x += 4;
+		}else{
 			if(this.hiding == false){
 				this.hiding = true;
 				this.clunk.play();
 			}
-			this.player.animations.play('hiding');
-		}else{
-			this.hiding = false;
 			this.player.animations.play('idle');
-			//Increase score
-			this.score += 1;
 		}
 		
 		//SPAWN ENEMIES
@@ -84,18 +90,17 @@ BasicGame.Game.prototype = {
 			}
 			if (this.police.x <= -200){
 				this.police.kill();
-				this.siren.stop()
+				this.siren.stop();
 			}
 		}else{
-			this.timeE = this.rnd.integerInRange(4000)
-			this.time.events.add(this.timeE,function() {
-				this.spawnCop()
+			this.time.events.add(7000,function() {
+				this.spawnCop();
 			},this);
 		}
     },
 	
 	render: function() {
-		this.game.debug.text("Brains: " + this.score, 32, 32);
+		this.game.debug.text("Brains needed for RUSH: " + (500 - this.score), 32, 32);
 	},
 	
 	spawnCop: function() {
