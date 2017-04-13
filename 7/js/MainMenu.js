@@ -14,6 +14,7 @@ BasicGame.MainMenu = function (game) {
 	this.cursor = null;
 	this.opCon = null;
 	this.canMove = null;
+	this.whiteScreen
 
 };
 
