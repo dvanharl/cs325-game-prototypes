@@ -97,6 +97,7 @@ BasicGame.Game.prototype = {
 				this.resetGame();
 			}
 			if(this.police.children[i].x < -200){
+				this.siren.stop()
 				this.police.remove(this.police.children[i], true);
 			}
 		}
