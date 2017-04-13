@@ -98,6 +98,7 @@ BasicGame.Game.prototype = {
 			}
 			if(this.police.children[i].x < -200){
 				this.police.remove(this.police.children[i], true);
+			}
 		}
     },
 	
