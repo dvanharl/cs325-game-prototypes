@@ -31,9 +31,9 @@ BasicGame.MainMenu.prototype = {
 		this.playB.animations.add('select',[30,31], 30, true, true);
 		this.playB.play('idle');
 		
-		this.controls = this.add.sprite(325, 480, 'controls');
-		this.controls.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], 30, true, true);
-		this.controls.play('idle');
+		//this.controls = this.add.sprite(325, 480, 'controls');
+		//this.controls.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], 30, true, true);
+		//this.controls.play('idle');
 		
 		this.cursor = this.add.sprite(225, 400, 'cursor');
 		this.cursor.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], 30, true, true);
@@ -55,7 +55,7 @@ BasicGame.MainMenu.prototype = {
 	},
 
 	update: function () {
-		if(!this.opCon && this.canMove){
+		/*if(!this.opCon && this.canMove){
 			if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
 				this.sel = this.sel * -1;
 				this.canMove = false;
@@ -80,8 +80,8 @@ BasicGame.MainMenu.prototype = {
 				this.playB.animations.stop(true, false);
 			}
 			
-			this.cursor.y = 440 + (40 * this.sel);
-
+			this.cursor.y = 440 + (40 * this.sel);*/
+			
 			if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
 				this.cursor.play('select');
 				if(this.sel == -1){
@@ -91,14 +91,14 @@ BasicGame.MainMenu.prototype = {
 					this.openControls();
 				}
 			}
-		}else{
+		/*}else{
 			if(this.input.keyboard.isDown(Phaser.Keyboard.X)){
 				this.cursor.play('idle');
 				this.controls.play('idle');
 				this.contP.kill();
 				this.opCon = false;
 			}
-		}
+		}*/
 	},
 
 	startGame: function (pointer) {
