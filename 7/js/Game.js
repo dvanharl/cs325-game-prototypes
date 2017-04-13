@@ -91,7 +91,7 @@ BasicGame.Game.prototype = {
 		}
 		
 		//Move any police
-		for (var i =0; i < this.police.children.length(); i++){
+		for(var i = this.police.children.length - 1; i >= 0 ; i--){
 			this.police.children[i].x -= 25;
 			if((this.police.children[i].x > this.player.x - 50) && (this.police.children[i].x < this.player.x + 50) && (!this.hiding)){
 				this.resetGame();
@@ -114,7 +114,6 @@ BasicGame.Game.prototype = {
 		this.siren.stop();
 		this.clunk.stop();
         this.state.start('MainMenu');
-
     }
 
 };
