@@ -509,8 +509,8 @@ BasicGame.Game.prototype = {
 		if(!this.attacking){ //Attacking
 			this.punch.play();
 		}
-		this.enemy.play('attack')
 		if(this.canBeHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
+			this.enemy.play('attack')
 			this.php -= 20/this.defense;
 			this.player.play('damage');
 			this.player.tint = 0xff0000;
