@@ -263,7 +263,10 @@ BasicGame.Game.prototype = {
 			this.cursor.y = 440 + (40 * this.sel);
 			
 			//Actions
-			if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
+			if(this.canMove && this.input.keyboard.isDown(Phaser.Keyboard.Z)){
+				this.canMove = false;
+				this.attack.alpha = .2;
+				this.defend.alpha = .2;
 				this.cursor.play('select');
 				if(this.sel == -1){
 					if(!this.attacking){
@@ -276,8 +279,18 @@ BasicGame.Game.prototype = {
 						this.player.play('idle');
 						this.attacking = false;
 					},this);
+					this.time.events.add(2000, function() {
+						this.canMove = true;
+						this.attack.alpha = 1;
+						this.defend.alpha = .5;
+					},this);
 				}else{
 					this.player.play('defend');
+					this.time.events.add(2000, function() {
+						this.canMove = true;
+						this.attack.alpha = .5;
+						this.defend.alpha = 1;
+					},this);
 				}
 			}else if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.switchGenre();
