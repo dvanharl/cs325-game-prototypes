@@ -165,20 +165,47 @@ BasicGame.Game.prototype = {
 		this.rpgmusic.volume = 0;
 		this.musPos = 0;
 		
+		this.physics.startSystem(Phaser.Physics.ARCADE);
+		this.enemy.enableBody = true;
+		
 		//Enemy attack
 		this.time.events.loop(4000, function() {
-			//Enemy attacks
 			if(!this.genre){
-				this.enemy.play('attack')
-				this.php -= 20/this.defense;
-				this.player.play('damage');
-				this.player.tint = 0xff0000;
-				this.time.events.add(1500, function() {
-					this.enemy.play('idle');
-					this.player.play('idle');
-					this.player.tint = 0xffffff;
-				},this);
-			}
+				this.choice = this.rnd.integerInRange(0,1);
+				if(this.choice == 0){ //Attack
+					this.enemy.play('attack')
+					this.php -= 20/this.defense;
+					this.player.play('damage');
+					this.player.tint = 0xff0000;
+					this.time.events.add(1500, function() {
+						this.enemy.play('idle');
+						this.player.play('idle');
+						this.player.tint = 0xffffff;
+					},this);
+				}else{ //Defense
+					this.enemy.play('guard');
+					this.edef = 2;
+					this.time.events.add(3000, function() {
+						this.enemy.play('idle');
+						this.edef = 1;
+					},this);
+				}
+			}else{ //Action
+				this.choice = this.rnd.integerInRange(0,2)
+				if(this.choice == 0){ //Follow and Attack
+					this.followToPlayerPoint();
+					this.checkEnemyAttack();
+				}else if(this.choice == 1){ //Defend
+					this.enemy.play('guard');
+					this.edef = 2;
+					this.time.events.add(3000, function() {
+						this.enemy.play('idle');
+						this.edef = 1;
+					},this);
+				}else{// Move
+					this.newX = this.rnd.integerInRange(100,700);
+					this.newY = this.rnd.integerInRange(200,500);
+				}
 		},this);
     },
 
@@ -266,6 +293,8 @@ BasicGame.Game.prototype = {
 				this.defending = false;
 				this.defense = 1;
 			}
+			
+			
 			
 			//Switch genre
 			if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
@@ -367,11 +396,10 @@ BasicGame.Game.prototype = {
 	},
 		
 	updateEnemy: function() {
-		/*if(this.genre){ //Action
-			
-		}else{ //RPG
-			f;
-		}*/
+		if(this.enemy.x == this.newX && this.enemy.y == this.newY){
+		}else{
+			this.physics.moveToXY(this.enemy, this.newX, this.newY, 6, 4000);
+		}
 	},
 	
 	switchGenre: function (){
@@ -473,6 +501,23 @@ BasicGame.Game.prototype = {
 				this.enemy.play('idle');
 				this.canHit = true;
 				this.enemy.tint = 0xffffff;
+			},this);
+		}
+	},
+	
+	checkEnemyAttack: function() {
+		if(!this.attacking){ //Attacking
+			this.punch.play();
+		}
+		this.enemy.play('attack')
+		if(this.canBeHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
+			this.php -= 20/this.defense;
+			this.player.play('damage');
+			this.player.tint = 0xff0000;
+			this.time.events.add(1500, function() {
+				this.enemy.play('idle');
+			this.player.play('idle');
+				this.player.tint = 0xffffff;
 			},this);
 		}
 	}
