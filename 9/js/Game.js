@@ -156,6 +156,7 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
+		this.updateEnemy();
 		if(this.genre){ //Action
 			//MOVEMENT
 			if(this.canMove){
@@ -225,7 +226,7 @@ BasicGame.Game.prototype = {
 			}
 			
 			//Defend
-			if(this.canDefend&& this.input.keyboard.isDown(Phaser.Keyboard.X)){
+			if(this.canDefend && this.input.keyboard.isDown(Phaser.Keyboard.X)){
 				this.player.play('defend');
 				this.canMove = false;
 				this.canAttack = false;
@@ -308,14 +309,15 @@ BasicGame.Game.prototype = {
 							this.player.play('idle');
 						},this);
 					}
-				}else if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
-					this.switchGenre();
 				}
 				this.cursor.y = 400 + (20 * this.sel);
 			}else{
 				if(!this.attacking && !this.defending){
 					this.player.play('idle');
 				}
+			}
+			if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
+				this.switchGenre();
 			}
 		}
 		
@@ -334,6 +336,13 @@ BasicGame.Game.prototype = {
 		this.game.debug.text("Enemy Health: " + this.ehp,32,64);
 	},
 		
+	updateEnemy: function() {
+		if(this.genre){ //Action
+			
+		}else{ //RPG
+			f;
+		}
+	},
 	
 	switchGenre: function (){
 		this.canMove = false;
