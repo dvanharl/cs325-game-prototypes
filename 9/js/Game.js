@@ -46,6 +46,8 @@ BasicGame.Game = function (game) {
 	
 	this.genre = null;
 	
+	this.edef = null;
+	
 	//UI
 	this.rpgmenu = null;
 	this.attack = null;
@@ -144,6 +146,7 @@ BasicGame.Game.prototype = {
 		this.cursor.kill();
 		
 		this.defense = 1;
+		this.edef = 1;
 		
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.whiteScreen.alpha = 0;
@@ -169,9 +172,11 @@ BasicGame.Game.prototype = {
 				this.enemy.play('attack')
 				this.php -= 20/this.defense;
 				this.player.play('damage');
-				this.time.events.add(750, function() {
+				this.player.tint = 0xff0000;
+				this.time.events.add(1500, function() {
 					this.enemy.play('idle');
 					this.player.play('idle');
+					this.player.tint = 0x000000;
 				},this);
 			}
 		},this);
@@ -460,8 +465,12 @@ BasicGame.Game.prototype = {
 		if(this.canHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
 			this.ehp -= 20/this.edef;
 			this.canHit = false;
+			this.enemy.play('damage');
+			this.enemy.tint = 0xff0000;
 			this.time.events.add(1500, function() {
+				this.enemy.play('idle');
 				this.canHit = true;
+				this.enemy.tint = 0x000000;
 			},this);
 		}
 	}
