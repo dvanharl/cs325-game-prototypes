@@ -50,7 +50,7 @@ BasicGame.Game = function (game) {
 	this.rpgmenu = null;
 	this.attack = null;
 	this.defend = null;
-	//this.items = null;
+	this.defense = null;
 	
 	this.canAttack = null;
 	this.canDefend = null;
@@ -141,6 +141,8 @@ BasicGame.Game.prototype = {
 		this.cursor.play('idle');
 		this.cursor.kill();
 		
+		this.defense = 1;
+		
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.whiteScreen.alpha = 0;
 		
@@ -159,7 +161,7 @@ BasicGame.Game.prototype = {
 		this.time.events.add(4000, function() {
 			//Enemy attacks
 			if(!this.genre){
-				this.php -= 20;
+				this.php -= 20/this.defense;
 			}
 		},this);
     },
@@ -381,14 +383,14 @@ BasicGame.Game.prototype = {
 				this.px = this.player.x;
 				this.py = this.player.y;
 				
-				//this.ex = this.enemy.x;
-				//this.ey = this.enemy.y;
+				this.ex = this.enemy.x;
+				this.ey = this.enemy.y;
 				
 				//Replace enemies
 				this.player.x = 200;
 				this.player.y = 300;
-				//this.enemy.x = 600;
-				//this.enemy.y = 300;
+				this.enemy.x = 600;
+				this.enemy.y = 300;
 				
 				//Add menu
 				this.rpgmenu.revive();
