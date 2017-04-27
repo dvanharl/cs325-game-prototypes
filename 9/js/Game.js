@@ -72,6 +72,9 @@ BasicGame.Game = function (game) {
 	this.musPos = null;
 	this.enemiesKilled = null;
 	
+	this.newX = null;
+	this.newY = null;
+	
 	this.canHit = null;
 };
 
@@ -173,7 +176,7 @@ BasicGame.Game.prototype = {
 			if(!this.genre){
 				this.choice = this.rnd.integerInRange(0,1);
 				if(this.choice == 0){ //Attack
-					this.enemy.play('attack')
+					this.enemy.play('attack');
 					this.php -= 20/this.defense;
 					this.player.play('damage');
 					this.player.tint = 0xff0000;
@@ -193,7 +196,8 @@ BasicGame.Game.prototype = {
 			}else{ //Action
 				this.choice = this.rnd.integerInRange(0,2)
 				if(this.choice == 0){ //Follow and Attack
-					this.followToPlayerPoint();
+					this.newX = this.player.x;
+					this.newY = this.player.y;
 					this.checkEnemyAttack();
 				}else if(this.choice == 1){ //Defend
 					this.enemy.play('guard');
