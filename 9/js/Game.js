@@ -132,7 +132,7 @@ BasicGame.Game.prototype = {
 					this.player.play('walk');
 					this.player.x -= (this.pspeed * 1);
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-					if(this.player.scale.x < 0){
+					if(this.player.scale.x > 0){
 						this.player.scale.x *= -1;
 					}
 					this.player.play('walk');
@@ -276,6 +276,12 @@ BasicGame.Game.prototype = {
 			//Return to previous positions
 			this.player.x = this.px;
 			this.player.y = this.py;
+			
+			this.time.events.add(750, function() {
+				this.canMove = true;
+				this.canAttack = true;
+				this.canDefend = true;
+			},this);
 			
 			//this.enemy.x = this.ex;
 			//this.enemy.y = this.ey;
