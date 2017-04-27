@@ -242,7 +242,7 @@ BasicGame.Game.prototype = {
 			if(this.canMove){
 				if(!this.attacking && !this.defending){
 					this.player.play('walk');
-					{
+				}
 				if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
 					this.moving = true;
 					this.sel = this.sel * -1;
@@ -269,43 +269,43 @@ BasicGame.Game.prototype = {
 					this.attack.alpha = .5
 				}
 			
-			
-			
-			this.cursor.y = 440 + (40 * this.sel);
-			
-			//Actions
-			if(this.canMove && this.input.keyboard.isDown(Phaser.Keyboard.Z)){
-				this.canMove = false;
-				this.attack.alpha = .2;
-				this.defend.alpha = .2;
-				this.cursor.play('select');
-				if(this.sel == -1){
-					if(!this.attacking){
+				this.cursor.y = 440 + (40 * this.sel);
+				
+				//Actions
+				if(this.canMove && this.input.keyboard.isDown(Phaser.Keyboard.Z)){
+					this.canMove = false;
+					this.attack.alpha = .2;
+					this.defend.alpha = .2;
+					this.cursor.play('select');
+					if(this.sel == -1){
+						if(!this.attacking){
+							this.punch.play();
+						}
+						this.attacking = true;
+						this.player.play('attack');
 						this.punch.play();
+						this.time.events.add(250, function() {
+							this.player.play('idle');
+							this.attacking = false;
+						},this);
+						this.time.events.add(2000, function() {
+							this.canMove = true;
+							this.attack.alpha = 1;
+							this.defend.alpha = .5;
+						},this);
+					}else{
+						this.player.play('defend');
+						this.time.events.add(2000, function() {
+							this.canMove = true;
+							this.attack.alpha = .5;
+							this.defend.alpha = 1;
+							this.player.play('idle');
+						},this);
 					}
-					this.attacking = true;
-					this.player.play('attack');
-					this.punch.play();
-					this.time.events.add(250, function() {
-						this.player.play('idle');
-						this.attacking = false;
-					},this);
-					this.time.events.add(2000, function() {
-						this.canMove = true;
-						this.attack.alpha = 1;
-						this.defend.alpha = .5;
-					},this);
-				}else{
-					this.player.play('defend');
-					this.time.events.add(2000, function() {
-						this.canMove = true;
-						this.attack.alpha = .5;
-						this.defend.alpha = 1;
-						this.player.play('idle');
-					},this);
+				}else if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
+					this.switchGenre();
 				}
-			}else if(this.canSwitch && this.canMove && this.input.keyboard.isDown(Phaser.Keyboard.C)){
-				this.switchGenre();
+				this.cursor.y = 400 + (20 * this.sel);
 			}else{
 				this.player.play('idle');
 			}
