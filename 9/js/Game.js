@@ -108,6 +108,7 @@ BasicGame.Game.prototype = {
 		this.enemy.anchor.setTo(.5,.5);
 		this.enemy.play('idle');
 		*/
+		
 		//Parameters
 		this.php = 200;
 		this.ehp = 200;
@@ -127,7 +128,7 @@ BasicGame.Game.prototype = {
 		this.rpgmenu = this.add.sprite(0, 0, 'rpgmenu');
 		this.attack = this.add.sprite(100, 375, 'attackcommand');
 		this.defend = this.add.sprite(100, 491, 'defendcommand');
-		//this.items = this.add.sprite(50, 515, 'itemscommand');
+		
 		this.rpgmenu.kill();
 		this.attack.kill();
 		this.defend.kill();
@@ -348,8 +349,6 @@ BasicGame.Game.prototype = {
 				//Music switch
 				this.add.tween(this.actionmusic).to({volume:0}, 1000, Phaser.Easing.Linear.None, true, 0,0,false);
 				this.add.tween(this.rpgmusic).to({volume:.4}, 1000, Phaser.Easing.Linear.None, true, 0,0,false);
-				//this.actionmusic.volume = 0;
-				//this.rpgmusic.volume = .4;
 				
 				this.backaction.kill();
 				this.backrpg.revive();
@@ -376,8 +375,6 @@ BasicGame.Game.prototype = {
 				//Music
 				this.add.tween(this.actionmusic).to({volume:.4}, 1000, Phaser.Easing.Linear.None, true, 0,0,false);
 				this.add.tween(this.rpgmusic).to({volume:0}, 1000, Phaser.Easing.Linear.None, true, 0,0,false);
-				//this.actionmusic.volume = .4;
-				//this.rpgmusic.volume = 0;
 			
 				this.backaction.revive();
 				this.backrpg.kill();
