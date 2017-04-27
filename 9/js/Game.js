@@ -187,7 +187,7 @@ BasicGame.Game.prototype = {
 			//ACTIONS
 			//Attack
 			if(this.canAttack && this.input.keyboard.isDown(Phaser.Keyboard.Z)){
-				if(this.attacking){
+				if(!this.attacking){
 					this.punch.play();
 				}
 				this.player.play('attack');
