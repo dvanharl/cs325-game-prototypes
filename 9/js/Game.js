@@ -269,7 +269,9 @@ BasicGame.Game.prototype = {
 		},this);
 		this.genre = !this.genre;
 		this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
-		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 0,0,false);
+		this.time.events.add(500, function() {
+			this.add.tween(this.whiteScreen).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+		}
 		if(!this.genre){ //RPG
 			//Remember
 			this.px = this.player.x;
