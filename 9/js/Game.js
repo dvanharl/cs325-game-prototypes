@@ -187,9 +187,6 @@ BasicGame.Game.prototype = {
 			}
 			//Switch genre
 			if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
-				this.canSwitch = false;
-				this.canDefend = false;
-				this.canAttack = false;
 				this.switchGenre();
 			}
 		}else{ //RPG
@@ -229,7 +226,6 @@ BasicGame.Game.prototype = {
 					this.player.play('defend');
 				}
 			}else if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
-				this.canSwitch = false;
 				this.switchGenre();
 			}
 			this.cursor.y = 400 + (20 * this.sel);
@@ -254,6 +250,9 @@ BasicGame.Game.prototype = {
 	
 	switchGenre: function (){
 		this.canMove = false;
+		this.canAttack = false;
+		this.canDefend = false;
+		this.canSwitch = false;
 		this.time.events.add(1000, function() {
 			this.canMove = true;
 			this.canAttack = true;
@@ -262,9 +261,46 @@ BasicGame.Game.prototype = {
 			if(!this.genre){
 				this.backaction.kill();
 				this.backrpg.revive();
+				
+				//Remember
+				this.px = this.player.x;
+				this.py = this.player.y;
+				
+				//this.ex = this.enemy.x;
+				//this.ey = this.enemy.y;
+				
+				//Replace enemies
+				this.player.x = 200;
+				this.player.y = 300;
+				//this.enemy.x = 600;
+				//this.enemy.y = 300;
+				
+				//Add menu
+				this.rpgmenu.revive();
+				this.attack.revive();
+				this.defend.revive();
 			}else{
 				this.backaction.revive();
 				this.backrpg.kill();
+				
+				//Return to previous positions
+				this.player.x = this.px;
+				this.player.y = this.py;
+				
+				this.time.events.add(750, function() {
+					this.canSwitch = true;
+					this.canMove = true;
+					this.canAttack = true;
+					this.canDefend = true;
+				},this);
+				
+				//this.enemy.x = this.ex;
+				//this.enemy.y = this.ey;
+				
+				//Remove menu
+				this.rpgmenu.kill();
+				this.attack.kill();
+				this.defend.kill();
 			}
 		},this);
 		this.genre = !this.genre;
@@ -272,50 +308,6 @@ BasicGame.Game.prototype = {
 		this.time.events.add(500, function() {
 			this.add.tween(this.whiteScreen).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 		},this);
-		if(!this.genre){ //RPG
-			//Remember
-			this.px = this.player.x;
-			this.py = this.player.y;
-			
-			//this.ex = this.enemy.x;
-			//this.ey = this.enemy.y;
-			
-			//Replace enemies
-			this.player.x = 200;
-			this.player.y = 300;
-			//this.enemy.x = 600;
-			//this.enemy.y = 300;
-			
-			//Add menu
-			this.rpgmenu.revive();
-			this.attack.revive();
-			this.defend.revive();
-			//this.item.revive();
-			
-			//Switch music
-			
-		}else{ //ACTION
-			//Return to previous positions
-			this.player.x = this.px;
-			this.player.y = this.py;
-			
-			this.time.events.add(750, function() {
-				this.canSwitch = true;
-				this.canMove = true;
-				this.canAttack = true;
-				this.canDefend = true;
-			},this);
-			
-			//this.enemy.x = this.ex;
-			//this.enemy.y = this.ey;
-			
-			//Remove menu
-			this.rpgmenu.kill();
-			this.attack.kill();
-			this.defend.kill();
-			//this.item.kill();
-			//Switch music
-		}
 	}
 	
 	
