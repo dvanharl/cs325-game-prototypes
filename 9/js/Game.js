@@ -200,6 +200,7 @@ BasicGame.Game.prototype = {
 					this.newY = this.player.y;
 					this.checkEnemyAttack();
 				}else if(this.choice == 1){ //Defend
+					this.enemy.body.velocity.setTo(0,0)
 					this.enemy.play('guard');
 					this.edef = 2;
 					this.time.events.add(3000, function() {
@@ -215,8 +216,8 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
-		this.updateEnemy();
 		if(this.genre){ //Action
+			this.updateEnemy();
 			//MOVEMENT
 			if(this.canMove){
 				if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
@@ -402,8 +403,9 @@ BasicGame.Game.prototype = {
 		
 	updateEnemy: function() {
 		if(this.enemy.x == this.newX && this.enemy.y == this.newY){
+			this.enemy.body.velocity.setTo(0,0);
 		}else{
-			this.physics.arcade.moveToXY(this.enemy, this.newX, this.newY, 6, 4000);
+			this.physics.arcade.moveToXY(this.enemy, this.newX, this.newY, [6, 4000]);
 		}
 	},
 	
