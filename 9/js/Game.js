@@ -56,7 +56,7 @@ BasicGame.Game = function (game) {
 	this.canDefend = null;
 	
 	this.canMove = null;
-	
+	this.cursor = null;
 };
 
 BasicGame.Game.prototype = {
@@ -110,7 +110,12 @@ BasicGame.Game.prototype = {
 		//this.items = this.add.sprite(50, 515, 'itemscommand');
 		this.rpgmenu.kill();
 		this.attack.kill();
-		this.defend.kill()
+		this.defend.kill();
+		
+		this.cursor = this.add.sprite(150, 400, 'cursor');
+		this.cursor.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], 30, true, true);
+		this.cursor.animations.add('select',[22], 1, true, true);
+		this.cursor.play('idle');
 		
     },
 
@@ -131,6 +136,8 @@ BasicGame.Game.prototype = {
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
 					this.player.play('walk');
 					this.player.y -= (this.pspeed/2);
+				}else{
+					this.player.play('idle');
 				}
 			}
 			
