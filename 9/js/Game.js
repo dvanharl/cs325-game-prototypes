@@ -163,7 +163,7 @@ BasicGame.Game.prototype = {
 		this.musPos = 0;
 		
 		//Enemy attack
-		this.time.events.add(4000, function() {
+		this.time.events.loop(4000, function() {
 			//Enemy attacks
 			if(!this.genre){
 				this.enemy.play('attack')
@@ -429,6 +429,8 @@ BasicGame.Game.prototype = {
 	},
 	
 	winGame: function() {
+		this.rpgmusic.stop();
+		this.actionmusic.stop();
 		this.php = 200;
 		this.ehp = 200;
 		this.canMove = true;
@@ -439,6 +441,8 @@ BasicGame.Game.prototype = {
 	},
 	
 	loseGame: function() {
+		this.rpgmusic.stop();
+		this.actionmusic.stop();
 		this.php = 200;
 		this.ehp = 200;
 		this.canMove = true;
@@ -454,7 +458,7 @@ BasicGame.Game.prototype = {
 		
 		//If in attack range, damage enemy
 		if(this.canHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
-			this.ehp -= 20;
+			this.ehp -= 20/this.edef;
 			this.canHit = false;
 			this.time.events.add(1500, function() {
 				this.canHit = true;
