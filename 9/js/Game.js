@@ -76,7 +76,8 @@ BasicGame.Game.prototype = {
 		this.player.animations.add('attack',[3], 3, true, true);
 		this.player.animations.add('damage',[4], 3, true, true);
 		this.player.anchor.setTo(.5,.5);
-		this.player.scale = 4;
+		this.player.scale.x = 4;
+		this.player.scale.y = 4;
 		this.player.play('idle');
 		
 		/*this.enemy = this.add.sprite(0, 0, 'enemy');
