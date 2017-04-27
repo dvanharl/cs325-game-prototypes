@@ -61,6 +61,8 @@ BasicGame.Game = function (game) {
 	this.canSwitch = null;
 	
 	this.whiteScreen = null;
+	this.attacking = null;
+	this.defending = null;
 };
 
 BasicGame.Game.prototype = {
@@ -130,7 +132,8 @@ BasicGame.Game.prototype = {
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.whiteScreen.alpha = 0;
 		
-		
+		this.attacking = false;
+		this.defending = false;
     },
 
     update: function () {
@@ -138,24 +141,44 @@ BasicGame.Game.prototype = {
 			//MOVEMENT
 			if(this.canMove){
 				if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+					this.moving = true;
 					if(this.player.scale.x < 0){
 						this.player.scale.x *= -1;
 					}
 					this.player.play('walk');
 					this.player.x -= (this.pspeed * 1);
+					if(this.player.x < 0){
+						this.player.x = 0;
+					}
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+					this.moving = true;
 					if(this.player.scale.x > 0){
 						this.player.scale.x *= -1;
 					}
 					this.player.play('walk');
 					this.player.x += (this.pspeed * 1);
+					if(this.player.x > 800){
+						this.player.x = 800;
+					}
 				}
 				if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+					this.moving = true;
 					this.player.play('walk');
 					this.player.y += (this.pspeed/2);
+					if(this.player.y > 600){
+						this.player.y = 600;
+					}
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
+					this.moving = true;
 					this.player.play('walk');
 					this.player.y -= (this.pspeed/2);
+					if(this.player.y < 200){
+						this.player.y = 200;
+					}
+				}
+				
+				if(!this.input.keyboard.isDown(Phaser.Keyboard.LEFT) && !this.input.keyboard.isDown(Phaser.Keyboard.UP) && !this.input.keyboard.isDown(Phaser.Keyboard.RIGHT) && !this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+					this.moving = false;
 				}
 			}
 			
@@ -163,15 +186,24 @@ BasicGame.Game.prototype = {
 			//Attack
 			if(this.canAttack && this.input.keyboard.isDown(Phaser.Keyboard.Z)){
 				this.player.play('attack');
+				this.attacking = true;
 				this.canAttack = false;
 				this.canMove = false;
 				this.canDefend = false;
-				this.time.events.add(800, function() {
+				this.time.events.add(1000, function() {
 					this.canAttack = true;
 					this.canMove = true;
 					this.canDefend = true;
+					this.attacking = false;
 					//check for damage
+					/*
+					if(enemy.x
+					*/
 				},this);
+			}
+			
+			if(!this.attacking && !this.defending && !this.moving){
+				this.player.play('idle');
 			}
 			
 			//Defend
@@ -179,12 +211,18 @@ BasicGame.Game.prototype = {
 				this.player.play('defend');
 				this.canMove = false;
 				this.canAttack = false;
+				this.canDefend = false;
+				this.defending = true;
 				this.defense = 2;
-			}else{
-				this.canMove = true;
-				this.canAttack = true;
-				this.defense = 1;
+				this.time.events.add(1000, function() {
+					this.canMove = true;
+					this.canAttack = true;
+					this.canDefend = true;
+					this.defending = false;
+					this.defense = 1;
+				},this);
 			}
+			
 			//Switch genre
 			if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.switchGenre();
