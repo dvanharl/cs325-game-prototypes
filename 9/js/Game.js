@@ -316,12 +316,13 @@ BasicGame.Game.prototype = {
 				//Music switch
 				this.musPos = this.actionmusic.position;
 				this.actionmusic.stop();
-				this.rpgmusic.play('',this.musPos,.4,true, true);
+				this.rpgmusic.play(this.musPos,.4,true, true);
 				
 				this.backaction.kill();
 				this.backrpg.revive();
 				
 				//Remember
+				this.player.scale.x = -4;
 				this.px = this.player.x;
 				this.py = this.player.y;
 				
@@ -342,7 +343,7 @@ BasicGame.Game.prototype = {
 				//Music
 				this.musPos = this.rpgmusic.position;
 				this.rpgmusic.stop();
-				this.actionmusic.play('',this.musPos,.4,true, true);
+				this.actionmusic.play(this.musPos,.4,true, true);
 			
 				this.backaction.revive();
 				this.backrpg.kill();
