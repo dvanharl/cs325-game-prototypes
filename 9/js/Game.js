@@ -252,6 +252,9 @@ BasicGame.Game.prototype = {
 		this.canMove = false;
 		this.time.events.add(1000, function() {
 			this.canMove = true;
+			this.canAttack = true;
+			this.canDefend = true;
+			this.canSwitch = true;
 		},this);
 		this.genre = !this.genre;
 		this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
