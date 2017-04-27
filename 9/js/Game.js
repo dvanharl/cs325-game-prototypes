@@ -75,15 +75,18 @@ BasicGame.Game.prototype = {
 		this.player.animations.add('guard',[2], 3, true, true);
 		this.player.animations.add('attack',[3], 3, true, true);
 		this.player.animations.add('damage',[4], 3, true, true);
-		this.player.play('idle');
 		this.player.anchor.setTo(.5,.5);
+		this.player.play('idle');
 		
-		this.enemy = this.add.sprite(0, 0, 'enemy1');
-		this.playB.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29], 30, true, true);
-		this.playB.animations.add('select',[30,31], 30, true, true);
-		this.playB.play('idle');
+		/*this.enemy = this.add.sprite(0, 0, 'enemy');
+		this.enemy.animations.add('idle',[0], 3, true, true);
+		this.enemy.animations.add('walk',[0,1], 3, true, true);
+		this.enemy.animations.add('guard',[2], 3, true, true);
+		this.enemy.animations.add('attack',[3], 3, true, true);
+		this.enemy.animations.add('damage',[4], 3, true, true);
 		this.enemy.anchor.setTo(.5,.5);
-		
+		this.enemy.play('idle');
+		*/
 		//Parameters
 		this.php = 200;
 		this.ehp = 200;
@@ -98,8 +101,8 @@ BasicGame.Game.prototype = {
 		//Menu add
 		this.rpgmenu = this.add.sprite(0, 0, 'rpgmenu');
 		this.attack = this.add.sprite(0, 0, 'attackcommand');
-		this.defend = this.add.sprite(0, 0, 'attackcommand');
-		this.items = this.add.sprite(0, 0, 'attackcommand');
+		this.defend = this.add.sprite(0, 0, 'defendcommand');
+		this.items = this.add.sprite(0, 0, 'itemscommand');
 		
     },
 

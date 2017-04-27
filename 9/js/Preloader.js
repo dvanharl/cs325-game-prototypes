@@ -22,6 +22,9 @@ BasicGame.Preloader.prototype = {
 		this.load.image('controlPanel', 'assets/controlPanel.png');
 		
 		this.load.image('rpgmenu', 'assets/rpgmenu.png');
+		this.load.image('attackcommand', 'assets/attack.png');
+		this.load.image('defendcommand', 'assets/defend.png');
+		this.load.image('itemscommand', 'assets/items.png');
 		
 		this.load.audio('titleMusic', ['assets/title.mp3']);
 		
