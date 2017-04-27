@@ -388,11 +388,11 @@ BasicGame.Game.prototype = {
 		}
 		
 		//Check parameters
-		if(this.php == 0){
+		if(this.php <= 0){
 			this.loseGame();
 		}
 		
-		if(this.ehp == 0){
+		if(this.ehp <= 0){
 			this.winGame();
 		}
 	},
