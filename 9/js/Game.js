@@ -290,9 +290,10 @@ BasicGame.Game.prototype = {
 						this.canMove = true;
 						this.attack.alpha = .5;
 						this.defend.alpha = 1;
+						this.player.play('idle');
 					},this);
 				}
-			}else if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
+			}else if(this.canSwitch && this.canMove && this.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.switchGenre();
 			}
 			this.cursor.y = 400 + (20 * this.sel);
