@@ -58,6 +58,7 @@ BasicGame.Game = function (game) {
 	this.canMove = null;
 	this.cursor = null;
 	this.sel = null;
+	this.canSwitch = null;
 };
 
 BasicGame.Game.prototype = {
@@ -101,6 +102,7 @@ BasicGame.Game.prototype = {
 		this.canMove = true;
 		this.canAttack = true;
 		this.canDefend = true;
+		this.canSwitch = true;
 		
 		this.sel = -1
 		
@@ -173,7 +175,8 @@ BasicGame.Game.prototype = {
 				this.defense = 1;
 			}
 			//Switch genre
-			if(this.input.keyboard.isDown(Phaser.Keyboard.C)){
+			if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
+				this.canSwitch = false;
 				this.canDefend = false;
 				this.canAttack = false;
 				this.switchGenre();
@@ -222,7 +225,8 @@ BasicGame.Game.prototype = {
 					}else if(this.sel == 1){
 					}else if(this.sel == 2){
 					}
-				}else if(this.input.keyboard.isDown(Phaser.Keyboard.C)){
+				}else if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
+					this.canSwitch = false;
 					this.switchGenre();
 				}
 			}
@@ -278,6 +282,7 @@ BasicGame.Game.prototype = {
 			this.player.y = this.py;
 			
 			this.time.events.add(750, function() {
+				this.canSwitch = true;
 				this.canMove = true;
 				this.canAttack = true;
 				this.canDefend = true;
