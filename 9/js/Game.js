@@ -82,7 +82,7 @@ BasicGame.Game.prototype = {
 		this.player = this.add.sprite(200, 200, 'player');
 		this.player.animations.add('idle',[0], 3, true, true);
 		this.player.animations.add('walk',[0,1], 3, true, true);
-		this.player.animations.add('guard',[2], 3, true, true);
+		this.player.animations.add('defend',[2], 3, true, true);
 		this.player.animations.add('attack',[3], 3, true, true);
 		this.player.animations.add('damage',[4], 3, true, true);
 		this.player.anchor.setTo(.5,.5);
@@ -190,7 +190,7 @@ BasicGame.Game.prototype = {
 				this.canAttack = false;
 				this.canMove = false;
 				this.canDefend = false;
-				this.time.events.add(1000, function() {
+				this.time.events.add(500, function() {
 					this.canAttack = true;
 					this.canMove = true;
 					this.canDefend = true;
@@ -211,16 +211,13 @@ BasicGame.Game.prototype = {
 				this.player.play('defend');
 				this.canMove = false;
 				this.canAttack = false;
-				this.canDefend = false;
 				this.defending = true;
 				this.defense = 2;
-				this.time.events.add(1000, function() {
-					this.canMove = true;
-					this.canAttack = true;
-					this.canDefend = true;
-					this.defending = false;
-					this.defense = 1;
-				},this);
+			}else{
+				this.canMove = true;
+				this.canAttack = true;
+				this.defending = false;
+				this.defense = 1;
 			}
 			
 			//Switch genre
