@@ -104,8 +104,8 @@ BasicGame.Game.prototype = {
 		
 		//Menu add
 		this.rpgmenu = this.add.sprite(0, 0, 'rpgmenu');
-		this.attack = this.add.sprite(50, 375, 'attackcommand');
-		this.defend = this.add.sprite(50, 445, 'defendcommand');
+		this.attack = this.add.sprite(100, 375, 'attackcommand');
+		this.defend = this.add.sprite(100, 491, 'defendcommand');
 		//this.items = this.add.sprite(50, 515, 'itemscommand');
 		this.rpgmenu.kill();
 		this.attack.kill();
