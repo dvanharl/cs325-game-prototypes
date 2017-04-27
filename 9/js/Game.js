@@ -343,8 +343,10 @@ BasicGame.Game.prototype = {
 		this.time.events.add(500, function() {
 			if(!this.genre){//Switch to RPG
 				//Music switch
-				this.actionmusic.volume = 0;
-				this.rpgmusic.volume = .4;
+				this.add.tween(this.actionmusic).to({volume:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+				this.add.tween(this.rpgmusic).to({volume:.4}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+				//this.actionmusic.volume = 0;
+				//this.rpgmusic.volume = .4;
 				
 				this.backaction.kill();
 				this.backrpg.revive();
@@ -369,8 +371,10 @@ BasicGame.Game.prototype = {
 				this.defend.revive();
 			}else{ //Switch to action
 				//Music
-				this.actionmusic.volume = .4;
-				this.rpgmusic.volume = 0;
+				this.add.tween(this.actionmusic).to({volume:.4}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+				this.add.tween(this.rpgmusic).to({volume:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+				//this.actionmusic.volume = .4;
+				//this.rpgmusic.volume = 0;
 			
 				this.backaction.revive();
 				this.backrpg.kill();
