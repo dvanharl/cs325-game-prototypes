@@ -166,9 +166,11 @@ BasicGame.Game.prototype = {
 		this.time.events.add(4000, function() {
 			//Enemy attacks
 			if(!this.genre){
+				this.enemy.play('attack')
 				this.php -= 20/this.defense;
 				this.player.play('damage');
 				this.time.events.add(750, function() {
+					this.enemy.play('idle');
 					this.player.play('idle');
 				},this);
 			}
