@@ -314,7 +314,7 @@ BasicGame.Game.prototype = {
 				//Music switch
 				this.musPos = this.actionmusic.position;
 				this.actionmusic.stop();
-				this.rpgmusic.play('',musPos,.4,true, true);
+				this.rpgmusic.play('',this.musPos,.4,true, true);
 				
 				this.backaction.kill();
 				this.backrpg.revive();
@@ -340,7 +340,7 @@ BasicGame.Game.prototype = {
 				//Music
 				this.musPos = this.rpgmusic.position;
 				this.rpgmusic.stop();
-				this.actionmusic.play('',musPos,.4,true, true);
+				this.actionmusic.play('',this.musPos,.4,true, true);
 			
 				this.backaction.revive();
 				this.backrpg.kill();
