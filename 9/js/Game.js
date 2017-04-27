@@ -210,25 +210,18 @@ BasicGame.Game.prototype = {
 			if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
 				this.cursor.play('select');
 				if(this.sel == -1){
-					this.playB.play('select');
-					this.startGame();
+					this.player.play('attack');
+					this.time.events.add(250, function() {
+						this.player.play('idle');
+					},this);
 				}else{
 					this.openControls();
 				}
+			}else if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
+				this.canSwitch = false;
+				this.switchGenre();
 			}
-				
-				this.cursor.y = 400 + (20 * this.sel);
-
-				if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
-					this.cursor.play('select');
-					if(this.sel == 0){
-					}else if(this.sel == 1){
-					}else if(this.sel == 2){
-					}
-				}else if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
-					this.canSwitch = false;
-					this.switchGenre();
-				}
+			this.cursor.y = 400 + (20 * this.sel);
 			}
 		}
 		
