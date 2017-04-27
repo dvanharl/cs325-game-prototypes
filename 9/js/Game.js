@@ -66,6 +66,8 @@ BasicGame.Game = function (game) {
 	
 	this.rpgmusic = null;
 	this.actionmusic = null;
+	
+	this.musPos = null;
 };
 
 BasicGame.Game.prototype = {
@@ -144,6 +146,7 @@ BasicGame.Game.prototype = {
 		
 		//Music play
 		this.actionmusic.play('',0,.4,true,true);
+		this.musPos = 0;
     },
 
     update: function () {
