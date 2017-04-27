@@ -69,6 +69,8 @@ BasicGame.Game.prototype = {
 
     create: function () {
 		//Audio
+		this.punch = this.add.audio('punch');
+		this.hit = this.add.audio('hit');
 		
 		//Setting
 		this.backrpg = this.add.sprite(400,300, 'backrpg');
@@ -185,6 +187,7 @@ BasicGame.Game.prototype = {
 			//ACTIONS
 			//Attack
 			if(this.canAttack && this.input.keyboard.isDown(Phaser.Keyboard.Z)){
+				this.punch.play();
 				this.player.play('attack');
 				this.attacking = true;
 				this.canAttack = false;
@@ -254,6 +257,7 @@ BasicGame.Game.prototype = {
 				this.cursor.play('select');
 				if(this.sel == -1){
 					this.player.play('attack');
+					this.punch.play('punch');
 					this.time.events.add(250, function() {
 						this.player.play('idle');
 					},this);

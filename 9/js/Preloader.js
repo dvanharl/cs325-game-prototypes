@@ -30,6 +30,8 @@ BasicGame.Preloader.prototype = {
 		this.load.image('backaction', 'assets/backaction.png');
 		
 		this.load.audio('titleMusic', ['assets/title.mp3']);
+		this.load.audio('punch', ['assets/punch.mp3']);
+		this.load.audio('hit', ['assets/hit.mp3']);
 		
 		this.load.spritesheet('cursor', 'assets/menucursor.png',190,70,23);
 		this.load.spritesheet('play', 'assets/menuplay.png', 190,70,32);
