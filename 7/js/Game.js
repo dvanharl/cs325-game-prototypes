@@ -134,8 +134,8 @@ BasicGame.Game.prototype = {
 				if (this.noteriety >= 1000){
 					this.resetGame();
 				}
-				this.crowdL.remove(this.crowdL.children[i], true);
-				continue;
+				//this.crowdL.remove(this.crowdL.children[i], true);
+				//continue;
 			}
 			if(this.crowdL.children[i].x <= -400){
 				this.crowdL.remove(this.crowdL.children[i], true);
@@ -149,8 +149,8 @@ BasicGame.Game.prototype = {
 				if (this.noteriety >= 1000){
 					this.resetGame();
 				}
-				this.crowdR.remove(this.crowdR.children[i], true);
-				continue;
+				//this.crowdR.remove(this.crowdR.children[i], true);
+				//continue;
 			}
 			if(this.crowdR.children[i].x >= 1200){
 				this.crowdR.remove(this.crowdR.children[i], true);
