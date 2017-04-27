@@ -190,19 +190,13 @@ BasicGame.Game.prototype = {
 				this.punch.play();
 				this.player.play('attack');
 				this.attacking = true;
-				this.canAttack = false;
 				this.canMove = false;
 				this.canDefend = false;
-				this.time.events.add(500, function() {
-					this.canAttack = true;
-					this.canMove = true;
-					this.canDefend = true;
-					this.attacking = false;
-					//check for damage
-					/*
-					if(enemy.x
-					*/
-				},this);
+				//Check for damage
+			}else{
+				this.canMove = true;
+				this.canDefend = true;
+				this.attacking = false;
 			}
 			
 			if(!this.attacking && !this.defending && !this.moving){
