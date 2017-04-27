@@ -68,6 +68,7 @@ BasicGame.Game = function (game) {
 	this.actionmusic = null;
 	
 	this.musPos = null;
+	this.enemiesKilled = null;
 };
 
 BasicGame.Game.prototype = {
@@ -144,6 +145,8 @@ BasicGame.Game.prototype = {
 		
 		this.attacking = false;
 		this.defending = false;
+		
+		this.enemiesKilled = 0;
 		
 		//Music play
 		this.actionmusic.play('',0,.4,true,true);
@@ -282,6 +285,7 @@ BasicGame.Game.prototype = {
 						if(!this.attacking){
 							this.punch.play();
 						}
+						this.eph -= 20;
 						this.attacking = true;
 						this.player.play('attack');
 						this.punch.play();
