@@ -137,13 +137,14 @@ BasicGame.Game.prototype = {
 			//Attack
 			if(this.canAttack && this.input.keyboard.isDown(Phaser.Keyboard.Z)){
 				this.player.play('attack');
+				this.canAttack = false;
 				this.canMove = false;
 				this.canDefend = false;
-				this.ehp -= 20/this.edefense
-			}else{
-				this.player.play('idle');
-				this.canMove = true;
-				this.canDefend = true;
+				this.time.events.add(800, function() {
+					this.canAttack = true;
+					this.canMove = true;
+					this.canDefend = true;
+				},this);
 			}
 			
 			//Defend
