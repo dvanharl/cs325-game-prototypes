@@ -69,6 +69,8 @@ BasicGame.Game = function (game) {
 	
 	this.musPos = null;
 	this.enemiesKilled = null;
+	
+	this.canHit = null;
 };
 
 BasicGame.Game.prototype = {
@@ -151,6 +153,9 @@ BasicGame.Game.prototype = {
 		
 		this.enemiesKilled = 0;
 		
+		this.canHit = true;
+		this.canBeHit = true;
+		
 		//Music play
 		this.actionmusic.play('',0,.4,true,true);
 		this.rpgmusic.play('',0,.4,true,true);
@@ -162,6 +167,10 @@ BasicGame.Game.prototype = {
 			//Enemy attacks
 			if(!this.genre){
 				this.php -= 20/this.defense;
+				this.player.play('damage');
+				this.time.events.add(750, function() {
+					this.player.play('idle');
+				},this);
 			}
 		},this);
     },
