@@ -209,6 +209,12 @@ BasicGame.Game.prototype = {
 		}
 	},
 	
+	render: function(){
+		this.game.debug.text("Health: " + this.php, 32, 32);
+		this.game.debug.text("Enemy Health: " + this.ehp,32,64);
+	},
+		
+	
 	switchGenre: function (){
 		this.canMove = false;
 		this.time.events.add(1000, function() {
