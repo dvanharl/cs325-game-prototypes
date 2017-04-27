@@ -126,6 +126,7 @@ BasicGame.Game.prototype = {
 		this.cursor.kill();
 		
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
+		this.whiteScreen.alpha = 0;
     },
 
     update: function () {
