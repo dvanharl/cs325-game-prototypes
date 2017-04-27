@@ -96,19 +96,20 @@ BasicGame.Game.prototype = {
 		this.player.animations.add('attack',[3], 3, true, true);
 		this.player.animations.add('damage',[4], 3, true, true);
 		this.player.anchor.setTo(.5,.5);
-		this.player.scale.x = 4;
+		this.player.scale.x = -4;
 		this.player.scale.y = 4;
 		this.player.play('idle');
 		
-		/*this.enemy = this.add.sprite(0, 0, 'enemy');
+		this.enemy = this.add.sprite(600, 300, 'enemy');
 		this.enemy.animations.add('idle',[0], 3, true, true);
 		this.enemy.animations.add('walk',[0,1], 3, true, true);
 		this.enemy.animations.add('guard',[2], 3, true, true);
 		this.enemy.animations.add('attack',[3], 3, true, true);
 		this.enemy.animations.add('damage',[4], 3, true, true);
 		this.enemy.anchor.setTo(.5,.5);
+		this.enemy.scale.x = 4;
+		this.enemy.scale.y = 4;
 		this.enemy.play('idle');
-		*/
 		
 		//Parameters
 		this.php = 200;
@@ -153,6 +154,14 @@ BasicGame.Game.prototype = {
 		this.rpgmusic.play('',0,.4,true,true);
 		this.rpgmusic.volume = 0;
 		this.musPos = 0;
+		
+		//Enemy attack
+		this.time.events.add(4000, function() {
+			//Enemy attacks
+			if(!this.genre){
+				this.php -= 20;
+			}
+		},this);
     },
 
     update: function () {
@@ -208,6 +217,7 @@ BasicGame.Game.prototype = {
 				if(!this.attacking){
 					this.punch.play();
 				}
+				this.checkAttack();
 				this.pspeed = 0;
 				this.player.play('attack');
 				this.attacking = true;
@@ -323,11 +333,11 @@ BasicGame.Game.prototype = {
 		
 		//Check parameters
 		if(this.php == 0){
-			//lose
+			this.loseGame();
 		}
 		
 		if(this.ehp == 0){
-			//win
+			this.winGame();
 		}
 	},
 	
@@ -337,11 +347,11 @@ BasicGame.Game.prototype = {
 	},
 		
 	updateEnemy: function() {
-		if(this.genre){ //Action
+		/*if(this.genre){ //Action
 			
 		}else{ //RPG
 			f;
-		}
+		}*/
 	},
 	
 	switchGenre: function (){
@@ -403,7 +413,40 @@ BasicGame.Game.prototype = {
 			}
 			this.add.tween(this.whiteScreen).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 		},this);
-	}
+	},
 	
+	winGame: function() {
+		this.php = 200;
+		this.ehp = 200;
+		this.canMove = true;
+		this.canAttack = true;
+		this.canDefend = true;
+		this.canSwitch = true;
+		this.state.start('MainMenu');
+	},
+	
+	loseGame: function() {
+		this.php = 200;
+		this.ehp = 200;
+		this.canMove = true;
+		this.canAttack = true;
+		this.canDefend = true;
+		this.canSwitch = true;
+		this.state.start('MainMenu');
+	},
+	
+	checkAttack: function() {
+		this.playerBox = this.player.getBounds();
+		this.enemyBox= this.enemy.getBounds();
+		
+		//If in attack range, damage enemy
+		if(this.canHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
+			this.ehp -= 20;
+			this.canHit = false;
+			this.time.events.add(1500, function() {
+				this.canHit = true;
+			},this);
+		}
+	}
 	
 };
