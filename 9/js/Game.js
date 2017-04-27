@@ -178,7 +178,7 @@ BasicGame.Game.prototype = {
 				this.choice = this.rnd.integerInRange(0,1);
 				if(this.choice == 0){ //Attack
 					this.enemy.play('attack');
-					this.php -= 20/this.defense;
+					this.php -= 30/this.defense;
 					this.player.play('damage');
 					this.player.tint = 0xff0000;
 					this.time.events.add(1500, function() {
@@ -529,7 +529,7 @@ BasicGame.Game.prototype = {
 		}
 		if(this.canBeHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
 			this.enemy.play('attack')
-			this.php -= 20/this.defense;
+			this.php -= 30/this.defense;
 			this.player.play('damage');
 			this.player.tint = 0xff0000;
 			this.time.events.add(1500, function() {
