@@ -194,7 +194,7 @@ BasicGame.Game.prototype = {
 					},this);
 				}
 			}else{ //Action
-				this.choice = this.rnd.integerInRange(0,2)
+				this.choice = this.rnd.integerInRange(0,2);
 				if(this.choice == 0){ //Follow and Attack
 					this.newX = this.player.x;
 					this.newY = this.player.y;
@@ -210,6 +210,7 @@ BasicGame.Game.prototype = {
 					this.newX = this.rnd.integerInRange(100,700);
 					this.newY = this.rnd.integerInRange(200,500);
 				}
+			}
 		},this);
     },
 
