@@ -258,6 +258,10 @@ BasicGame.Game.prototype = {
 			this.canAttack = true;
 			this.canDefend = true;
 			this.canSwitch = true;
+		},this);
+		this.genre = !this.genre;
+		this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+		this.time.events.add(500, function() {
 			if(!this.genre){
 				this.backaction.kill();
 				this.backrpg.revive();
@@ -287,25 +291,11 @@ BasicGame.Game.prototype = {
 				this.player.x = this.px;
 				this.player.y = this.py;
 				
-				this.time.events.add(750, function() {
-					this.canSwitch = true;
-					this.canMove = true;
-					this.canAttack = true;
-					this.canDefend = true;
-				},this);
-				
-				//this.enemy.x = this.ex;
-				//this.enemy.y = this.ey;
-				
 				//Remove menu
 				this.rpgmenu.kill();
 				this.attack.kill();
 				this.defend.kill();
 			}
-		},this);
-		this.genre = !this.genre;
-		this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
-		this.time.events.add(500, function() {
 			this.add.tween(this.whiteScreen).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 		},this);
 	}
