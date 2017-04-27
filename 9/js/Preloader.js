@@ -27,7 +27,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('itemscommand', 'assets/items.png');
 		
 		this.load.image('backrpg', 'assets/backrpg.png');
-		this.load.iamge('backaction', 'assets/backaction/png');
+		this.load.iamge('backaction', 'assets/backaction.png');
 		
 		this.load.audio('titleMusic', ['assets/title.mp3']);
 		
