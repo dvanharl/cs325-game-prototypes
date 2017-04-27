@@ -334,7 +334,7 @@ BasicGame.Game.prototype = {
 				this.musPos = this.actionmusic.currentTime;
 				this.actionmusic.stop();
 				this.rpgmusic.play('',0,.4,true, true);
-				this.rpgmusic.startTime = this.musPos
+				this.rpgmusic.currentTime = this.musPos
 				
 				this.backaction.kill();
 				this.backrpg.revive();
@@ -362,7 +362,7 @@ BasicGame.Game.prototype = {
 				this.musPos = this.rpgmusic.currentTime;
 				this.rpgmusic.stop();
 				this.actionmusic.play('',0,.4,true, true);
-				this.actionmusic.startTime = this.musPos
+				this.actionmusic.currentTime = this.musPos
 			
 				this.backaction.revive();
 				this.backrpg.kill();
