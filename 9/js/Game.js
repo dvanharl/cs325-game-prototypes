@@ -69,14 +69,14 @@ BasicGame.Game.prototype = {
 		//this.backaction = this.add.sprite(0,0, 'backaction');
 		
 		//Players
-		this.player = this.add.sprite(0, 0, 'player');
+		this.player = this.add.sprite(400, 303, 'player');
 		this.player.animations.add('idle',[0], 3, true, true);
 		this.player.animations.add('walk',[0,1], 3, true, true);
 		this.player.animations.add('guard',[2], 3, true, true);
 		this.player.animations.add('attack',[3], 3, true, true);
 		this.player.animations.add('damage',[4], 3, true, true);
 		this.player.anchor.setTo(.5,.5);
-		this.player.scale.x = -4;
+		this.player.scale = -4;
 		this.player.play('idle');
 		
 		/*this.enemy = this.add.sprite(0, 0, 'enemy');
@@ -241,14 +241,14 @@ BasicGame.Game.prototype = {
 			this.px = this.player.x;
 			this.py = this.player.y;
 			
-			this.ex = this.enemy.x;
-			this.ey = this.enemy.y;
+			//this.ex = this.enemy.x;
+			//this.ey = this.enemy.y;
 			
 			//Replace enemies
 			this.player.x = 200;
 			this.player.y = 300;
-			this.enemy.x = 600;
-			this.enemy.y = 300;
+			//this.enemy.x = 600;
+			//this.enemy.y = 300;
 			
 			//Add menu
 			this.rpgmenu.revive();
@@ -263,8 +263,8 @@ BasicGame.Game.prototype = {
 			this.player.x = this.px;
 			this.player.y = this.py;
 			
-			this.enemy.x = this.ex;
-			this.enemy.y = this.ey;
+			//this.enemy.x = this.ex;
+			//this.enemy.y = this.ey;
 			
 			//Remove menu
 			this.rpgmenu.kill();
