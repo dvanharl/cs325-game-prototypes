@@ -350,10 +350,20 @@ BasicGame.Game.prototype = {
 						if(!this.attacking){ //Attacking
 							this.punch.play();
 						}
+						if(this.canHit){
 						this.ehp -= 20/this.edef;
-						this.attacking = true;
-						this.player.play('attack');
-						this.punch.play();
+							this.canHit = false;
+							this.enemy.play('damage');
+							this.enemy.tint = 0xff0000;
+							this.time.events.add(1500, function() {
+								this.enemy.play('idle');
+								this.canHit = true;
+								this.enemy.tint = 0xffffff;
+							},this);
+							this.attacking = true;
+							this.player.play('attack');
+							this.punch.play();
+						}
 						this.time.events.add(750, function() {
 							this.attacking = false;
 						},this);
