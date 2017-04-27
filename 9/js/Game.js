@@ -350,7 +350,7 @@ BasicGame.Game.prototype = {
 						if(!this.attacking){ //Attacking
 							this.punch.play();
 						}
-						this.eph -= 20;
+						this.ehp -= 20/this.edef;
 						this.attacking = true;
 						this.player.play('attack');
 						this.punch.play();
