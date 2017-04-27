@@ -306,8 +306,6 @@ BasicGame.Game.prototype = {
 				}
 			}else if(this.canSwitch && this.canMove && this.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.switchGenre();
-			}
-			this.cursor.y = 400 + (20 * this.sel);
 			}else{
 				this.player.play('idle');
 			}
