@@ -201,12 +201,14 @@ BasicGame.Game.prototype = {
 				if(!this.attacking){
 					this.punch.play();
 				}
+				this.pspeed = 0;
 				this.player.play('attack');
 				this.attacking = true;
 				this.canMove = false;
 				this.canDefend = false;
 				//Check for damage
 			}else{
+				this.pspeed = 6;
 				this.canMove = true;
 				this.canDefend = true;
 				this.attacking = false;
