@@ -74,6 +74,8 @@ BasicGame.Game.prototype = {
 		this.backaction = this.add.sprite(400,300, 'backaction');
 		this.backaction.anchor.setTo(.5,.5);
 		
+		this.backrpg.kill();
+		
 		//Players
 		this.player = this.add.sprite(200, 200, 'player');
 		this.player.animations.add('idle',[0], 3, true, true);
@@ -127,6 +129,8 @@ BasicGame.Game.prototype = {
 		
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
 		this.whiteScreen.alpha = 0;
+		
+		
     },
 
     update: function () {
@@ -260,6 +264,10 @@ BasicGame.Game.prototype = {
 		this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 0,0,false);
 		if(!this.genre){ //RPG
+			//Background change
+			this.backaction.kill();
+			this.backrpg.revive();
+		
 			//Remember
 			this.px = this.player.x;
 			this.py = this.player.y;
@@ -282,6 +290,10 @@ BasicGame.Game.prototype = {
 			//Switch music
 			
 		}else{ //ACTION
+			//Background Change
+			this.backaction.revive();
+			this.backrpg.kill();
+		
 			//Return to previous positions
 			this.player.x = this.px;
 			this.player.y = this.py;
