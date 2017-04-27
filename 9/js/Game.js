@@ -90,7 +90,7 @@ BasicGame.Game.prototype = {
 		//Players
 		this.player = this.add.sprite(200, 200, 'player');
 		this.player.animations.add('idle',[0], 3, true, true);
-		this.player.animations.add('walk',[0,1], 3, true, true);
+		this.player.animations.add('walk',[0,1], 8, true, true);
 		this.player.animations.add('defend',[2], 3, true, true);
 		this.player.animations.add('attack',[3], 3, true, true);
 		this.player.animations.add('damage',[4], 3, true, true);
@@ -266,11 +266,15 @@ BasicGame.Game.prototype = {
 			if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
 				this.cursor.play('select');
 				if(this.sel == -1){
-					this.punch.play();
+					if(!this.attacking){
+						this.punch.play();
+					}
+					this.attacking = true;
 					this.player.play('attack');
 					this.punch.play();
 					this.time.events.add(250, function() {
 						this.player.play('idle');
+						this.attacking = false;
 					},this);
 				}else{
 					this.player.play('defend');
