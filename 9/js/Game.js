@@ -105,8 +105,8 @@ BasicGame.Game.prototype = {
 		this.php = 200;
 		this.ehp = 200;
 		
-		this.pspeed = 4;
-		this.espeed = 4;
+		this.pspeed = 6;
+		this.espeed = 6;
 		
 		this.genre = true;
 		this.canMove = true;
@@ -187,7 +187,9 @@ BasicGame.Game.prototype = {
 			//ACTIONS
 			//Attack
 			if(this.canAttack && this.input.keyboard.isDown(Phaser.Keyboard.Z)){
-				this.punch.play();
+				if(this.attacking){
+					this.punch.play();
+				}
 				this.player.play('attack');
 				this.attacking = true;
 				this.canMove = false;
