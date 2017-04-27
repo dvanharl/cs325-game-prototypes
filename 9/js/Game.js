@@ -104,7 +104,7 @@ BasicGame.Game.prototype = {
 		this.canDefend = true;
 		this.canSwitch = true;
 		
-		this.sel = -1
+		this.sel = -1;
 		
 		//Menu add
 		this.rpgmenu = this.add.sprite(0, 0, 'rpgmenu');
