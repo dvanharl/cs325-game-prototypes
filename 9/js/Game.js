@@ -57,7 +57,7 @@ BasicGame.Game = function (game) {
 	
 	this.canMove = null;
 	this.cursor = null;
-	this.sel = null;l
+	this.sel = null;
 };
 
 BasicGame.Game.prototype = {
