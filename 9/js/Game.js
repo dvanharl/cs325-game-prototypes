@@ -63,6 +63,9 @@ BasicGame.Game = function (game) {
 	this.whiteScreen = null;
 	this.attacking = null;
 	this.defending = null;
+	
+	this.rpgmusic = null;
+	this.actionmusic = null;
 };
 
 BasicGame.Game.prototype = {
@@ -71,6 +74,8 @@ BasicGame.Game.prototype = {
 		//Audio
 		this.punch = this.add.audio('punch');
 		this.hit = this.add.audio('hit');
+		this.rpgmusic = this.add.audio('rpgmusic');
+		this.actionmusic = this.add.audio('actionmusic');
 		
 		//Setting
 		this.backrpg = this.add.sprite(400,300, 'backrpg');
@@ -136,6 +141,9 @@ BasicGame.Game.prototype = {
 		
 		this.attacking = false;
 		this.defending = false;
+		
+		//Music play
+		this.actionmusic.play('',0,.4,true,true);
     },
 
     update: function () {
@@ -299,7 +307,12 @@ BasicGame.Game.prototype = {
 		this.genre = !this.genre;
 		this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 		this.time.events.add(500, function() {
-			if(!this.genre){
+			if(!this.genre){//Switch to RPG
+				//Music switch
+				this.musPos = this.actionmusic.position;
+				this.actionmusic.stop();
+				this.rpgmusic.play('',musPos,.4,true, true);
+				
 				this.backaction.kill();
 				this.backrpg.revive();
 				
@@ -320,7 +333,12 @@ BasicGame.Game.prototype = {
 				this.rpgmenu.revive();
 				this.attack.revive();
 				this.defend.revive();
-			}else{
+			}else{ //Switch to action
+				//Music
+				this.musPos = this.rpgmusic.position;
+				this.rpgmusic.stop();
+				this.actionmusic.play('',musPos,.4,true, true);
+			
 				this.backaction.revive();
 				this.backrpg.kill();
 				
