@@ -126,9 +126,15 @@ BasicGame.Game.prototype = {
 			//MOVEMENT
 			if(this.canMove){
 				if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+					if(this.player.scale.x < 0){
+						this.player.scale.x *= -1;
+					}
 					this.player.play('walk');
 					this.player.x -= (this.pspeed * 1);
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+					if(this.player.scale.x < 0){
+						this.player.scale.x *= -1;
+					}
 					this.player.play('walk');
 					this.player.x += (this.pspeed * 1);
 				}
@@ -138,8 +144,6 @@ BasicGame.Game.prototype = {
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
 					this.player.play('walk');
 					this.player.y -= (this.pspeed/2);
-				}else{
-					this.player.play('idle');
 				}
 			}
 			
