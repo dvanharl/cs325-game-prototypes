@@ -403,7 +403,7 @@ BasicGame.Game.prototype = {
 	updateEnemy: function() {
 		if(this.enemy.x == this.newX && this.enemy.y == this.newY){
 		}else{
-			this.physics..arcade.moveToXY(this.enemy, this.newX, this.newY, 6, 4000);
+			this.physics.arcade.moveToXY(this.enemy, this.newX, this.newY, 6, 4000);
 		}
 	},
 	
