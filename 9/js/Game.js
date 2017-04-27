@@ -248,10 +248,12 @@ BasicGame.Game.prototype = {
 				}
 			
 			this.cursor.y = 440 + (40 * this.sel);
-
+			
+			//Actions
 			if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
 				this.cursor.play('select');
 				if(this.sel == -1){
+					this.punch.play();
 					this.player.play('attack');
 					this.punch.play('punch');
 					this.time.events.add(250, function() {
