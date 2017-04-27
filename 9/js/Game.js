@@ -284,7 +284,7 @@ BasicGame.Game.prototype = {
 						this.attacking = true;
 						this.player.play('attack');
 						this.punch.play();
-						this.time.events.add(250, function() {
+						this.time.events.add(1000, function() {
 							this.player.play('idle');
 							this.attacking = false;
 						},this);
