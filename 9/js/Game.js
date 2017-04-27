@@ -238,13 +238,18 @@ BasicGame.Game.prototype = {
 			}
 		}else{ //RPG
 			if(this.canMove){
+				if(!this.attacking && !this.defending){
+					this.player.play('walk');
+					{
 				if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+					this.moving = true;
 					this.sel = this.sel * -1;
 					this.canMove = false;
 					this.time.events.add(250, function() {
 						this.canMove = true;
 					},this);
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
+					this.moving = true;
 					this.sel = this.sel * -1;
 					this.canMove = false;
 					this.time.events.add(250, function() {
@@ -253,12 +258,16 @@ BasicGame.Game.prototype = {
 				}
 				
 				if(this.sel < 0){
+					this.moving = true;
 					this.attack.alpha = 1;
 					this.defend.alpha = .5;
 				}else if(this.sel > 0){
+					this.moving = true;
 					this.defend.alpha = 1;
 					this.attack.alpha = .5
 				}
+			
+			
 			
 			this.cursor.y = 440 + (40 * this.sel);
 			
@@ -297,6 +306,8 @@ BasicGame.Game.prototype = {
 				this.switchGenre();
 			}
 			this.cursor.y = 400 + (20 * this.sel);
+			}else{
+				this.player.play('idle');
 			}
 		}
 		
