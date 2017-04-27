@@ -76,6 +76,7 @@ BasicGame.Game.prototype = {
 		this.player.animations.add('attack',[3], 3, true, true);
 		this.player.animations.add('damage',[4], 3, true, true);
 		this.player.anchor.setTo(.5,.5);
+		this.player.scale.x = -4;
 		this.player.play('idle');
 		
 		/*this.enemy = this.add.sprite(0, 0, 'enemy');
@@ -117,13 +118,17 @@ BasicGame.Game.prototype = {
 			//MOVEMENT
 			if(this.canMove){
 				if(this.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+					this.player.play('walk');
 					this.player.x -= (this.pspeed * 1);
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+					this.player.play('walk');
 					this.player.x += (this.pspeed * 1);
 				}
 				if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+					this.player.play('walk');
 					this.player.y += (this.pspeed/2);
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
+					this.player.play('walk');
 					this.player.y -= (this.pspeed/2);
 				}
 			}
@@ -131,20 +136,24 @@ BasicGame.Game.prototype = {
 			//ACTIONS
 			//Attack
 			if(this.canAttack && this.input.keyboard.isDown(Phaser.Keyboard.Z)){
+				this.player.play('attack');
 				this.canMove = false;
 				this.canDefend = false;
 				this.ehp -= 20/this.edefense
 			}else{
+				this.player.play('idle');
 				this.canMove = true;
 				this.canDefend = true;
 			}
 			
 			//Defend
 			if(this.canDefend&& this.input.keyboard.isDown(Phaser.Keyboard.X)){
+				this.player.play('defend');
 				this.canMove = false;
 				this.canAttack = false;
 				this.defense = 2;
 			}else{
+				this.player.play('idle');
 				this.canMove = true;
 				this.canAttack = true;
 				this.defense = 1;
