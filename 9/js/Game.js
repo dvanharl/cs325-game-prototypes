@@ -50,7 +50,7 @@ BasicGame.Game = function (game) {
 	this.rpgmenu = null;
 	this.attack = null;
 	this.defend = null;
-	this.items = null;
+	//this.items = null;
 	
 	this.canAttack = null;
 	this.canDefend = null;
@@ -65,8 +65,8 @@ BasicGame.Game.prototype = {
 		//Audio
 		
 		//Setting
-		this.backrpg = this.add.sprite(0,0, 'backrpg');
-		this.backaction = this.add.sprite(0,0, 'backaction');
+		//this.backrpg = this.add.sprite(0,0, 'backrpg');
+		//this.backaction = this.add.sprite(0,0, 'backaction');
 		
 		//Players
 		this.player = this.add.sprite(0, 0, 'player');
@@ -95,6 +95,9 @@ BasicGame.Game.prototype = {
 		this.espeed = 4;
 		
 		this.genre = true;
+		this.canMove = true;
+		this.canAttack = true;
+		this.canDefend = true;
 		
 		
 		
@@ -102,7 +105,10 @@ BasicGame.Game.prototype = {
 		this.rpgmenu = this.add.sprite(0, 0, 'rpgmenu');
 		this.attack = this.add.sprite(50, 375, 'attackcommand');
 		this.defend = this.add.sprite(50, 445, 'defendcommand');
-		this.items = this.add.sprite(50, 515, 'itemscommand');
+		//this.items = this.add.sprite(50, 515, 'itemscommand');
+		this.rpgmenu.kill();
+		this.attack.kill();
+		this.defend.kill()
 		
     },
 
