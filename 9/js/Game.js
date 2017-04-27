@@ -254,7 +254,7 @@ BasicGame.Game.prototype = {
 			this.rpgmenu.revive();
 			this.attack.revive();
 			this.defend.revive();
-			this.item.revive();
+			//this.item.revive();
 			
 			//Switch music
 			
@@ -270,7 +270,7 @@ BasicGame.Game.prototype = {
 			this.rpgmenu.kill();
 			this.attack.kill();
 			this.defend.kill();
-			this.item.kill();
+			//this.item.kill();
 			//Switch music
 		}
 	}
