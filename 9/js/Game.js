@@ -69,7 +69,7 @@ BasicGame.Game.prototype = {
 		//this.backaction = this.add.sprite(0,0, 'backaction');
 		
 		//Players
-		this.player = this.add.sprite(400, 300, 'player');
+		this.player = this.add.sprite(200, 200, 'player');
 		this.player.animations.add('idle',[0], 3, true, true);
 		this.player.animations.add('walk',[0,1], 3, true, true);
 		this.player.animations.add('guard',[2], 3, true, true);
