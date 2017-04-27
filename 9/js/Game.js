@@ -284,8 +284,7 @@ BasicGame.Game.prototype = {
 						this.attacking = true;
 						this.player.play('attack');
 						this.punch.play();
-						this.time.events.add(1000, function() {
-							this.player.play('idle');
+						this.time.events.add(750, function() {
 							this.attacking = false;
 						},this);
 						this.time.events.add(2000, function() {
@@ -295,7 +294,9 @@ BasicGame.Game.prototype = {
 						},this);
 					}else{
 						this.player.play('defend');
+						this.defending = true;
 						this.time.events.add(2000, function() {
+							this.defending = false;
 							this.canMove = true;
 							this.attack.alpha = .5;
 							this.defend.alpha = 1;
@@ -307,7 +308,9 @@ BasicGame.Game.prototype = {
 				}
 				this.cursor.y = 400 + (20 * this.sel);
 			}else{
-				this.player.play('idle');
+				if(!this.attacking && !this.defending){
+					this.player.play('idle');
+				}
 			}
 		}
 		
