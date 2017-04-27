@@ -176,7 +176,7 @@ BasicGame.Game.prototype = {
 				this.time.events.add(1500, function() {
 					this.enemy.play('idle');
 					this.player.play('idle');
-					this.player.tint = 0x000000;
+					this.player.tint = 0xffffff;
 				},this);
 			}
 		},this);
@@ -311,7 +311,7 @@ BasicGame.Game.prototype = {
 					this.defend.alpha = .2;
 					this.cursor.play('select');
 					if(this.sel == -1){
-						if(!this.attacking){
+						if(!this.attacking){ //Attacking
 							this.punch.play();
 						}
 						this.eph -= 20;
@@ -326,10 +326,12 @@ BasicGame.Game.prototype = {
 							this.attack.alpha = 1;
 							this.defend.alpha = .5;
 						},this);
-					}else{
+					}else{ //Defending
 						this.player.play('defend');
 						this.defending = true;
+						this.defense = 2;
 						this.time.events.add(2000, function() {
+							this.defense = 1;
 							this.defending = false;
 							this.canMove = true;
 							this.attack.alpha = .5;
@@ -470,7 +472,7 @@ BasicGame.Game.prototype = {
 			this.time.events.add(1500, function() {
 				this.enemy.play('idle');
 				this.canHit = true;
-				this.enemy.tint = 0x000000;
+				this.enemy.tint = 0xffffff;
 			},this);
 		}
 	}
