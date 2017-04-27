@@ -268,7 +268,7 @@ BasicGame.Game.prototype = {
 				if(this.sel == -1){
 					this.punch.play();
 					this.player.play('attack');
-					this.punch.play('punch');
+					this.punch.play();
 					this.time.events.add(250, function() {
 						this.player.play('idle');
 					},this);
@@ -314,9 +314,10 @@ BasicGame.Game.prototype = {
 		this.time.events.add(500, function() {
 			if(!this.genre){//Switch to RPG
 				//Music switch
-				this.musPos = this.actionmusic.position;
+				this.musPos = this.actionmusic.currentTime;
 				this.actionmusic.stop();
-				this.rpgmusic.play(this.musPos,.4,true, true);
+				this.rpgmusic.play('',0,.4,true, true);
+				this.rpgmusic.startTime = this.musPos
 				
 				this.backaction.kill();
 				this.backrpg.revive();
@@ -341,9 +342,10 @@ BasicGame.Game.prototype = {
 				this.defend.revive();
 			}else{ //Switch to action
 				//Music
-				this.musPos = this.rpgmusic.position;
+				this.musPos = this.rpgmusic.currentTime;
 				this.rpgmusic.stop();
-				this.actionmusic.play(this.musPos,.4,true, true);
+				this.actionmusic.play('',0,.4,true, true);
+				this.actionmusic.startTime = this.musPos
 			
 				this.backaction.revive();
 				this.backrpg.kill();
