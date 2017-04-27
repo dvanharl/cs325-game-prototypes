@@ -259,15 +259,18 @@ BasicGame.Game.prototype = {
 			this.canAttack = true;
 			this.canDefend = true;
 			this.canSwitch = true;
+			if(!this.genre){
+				this.backaction.kill();
+				this.backrpg.revive();
+			}else{
+				this.backaction.revive();
+				this.backrpg.kill();
+			}
 		},this);
 		this.genre = !this.genre;
 		this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 0,0,false);
 		if(!this.genre){ //RPG
-			//Background change
-			this.backaction.kill();
-			this.backrpg.revive();
-		
 			//Remember
 			this.px = this.player.x;
 			this.py = this.player.y;
@@ -290,10 +293,6 @@ BasicGame.Game.prototype = {
 			//Switch music
 			
 		}else{ //ACTION
-			//Background Change
-			this.backaction.revive();
-			this.backrpg.kill();
-		
 			//Return to previous positions
 			this.player.x = this.px;
 			this.player.y = this.py;
