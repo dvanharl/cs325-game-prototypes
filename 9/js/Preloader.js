@@ -40,7 +40,8 @@ BasicGame.Preloader.prototype = {
 		this.load.spritesheet('play', 'assets/menuplay.png', 190,70,32);
 		this.load.spritesheet('controls', 'assets/menucontrols.png',380,70,31);
 		
-		this.load.spritesheet('player', 'assets/player.png',25,25,5)
+		this.load.spritesheet('player', 'assets/player.png',25,25,5);
+		this.load.spritesheet('enemy', 'assets/enemy.png',25,25,5)
 	},
 
 	create: function () {
