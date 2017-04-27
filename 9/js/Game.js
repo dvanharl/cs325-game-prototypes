@@ -59,6 +59,8 @@ BasicGame.Game = function (game) {
 	this.cursor = null;
 	this.sel = null;
 	this.canSwitch = null;
+	
+	this.whiteScreen = null;
 };
 
 BasicGame.Game.prototype = {
@@ -67,8 +69,10 @@ BasicGame.Game.prototype = {
 		//Audio
 		
 		//Setting
-		//this.backrpg = this.add.sprite(0,0, 'backrpg');
-		//this.backaction = this.add.sprite(0,0, 'backaction');
+		this.backrpg = this.add.sprite(400,300, 'backrpg');
+		this.backrpg.anchor.setTo(.5,.5);
+		this.backaction = this.add.sprite(400,300, 'backaction');
+		this.backaction.anchor.setTo(.5,.5);
 		
 		//Players
 		this.player = this.add.sprite(200, 200, 'player');
@@ -121,6 +125,7 @@ BasicGame.Game.prototype = {
 		this.cursor.play('idle');
 		this.cursor.kill();
 		
+		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
     },
 
     update: function () {
@@ -160,6 +165,7 @@ BasicGame.Game.prototype = {
 					this.canAttack = true;
 					this.canMove = true;
 					this.canDefend = true;
+					//check for damage
 				},this);
 			}
 			
@@ -215,7 +221,7 @@ BasicGame.Game.prototype = {
 						this.player.play('idle');
 					},this);
 				}else{
-					this.openControls();
+					this.player.play('defend');
 				}
 			}else if(this.canSwitch && this.input.keyboard.isDown(Phaser.Keyboard.C)){
 				this.canSwitch = false;
@@ -247,6 +253,8 @@ BasicGame.Game.prototype = {
 			this.canMove = true;
 		},this);
 		this.genre = !this.genre;
+		this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+		this.add.tween(this.whiteScreen).to({alpha:0}, 1500, Phaser.Easing.Linear.None, true, 0,0,false);
 		if(!this.genre){ //RPG
 			//Remember
 			this.px = this.player.x;
