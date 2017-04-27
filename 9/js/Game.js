@@ -108,6 +108,7 @@ BasicGame.Game.prototype = {
 		this.player.play('idle');
 		
 		this.enemy = this.add.sprite(600, 300, 'enemy');
+		this.physics.arcade.enable(this.enemy);
 		this.enemy.animations.add('idle',[0], 3, true, true);
 		this.enemy.animations.add('walk',[0,1], 3, true, true);
 		this.enemy.animations.add('guard',[2], 3, true, true);
