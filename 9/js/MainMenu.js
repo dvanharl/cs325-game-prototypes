@@ -47,7 +47,7 @@ BasicGame.MainMenu.prototype = {
 		this.contP.kill();
 		
 		this.whiteScreen = this.add.sprite(0,0,'whiteScreen');
-		this.add.tween(this.whiteScreen).to({alpha:0}, 2000, Phaser.Easing.Linear.None, true, 0,0,false);
+		this.add.tween(this.whiteScreen).to({alpha:0}, 1000, Phaser.Easing.Linear.None, true, 0,0,false);
 		
 		this.canMove = true;
 		this.music.volume = .25;

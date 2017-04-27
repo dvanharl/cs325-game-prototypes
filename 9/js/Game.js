@@ -57,6 +57,7 @@ BasicGame.Game = function (game) {
 	
 	this.canMove = null;
 	this.cursor = null;
+	this.sel = null;l
 };
 
 BasicGame.Game.prototype = {
@@ -101,7 +102,7 @@ BasicGame.Game.prototype = {
 		this.canAttack = true;
 		this.canDefend = true;
 		
-		
+		this.sel = -1
 		
 		//Menu add
 		this.rpgmenu = this.add.sprite(0, 0, 'rpgmenu');
@@ -116,6 +117,7 @@ BasicGame.Game.prototype = {
 		this.cursor.animations.add('idle',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], 30, true, true);
 		this.cursor.animations.add('select',[22], 1, true, true);
 		this.cursor.play('idle');
+		this.cursor.kill();
 		
     },
 
@@ -176,38 +178,38 @@ BasicGame.Game.prototype = {
 		}else{ //RPG
 			if(this.canMove){
 				if(this.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
-					this.sel = (this.sel + 1) % 3;
+					this.sel = this.sel * -1;
 					this.canMove = false;
 					this.time.events.add(250, function() {
 						this.canMove = true;
 					},this);
 				}else if(this.input.keyboard.isDown(Phaser.Keyboard.UP)){
-					this.sel = (this.sel - 1) % 3;
+					this.sel = this.sel * -1;
 					this.canMove = false;
 					this.time.events.add(250, function() {
 						this.canMove = true;
 					},this);
 				}
 				
-				if(this.sel == 0){
-					this.attack.play('idle');
-					this.defend.animations.frame = 0;
-					this.defend.animations.stop(true, false);
-					this.items.animations.frame = 0;
-					this.items.animations.stop(true, false);
-				}else if(this.sel == 1){
-					this.defend.play('idle');
-					this.attack.animations.frame = 0;
-					this.attack.animations.stop(true, false);
-					this.items.animations.frame = 0;
-					this.items.animations.stop(true, false);
-				}else if(this.sel == 2){
-					this.items.play('idle');
-					this.attack.animations.frame = 0;
-					this.attack.animations.stop(true, false);
-					this.items.animations.frame = 0;
-					this.items.animations.stop(true, false);
+				if(this.sel < 0){
+					this.attack.alpha = 1;
+					this.defend.alpha = .5;
+				}else if(this.sel > 0){
+					this.defend.alpha = 1;
+					this.attack.alpha = .5
 				}
+			
+			this.cursor.y = 440 + (40 * this.sel);
+
+			if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
+				this.cursor.play('select');
+				if(this.sel == -1){
+					this.playB.play('select');
+					this.startGame();
+				}else{
+					this.openControls();
+				}
+			}
 				
 				this.cursor.y = 400 + (20 * this.sel);
 
