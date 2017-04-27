@@ -168,7 +168,6 @@ BasicGame.Game.prototype = {
 				this.canAttack = false;
 				this.defense = 2;
 			}else{
-				this.player.play('idle');
 				this.canMove = true;
 				this.canAttack = true;
 				this.defense = 1;
@@ -251,7 +250,7 @@ BasicGame.Game.prototype = {
 			this.canMove = true;
 		},this);
 		this.genre = !this.genre;
-		if(this.genre){ //RPG
+		if(!this.genre){ //RPG
 			//Remember
 			this.px = this.player.x;
 			this.py = this.player.y;
