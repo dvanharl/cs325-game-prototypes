@@ -174,7 +174,7 @@ BasicGame.Game.prototype = {
 		
 		//Enemy attack
 		this.time.events.loop(4000, function() {
-			if(!this.genre){
+			if(!this.genre){//RPG
 				this.choice = this.rnd.integerInRange(0,1);
 				if(this.choice == 0){ //Attack
 					this.enemy.play('attack');
@@ -416,7 +416,7 @@ BasicGame.Game.prototype = {
 		if(this.enemy.x == this.newX && this.enemy.y == this.newY){
 			this.enemy.body.velocity.setTo(0,0);
 		}else{
-			this.physics.arcade.moveToXY(this.enemy, this.newX, this.newY, [6, 4000]);
+			this.physics.arcade.moveToXY(this.enemy, this.newX, this.newY, 6, 4000);
 		}
 	},
 	
