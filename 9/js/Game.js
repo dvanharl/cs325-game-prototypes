@@ -271,7 +271,7 @@ BasicGame.Game.prototype = {
 		this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 		this.time.events.add(500, function() {
 			this.add.tween(this.whiteScreen).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
-		}
+		},this);
 		if(!this.genre){ //RPG
 			//Remember
 			this.px = this.player.x;
