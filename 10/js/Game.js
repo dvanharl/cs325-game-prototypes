@@ -416,8 +416,8 @@ BasicGame.Game.prototype = {
 	},
 	
 	render: function(){
-		this.game.debug.text("Health: " + this.php, 32, 32);
-		this.game.debug.text("Enemy Health: " + this.ehp,32,64);
+		this.game.debug.text("Health: " + this.php, 200, 32);
+		this.game.debug.text("Enemy Health: " + this.ehp,200,64);
 	},
 		
 	updateEnemy: function() {
