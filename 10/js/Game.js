@@ -76,6 +76,9 @@ BasicGame.Game = function (game) {
 	this.newY = null;
 	
 	this.canHit = null;
+	
+	this.uia = null;
+	this.uir = null;
 };
 
 BasicGame.Game.prototype = {
