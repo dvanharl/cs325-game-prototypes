@@ -172,6 +172,11 @@ BasicGame.Game.prototype = {
 		this.physics.startSystem(Phaser.Physics.ARCADE);
 		this.enemy.enableBody = true;
 		
+		//UI
+		this.uia = this.add.sprite(0,0,'uiaction');
+		this.uir = this.add.sprite(0,0,'uirpg');
+		this.uir.kill();
+		
 		//Enemy attack
 		this.time.events.loop(4000, function() {
 			if(!this.genre){//RPG
@@ -441,6 +446,8 @@ BasicGame.Game.prototype = {
 				
 				this.backaction.kill();
 				this.backrpg.revive();
+				this.uia.kill();
+				this.uir.revive();
 				
 				//Remember
 				this.player.scale.x = -4;
@@ -469,6 +476,8 @@ BasicGame.Game.prototype = {
 			
 				this.backaction.revive();
 				this.backrpg.kill();
+				this.uir.kill();
+				this.uia.revive();
 				
 				//Return to previous positions
 				this.player.x = this.px;
