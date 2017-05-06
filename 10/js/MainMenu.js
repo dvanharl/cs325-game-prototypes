@@ -22,6 +22,8 @@ BasicGame.MainMenu.prototype = {
 	create: function () {
 		this.music = this.add.audio('titleMusic');
 		this.music.play();
+		
+		this.selectM = this.add.audio('select');
 
 		this.add.sprite(0, 0, 'titlePage');
 
@@ -51,6 +53,7 @@ BasicGame.MainMenu.prototype = {
 		
 		this.canMove = true;
 		this.music.volume = .25;
+		this.selectM.volume = .4;
 	},
 
 	update: function () {
@@ -82,6 +85,7 @@ BasicGame.MainMenu.prototype = {
 			this.cursor.y = 440 + (40 * this.sel);
 
 			if(this.input.keyboard.isDown(Phaser.Keyboard.Z)){
+				this.selectM.play();
 				this.cursor.play('select');
 				if(this.sel == -1){
 					this.playB.play('select');
@@ -107,6 +111,7 @@ BasicGame.MainMenu.prototype = {
 		this.add.tween(this.whiteScreen).to({alpha:1}, 1500, Phaser.Easing.Linear.None, true, 0,0,false);
 		this.music.fadeOut(2000);
 		this.music.onFadeComplete.add(function() {
+			this.selectM.stop();
 			this.canMove = true;
 			this.state.start('Game');
 		},this);

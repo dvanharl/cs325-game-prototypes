@@ -563,7 +563,7 @@ BasicGame.Game.prototype = {
 				this.enemy.play('idle');
 				this.whiteScreen.alpha = 1;
 				this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
-				if(canBeHit && this.genre){
+				if(this.canBeHit && this.genre){
 					this.php -= 50/this.defense;
 					this.player.play('damage');
 					this.player.tint = 0xff0000;
