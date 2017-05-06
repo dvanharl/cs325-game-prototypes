@@ -542,6 +542,8 @@ BasicGame.Game.prototype = {
 		if(!this.attacking){ //Attacking
 			this.punch.play();
 		}
+		this.playerBox = this.player.getBounds();
+		this.enemyBox = this.enemy.getBounds();
 		if(this.canBeHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
 			this.enemy.play('attack')
 			this.php -= 50/this.defense;
