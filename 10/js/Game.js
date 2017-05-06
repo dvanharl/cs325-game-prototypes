@@ -91,7 +91,9 @@ BasicGame.Game.prototype = {
 		this.punch = this.add.audio('punch');
 		this.hit = this.add.audio('hit');
 		this.explosion = this.add.audio('explosion');
+		this.explosion.volume = .4;
 		this.charge = this.add.audio('charge');
+		this.charge.volume = .4;
 		this.exhit = this.add.audio('exhit');
 		this.rpgmusic = this.add.audio('rpgmusic');
 		this.actionmusic = this.add.audio('actionmusic');
@@ -266,10 +268,8 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
-		this.add.tween(this.pheart.scale).to({x:(this.php/300)}, 500, Phaser.Easing.Linear.None);
-		this.add.tween(this.pheart.scale).to({y:(this.php/300)}, 500, Phaser.Easing.Linear.None);
-		//this.pheart.scale.x = this.php/300;
-		//this.pheart.scale.y = this.php/300;
+		this.pheart.scale.x = this.php/300;
+		this.pheart.scale.y = this.php/300;
 		this.eheart.scale.x = this.ehp/500;
 		this.eheart.scale.y = this.ehp/500;
 		if(this.genre){ //Action
