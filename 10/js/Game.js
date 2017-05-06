@@ -87,6 +87,9 @@ BasicGame.Game.prototype = {
 		//Audio
 		this.punch = this.add.audio('punch');
 		this.hit = this.add.audio('hit');
+		this.explosion = this.add.audio('explosion');
+		this.charge = this.add.audio('charge');
+		this.exhit = this.add.audio('exhit');
 		this.rpgmusic = this.add.audio('rpgmusic');
 		this.actionmusic = this.add.audio('actionmusic');
 		
@@ -548,7 +551,7 @@ BasicGame.Game.prototype = {
 			this.enemyBox = this.enemy.getBounds();
 			if(this.canBeHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
 				this.enemy.play('attack')
-				this.php -= 50/this.defense;
+				this.php -= 25/this.defense;
 				this.player.play('damage');
 				this.player.tint = 0xff0000;
 				this.time.events.add(1500, function() {
@@ -559,14 +562,18 @@ BasicGame.Game.prototype = {
 			}
 		}else{ //Strong attack
 			this.enemy.tint = 0xffff00;
+			this.charge.play();
 			this.time.events.add(1500, function() {
 				this.enemy.play('idle');
 				this.whiteScreen.alpha = 1;
+				this.charge.stop();
+				this.explosion.play();
 				this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 				if(this.canBeHit && this.genre){
-					this.php -= 50/this.defense;
+					this.php -= 100/this.defense;
 					this.player.play('damage');
 					this.player.tint = 0xff0000;
+					this.exhit.play();
 					this.time.events.add(1500, function() {
 						this.enemy.play('idle');
 						this.player.play('idle');

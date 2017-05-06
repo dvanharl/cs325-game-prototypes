@@ -35,6 +35,9 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('punch', ['assets/punch.mp3']);
 		this.load.audio('hit', ['assets/hit.mp3']);
 		this.load.audio('select',['assets/select.wav']);
+		this.load.audio('charge', ['assets/charge.wav']);
+		this.load.audio('explosion', ['assets/explosion.wav']);
+		this.load.audio('exhit', ['assets/exhit.wav']);
 		
 		this.load.audio('actionmusic', ['assets/actionmusic.mp3']);
 		this.load.audio('rpgmusic', ['assets/rpgmusic.mp3']);
