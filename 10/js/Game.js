@@ -266,8 +266,8 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
-		this.add.tween(this.pheart).to({scale.x:(this.php/300)}, 500, Phaser.Easing.Linear.None);
-		this.add.tween(this.pheart).to({scale.y:(this.php/300)}, 500, Phaser.Easing.Linear.None);
+		this.add.tween(this.pheart.scale).to({x:(this.php/300)}, 500, Phaser.Easing.Linear.None);
+		this.add.tween(this.pheart.scale).to({y:(this.php/300)}, 500, Phaser.Easing.Linear.None);
 		//this.pheart.scale.x = this.php/300;
 		//this.pheart.scale.y = this.php/300;
 		this.eheart.scale.x = this.ehp/500;
