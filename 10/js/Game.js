@@ -543,14 +543,14 @@ BasicGame.Game.prototype = {
 	
 	checkEnemyAttack: function() {
 		type = this.rnd.frac();
-		if(type <= 0.75){
+		if(type <= 0.5){
 			if(!this.attacking){ //Attacking
 				this.punch.play();
 			}
+			this.enemy.play('attack')
 			this.playerBox = this.player.getBounds();
 			this.enemyBox = this.enemy.getBounds();
 			if(this.canBeHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
-				this.enemy.play('attack')
 				this.php -= 25/this.defense;
 				this.player.play('damage');
 				this.player.tint = 0xff0000;
