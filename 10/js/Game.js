@@ -539,20 +539,40 @@ BasicGame.Game.prototype = {
 	},
 	
 	checkEnemyAttack: function() {
-		if(!this.attacking){ //Attacking
-			this.punch.play();
-		}
-		this.playerBox = this.player.getBounds();
-		this.enemyBox = this.enemy.getBounds();
-		if(this.canBeHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
-			this.enemy.play('attack')
-			this.php -= 50/this.defense;
-			this.player.play('damage');
-			this.player.tint = 0xff0000;
+		type = this.rnd.frac();
+		if(type <= 0.75){
+			if(!this.attacking){ //Attacking
+				this.punch.play();
+			}
+			this.playerBox = this.player.getBounds();
+			this.enemyBox = this.enemy.getBounds();
+			if(this.canBeHit && Phaser.Rectangle.intersects(this.playerBox, this.enemyBox)){
+				this.enemy.play('attack')
+				this.php -= 50/this.defense;
+				this.player.play('damage');
+				this.player.tint = 0xff0000;
+				this.time.events.add(1500, function() {
+					this.enemy.play('idle');
+					this.player.play('idle');
+					this.player.tint = 0xffffff;
+				},this);
+			}
+		}else{ //Strong attack
+			this.enemy.tint = 0xffff00;
 			this.time.events.add(1500, function() {
 				this.enemy.play('idle');
-			this.player.play('idle');
-				this.player.tint = 0xffffff;
+				this.whiteScreen.alpha = 1;
+				this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+				if(canBeHit && this.genre){
+					this.php -= 50/this.defense;
+					this.player.play('damage');
+					this.player.tint = 0xff0000;
+					this.time.events.add(1500, function() {
+						this.enemy.play('idle');
+						this.player.play('idle');
+						this.player.tint = 0xffffff;
+					},this);
+				this.add.tween(this.whiteScreen).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 			},this);
 		}
 	}
