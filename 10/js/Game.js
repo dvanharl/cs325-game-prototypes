@@ -186,13 +186,13 @@ BasicGame.Game.prototype = {
 		this.uir = this.add.sprite(0,0,'uirpg');
 		this.uir.kill();
 		
-		this.pheart = this.add.sprite(100, 5, 'heart');
+		this.pheart = this.add.sprite(150, 40, 'heart');
 		this.pheart.anchor.setTo(.5,.5);
-		this.pfheart = this.add.sprite(100, 5, 'fheart');
+		this.pfheart = this.add.sprite(150, 40, 'fheart');
 		this.pfheart.anchor.setTo(.5,.5);
-		this.eheart = this.add.sprite(600, 5, 'heart');
+		this.eheart = this.add.sprite(650, 40, 'heart');
 		this.eheart.anchor.setTo(.5,.5);
-		this.efheart = this.add.sprite(600, 5, 'fheart');
+		this.efheart = this.add.sprite(650, 40, 'fheart');
 		this.efheart.anchor.setTo(.5,.5);
 		
 		//Enemy attack
