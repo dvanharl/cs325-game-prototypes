@@ -31,6 +31,9 @@ BasicGame.Preloader.prototype = {
 		this.load.image('uiaction', 'assets/ui1.png');
 		this.load.image('uirpg', 'assets/ui2.png');
 		
+		this.load.image('heart', 'assets/heart.png');
+		this.load.image('fheart', 'assets/heart2.png');
+		
 		this.load.audio('titleMusic', ['assets/title.mp3']);
 		this.load.audio('punch', ['assets/punch.mp3']);
 		this.load.audio('hit', ['assets/hit.mp3']);

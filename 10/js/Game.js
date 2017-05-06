@@ -79,6 +79,9 @@ BasicGame.Game = function (game) {
 	
 	this.uia = null;
 	this.uir = null;
+	
+	this.pheart = null;
+	this.eheart = null;
 };
 
 BasicGame.Game.prototype = {
@@ -183,6 +186,11 @@ BasicGame.Game.prototype = {
 		this.uir = this.add.sprite(0,0,'uirpg');
 		this.uir.kill();
 		
+		this.pheart = this.add.sprite(200, 50, 'heart');
+		this.pfheart = this.add.sprite(200, 50, 'fheart');
+		this.eheart = this.add.sprite(600, 50, 'heart');
+		this.efheart = this.add.sprite(600, 50, 'fheart');
+		
 		//Enemy attack
 		this.time.events.loop(4000, function() {
 			if(!this.genre){//RPG
@@ -207,7 +215,7 @@ BasicGame.Game.prototype = {
 							this.edef = 1;
 						},this);
 					}
-				}else{
+				}else{ //Strong attack
 					this.enemy.tint = 0xffff00;
 					this.charge.play();
 					this.time.events.add(1500, function() {
@@ -216,7 +224,7 @@ BasicGame.Game.prototype = {
 						this.charge.stop();
 						this.explosion.play();
 						this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
-						if(this.canBeHit && this.genre){
+						if(this.canBeHit && !this.genre){
 							this.php -= 150/this.defense;
 							this.player.play('damage');
 							this.player.tint = 0xff0000;
@@ -254,6 +262,10 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
+		this.pheart.scale.x = this.php/300;
+		this.pheart.scale.y = this.php/300;
+		this.eheart.scale.x = this.ehp/500;
+		this.eheart.scale.y = this.ehp/500;
 		if(this.genre){ //Action
 			this.updateEnemy();
 			//MOVEMENT
@@ -569,7 +581,7 @@ BasicGame.Game.prototype = {
 	
 	checkEnemyAttack: function() {
 		type = this.rnd.frac();
-		if(type <= 0.5){
+		if(type <= 0.6){
 			if(!this.attacking){ //Attacking
 				this.punch.play();
 			}
