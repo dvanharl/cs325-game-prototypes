@@ -186,10 +186,14 @@ BasicGame.Game.prototype = {
 		this.uir = this.add.sprite(0,0,'uirpg');
 		this.uir.kill();
 		
-		this.pheart = this.add.sprite(200, 50, 'heart');
-		this.pfheart = this.add.sprite(200, 50, 'fheart');
-		this.eheart = this.add.sprite(600, 50, 'heart');
-		this.efheart = this.add.sprite(600, 50, 'fheart');
+		this.pheart = this.add.sprite(200, 5, 'heart');
+		this.pheart.anchor.setTo(.5,.5);
+		this.pfheart = this.add.sprite(200, 5, 'fheart');
+		this.pfheart.anchor.setTo(.5,.5);
+		this.eheart = this.add.sprite(600, 5, 'heart');
+		this.eheart.anchor.setTo(.5,.5);
+		this.efheart = this.add.sprite(600, 5, 'fheart');
+		this.efheart.anchor.setTo(.5,.5);
 		
 		//Enemy attack
 		this.time.events.loop(4000, function() {
@@ -262,8 +266,10 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
-		this.pheart.scale.x = this.php/300;
-		this.pheart.scale.y = this.php/300;
+		this.add.tween(this.pheart).to({scale.x:(this.php/300)}, 500, Phaser.Easing.Linear.None);
+		this.add.tween(this.pheart).to({scale.y:(this.php/300)}, 500, Phaser.Easing.Linear.None);
+		//this.pheart.scale.x = this.php/300;
+		//this.pheart.scale.y = this.php/300;
 		this.eheart.scale.x = this.ehp/500;
 		this.eheart.scale.y = this.ehp/500;
 		if(this.genre){ //Action
