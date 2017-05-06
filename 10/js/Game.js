@@ -126,8 +126,8 @@ BasicGame.Game.prototype = {
 		this.enemy.play('idle');
 		
 		//Parameters
-		this.php = 200;
-		this.ehp = 200;
+		this.php = 300;
+		this.ehp = 500;
 		
 		this.pspeed = 6;
 		this.espeed = 6;
@@ -187,22 +187,48 @@ BasicGame.Game.prototype = {
 		this.time.events.loop(4000, function() {
 			if(!this.genre){//RPG
 				this.choice = this.rnd.integerInRange(0,1);
-				if(this.choice == 0){ //Attack
-					this.enemy.play('attack');
-					this.php -= 50/this.defense;
-					this.player.play('damage');
-					this.player.tint = 0xff0000;
+				temp = this.rnd.frac();
+				if(frac <= .6){
+					if(this.choice == 0){ //Attack
+						this.enemy.play('attack');
+						this.php -= 50/this.defense;
+						this.player.play('damage');
+						this.player.tint = 0xff0000;
+						this.time.events.add(1500, function() {
+							this.enemy.play('idle');
+							this.player.play('idle');
+							this.player.tint = 0xffffff;
+						},this);
+					}else{ //Defense
+						this.enemy.play('guard');
+						this.edef = 2;
+						this.time.events.add(3000, function() {
+							this.enemy.play('idle');
+							this.edef = 1;
+						},this);
+					}
+				}else{
+					this.enemy.tint = 0xffff00;
+					this.charge.play();
 					this.time.events.add(1500, function() {
 						this.enemy.play('idle');
-						this.player.play('idle');
-						this.player.tint = 0xffffff;
-					},this);
-				}else{ //Defense
-					this.enemy.play('guard');
-					this.edef = 2;
-					this.time.events.add(3000, function() {
-						this.enemy.play('idle');
-						this.edef = 1;
+						this.whiteScreen.alpha = 1;
+						this.charge.stop();
+						this.explosion.play();
+						this.add.tween(this.whiteScreen).to({alpha:1}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
+						if(this.canBeHit && this.genre){
+							this.php -= 150/this.defense;
+							this.player.play('damage');
+							this.player.tint = 0xff0000;
+							this.exhit.play();
+							this.time.events.add(1500, function() {
+								this.enemy.play('idle');
+								this.player.play('idle');
+								this.player.tint = 0xffffff;
+							},this);
+						}
+						this.enemy.tint = 0xffffff;
+						this.add.tween(this.whiteScreen).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 					},this);
 				}
 			}else{ //Action
@@ -501,8 +527,8 @@ BasicGame.Game.prototype = {
 	winGame: function() {
 		this.rpgmusic.stop();
 		this.actionmusic.stop();
-		this.php = 200;
-		this.ehp = 200;
+		this.php = 300;
+		this.ehp = 500;
 		this.canMove = true;
 		this.canAttack = true;
 		this.canDefend = true;
@@ -513,8 +539,8 @@ BasicGame.Game.prototype = {
 	loseGame: function() {
 		this.rpgmusic.stop();
 		this.actionmusic.stop();
-		this.php = 200;
-		this.ehp = 200;
+		this.php = 300;
+		this.ehp = 500;
 		this.canMove = true;
 		this.canAttack = true;
 		this.canDefend = true;
