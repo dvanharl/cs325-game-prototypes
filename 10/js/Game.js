@@ -95,6 +95,7 @@ BasicGame.Game.prototype = {
 		this.charge = this.add.audio('charge');
 		this.charge.volume = .4;
 		this.exhit = this.add.audio('exhit');
+		this.exhit.volume = .4;
 		this.rpgmusic = this.add.audio('rpgmusic');
 		this.actionmusic = this.add.audio('actionmusic');
 		
@@ -188,13 +189,13 @@ BasicGame.Game.prototype = {
 		this.uir = this.add.sprite(0,0,'uirpg');
 		this.uir.kill();
 		
-		this.pheart = this.add.sprite(150, 40, 'heart');
+		this.pheart = this.add.sprite(150, 50, 'heart');
 		this.pheart.anchor.setTo(.5,.5);
-		this.pfheart = this.add.sprite(150, 40, 'fheart');
+		this.pfheart = this.add.sprite(150, 50, 'fheart');
 		this.pfheart.anchor.setTo(.5,.5);
-		this.eheart = this.add.sprite(650, 40, 'heart');
+		this.eheart = this.add.sprite(650, 50, 'heart');
 		this.eheart.anchor.setTo(.5,.5);
-		this.efheart = this.add.sprite(650, 40, 'fheart');
+		this.efheart = this.add.sprite(650, 50, 'fheart');
 		this.efheart.anchor.setTo(.5,.5);
 		
 		//Enemy attack
