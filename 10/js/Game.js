@@ -572,6 +572,7 @@ BasicGame.Game.prototype = {
 						this.player.play('idle');
 						this.player.tint = 0xffffff;
 					},this);
+				}
 				this.add.tween(this.whiteScreen).to({alpha:0}, 500, Phaser.Easing.Linear.None, true, 0,0,false);
 			},this);
 		}
