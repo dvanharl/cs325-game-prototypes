@@ -203,7 +203,7 @@ BasicGame.Game.prototype = {
 			if(!this.genre){//RPG
 				this.choice = this.rnd.integerInRange(0,1);
 				temp = this.rnd.frac();
-				if(frac <= .6){
+				if(temp <= .6){
 					if(this.choice == 0){ //Attack
 						this.enemy.play('attack');
 						this.php -= 50/this.defense;
